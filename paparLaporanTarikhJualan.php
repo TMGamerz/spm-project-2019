@@ -2,7 +2,10 @@
     require "header.php";
 ?>
 
-<link rel = "stylesheet" type = "text/css" href = "css/paparLaporan-style.css">
+<head>
+    <link rel = "stylesheet" type = "text/css" href = "css/paparLaporan-style.css">
+    <title>Papar Laporan</title>
+</head>
 
 <p>Papar Laporan Ikut Tarikh Jualan</p>
 

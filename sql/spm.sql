@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 20, 2019 at 03:42 AM
+-- Generation Time: Jan 20, 2019 at 04:53 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -88,13 +88,16 @@ CREATE TABLE `pengguna` (
 -- Indexes for table `item`
 --
 ALTER TABLE `item`
-  ADD PRIMARY KEY (`KodItem`);
+  ADD PRIMARY KEY (`KodItem`),
+  ADD KEY `KodPembekal` (`KodPembekal`);
 
 --
 -- Indexes for table `jualan`
 --
 ALTER TABLE `jualan`
-  ADD PRIMARY KEY (`KodJualan`);
+  ADD PRIMARY KEY (`KodJualan`),
+  ADD KEY `KodItem` (`KodItem`),
+  ADD KEY `IDPengguna` (`IDPengguna`);
 
 --
 -- Indexes for table `pembekal`
@@ -107,6 +110,23 @@ ALTER TABLE `pembekal`
 --
 ALTER TABLE `pengguna`
   ADD PRIMARY KEY (`IDPengguna`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `item`
+--
+ALTER TABLE `item`
+  ADD CONSTRAINT `item_ibfk_1` FOREIGN KEY (`KodPembekal`) REFERENCES `pembekal` (`KodPembekal`);
+
+--
+-- Constraints for table `jualan`
+--
+ALTER TABLE `jualan`
+  ADD CONSTRAINT `jualan_ibfk_1` FOREIGN KEY (`IDPengguna`) REFERENCES `pengguna` (`IDPengguna`),
+  ADD CONSTRAINT `jualan_ibfk_2` FOREIGN KEY (`KodItem`) REFERENCES `item` (`KodItem`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

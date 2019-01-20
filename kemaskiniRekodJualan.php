@@ -2,7 +2,10 @@
     require "header.php";
 ?>
 
-<link rel = "stylesheet" type = "text/css" href = "css/kemaskiniRekod-style.css">
+<head>
+    <title>Kemaskini Rekod</title>
+    <link rel = "stylesheet" type = "text/css" href = "css/kemaskiniRekod-style.css">
+</head>
 
 <p>Kemaskini Rekod Jualan</p>
 

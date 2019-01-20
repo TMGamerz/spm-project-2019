@@ -2,7 +2,10 @@
     require "header.php";
 ?>
 
-<link rel = "stylesheet" type = "text/css" href = "css/tambahRekod-style.css">
+<head>
+    <link rel = "stylesheet" type = "text/css" href = "css/tambahRekod-style.css">
+    <title>Tambah Rekod</title>
+</head>
 
 <p>Tambah Rekod Item</p>
 

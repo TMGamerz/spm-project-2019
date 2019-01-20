@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="UTF-8">
     <meta nama = "viewport" content = "width=device-width, initial-scale=1.0">
-    <title>Navbar Test</title>
     <link rel = "stylesheet" type = "text/css" href = "css/header-style.css">
     <link rel = "stylesheet" href = "../libraries/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>

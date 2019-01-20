@@ -2,7 +2,10 @@
     require "header.php";
 ?>
 
-<link rel = "stylesheet" type = "text/css" href = "css/import-style.css">
+<head>
+    <link rel = "stylesheet" type = "text/css" href = "css/import-style.css">
+    <title>Import</title>
+</head>
 
 <p>Import</p>
 
