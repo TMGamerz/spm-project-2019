@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta nama = "viewport" content = "width-device-width, initial-scale=1.0">
+    <meta nama = "viewport" content = "width=device-width, initial-scale=1.0">
     <title>Navbar Test</title>
     <link rel = "stylesheet" type = "text/css" href = "css/header-style.css">
     <link rel = "stylesheet" href = "../libraries/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -12,7 +12,7 @@
     <section class = "navbar">
         <div class = "nav-container">
             <div class = "logo">
-                <a href="#home"><b>SISTEM PENGURUSAN JUALAN KOPERASI SEKOLAH</b></a>
+                <a href="menu.php"><b>SISTEM PENGURUSAN JUALAN KOPERASI SEKOLAH</b></a>
             </div>
             <nav>
                 <div class = "nav-responsive">
@@ -30,9 +30,9 @@
                         </a>
 
                         <ul class = "nav-dropdown">
-                                <li><a href = "#tambah-jualan">Jualan</a></li>
-                                <li><a href = "#tambah-pembekal">Pembekal</a></li>
-                                <li><a href = "#tambah-item">Item</a></li>
+                                <li><a href = "tambahRekodJualan.php">Jualan</a></li>
+                                <li><a href = "tambahRekodPembekal.php">Pembekal</a></li>
+                                <li><a href = "tambahRekodItem.php">Item</a></li>
                         </ul>
                     </li>
                     <li>
@@ -45,9 +45,9 @@
                         </a>
 
                         <ul class = "nav-dropdown">
-                                <li><a href = "#kemaskini-jualan">Jualan</a></li>
-                                <li><a href = "#kemaskini-pembekal">Pembekal</a></li>
-                                <li><a href = "#kemaskini-item">Item</a></li>
+                                <li><a href = "kemaskiniRekodJualan.php">Jualan</a></li>
+                                <li><a href = "kemaskiniRekodPembekal.php">Pembekal</a></li>
+                                <li><a href = "kemaskiniRekodItem.php">Item</a></li>
                         </ul>
                     </li>
                     <li>
@@ -60,12 +60,12 @@
                         </a>
 
                         <ul class = "nav-dropdown">
-                                <li><a href = "#papar-tarikh">Ikut Tarikh Jualan</a></li>
-                                <li><a href = "#papar-nama">Ikut Nama Item</a></li>
+                                <li><a href = "paparLaporanTarikhJualan.php">Ikut Tarikh Jualan</a></li>
+                                <li><a href = "paparLaporanNamaItem.php">Ikut Nama Item</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href = "#import">
+                        <a href = "import.php">
                             <div class = "icon">
                                 <i class = "fa fa-picture-o" aria-hidden = "true"></i>
                                 <i class = "fa fa-picture-o" aria-hidden = "true"></i>

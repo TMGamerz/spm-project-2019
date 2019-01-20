@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2018 at 06:22 AM
+-- Generation Time: Jan 20, 2019 at 03:42 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `spm`
 --
+CREATE DATABASE IF NOT EXISTS `spm` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `spm`;
 
 -- --------------------------------------------------------
 
@@ -28,6 +30,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `item`
 --
 
+DROP TABLE IF EXISTS `item`;
 CREATE TABLE `item` (
   `KodItem` varchar(11) NOT NULL,
   `NamaItem` varchar(256) NOT NULL,
@@ -41,6 +44,7 @@ CREATE TABLE `item` (
 -- Table structure for table `jualan`
 --
 
+DROP TABLE IF EXISTS `jualan`;
 CREATE TABLE `jualan` (
   `KodJualan` varchar(11) NOT NULL,
   `TarikhJualan` date NOT NULL,
@@ -56,6 +60,7 @@ CREATE TABLE `jualan` (
 -- Table structure for table `pembekal`
 --
 
+DROP TABLE IF EXISTS `pembekal`;
 CREATE TABLE `pembekal` (
   `KodPembekal` varchar(11) NOT NULL,
   `NamaPembekal` varchar(256) NOT NULL,
@@ -68,6 +73,7 @@ CREATE TABLE `pembekal` (
 -- Table structure for table `pengguna`
 --
 
+DROP TABLE IF EXISTS `pengguna`;
 CREATE TABLE `pengguna` (
   `IDPengguna` varchar(11) NOT NULL,
   `NamaPengguna` varchar(256) NOT NULL,
