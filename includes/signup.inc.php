@@ -62,15 +62,15 @@ if (isset($_POST['submit'])) { //
                     went to the checkup there, so we can rename it with the same variables there and won't affect the code above there */
                     // We just want to run the function so no need to declare it to $result
                     mysqli_query($conn, $sql);
-                    // Back to the signup page once done signed up
-                    header("Location: ../signup.php?signup=success");
+                    // Back to the login page once done signed up
+                    header("Location: ../login.php");
                     exit();
                 }
             }
         }
 
 } else {
-    // Location, L must capital letter, no spaces between location and :
+    // Location, L must capital letter, no spaces between location and ":"
     // This header() will take us back to the page that we mention
     header("Location: ../signup.php");
 

@@ -2,134 +2,183 @@ body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background: url(../img/bgp3.jpg) fixed center;
 }
 
-header {
+.navbar {
+    background: #fff;
+    height: 110px;
+}
+
+.nav-container {
+    max-width: 2000px;
+    margin: 0 auto;
+}
+
+.logo {
     position: absolute;
-    top: 0;
-    left: 0;
-    padding: 0 100px;
-    background: #262626;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-header .logo {
-    color: #fff;
-    height: 50px;
-    line-height: 50px;
-    font-size: 24px;
+    padding: 40px 30px;
     float: left;
-    font-weight: bold;
+    line-height: 30px;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-family: sans-serif;
 }
 
-header nav {
-    float: right;
+.logo a:hover {
+    color: royalblue;
 }
 
-header nav ul {
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-header nav ul li {
-    list-style: none;
-    position: relative;
-}
-
-header nav ul li.sub-menu:before {
-    content: '\f0d7';
-    font-family: fontAwesome;
-    position: absolute;
-    line-height: 50px;
-    color: #fff;
-    right: 5px;
-}
-
-header nav ul li.active.sub-menu:before {
-    content: '\f0d8';
-}
-
-header nav ul li ul {
-    position: absolute;
-    left: 0;
-    background: #333;
-    display: none;
-}
-
-header nav ul li.active ul {
-    display: block;
-}
-
-header nav ul li ul li {
-    display: block;
-    width: 200px;
-}
-
-header nav ul li a {
-    height: 50px;
-    line-height: 50px;
-    padding: 0 20px;
-    color: #fff;
+.logo a, a:visited {
+    color: #000;
     text-decoration: none;
-    display: block;
 }
 
-header nav ul li a:hover,
-header nav ul li a.active {
-    color: #fff;
-    background: #2196f3;
-}
-
-.menu-toggle {
-    color: #fff;
+nav .nav-list {
+    height: 70px;
+    position: relative;
     float: right;
-    line-height: 50px;
-    font-size: 24px;
-    cursor: pointer;
+    margin: 0;
+    padding: 20px 0;
+    background: #fff;
+    display: flex;
+    list-style: none;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
+}
+
+nav .nav-list li:last-child {
+    border-right: none; 
+}
+
+nav .nav-list li a {
+    text-decoration: none;
+    padding: 0 50px;
+    display: block;
+    border-right:  1px solid rgba(0, 0, 0, .2);
+}
+
+nav .nav-list li a .icon {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    overflow: hidden;
+    margin: 0 auto 10px;
+}
+
+nav .nav-list li a .icon .fa {
+    width: 100%;
+    height: 100%;
+    line-height: 40px; /*Must same with .icon width*/
+    font-size: 34px; /*The icon size*/
+    transition: 0.5s;
+    color: #000;
+}
+
+nav .nav-list li a .icon .fa.fa-home {
+    content: url(../icons/tambahRekod.png);
+}
+
+nav .nav-list li a .icon .fa.fa-file-text-o {
+    content: url(../icons/kemaskiniRekod.png);
+}
+
+nav .nav-list li a .icon .fa.fa-cogs {
+    content: url(../icons/paparLaporan.png);
+}
+
+nav .nav-list li a .icon .fa.fa-picture-o {
+    content: url(../icons/import.png);
+}
+
+nav .nav-list li a .icon .fa.fa-users {
+    content: url(../icons/logKeluar.png);
+}
+
+nav .nav-list li a:hover .icon .fa.fa-home:last-child {
+    content: url(../icons/tambahRekodFilled.png);
+}
+
+nav .nav-list li a:hover .icon .fa.fa-file-text-o:last-child {
+    content: url(../icons/kemaskiniRekodFilled.png);
+}
+
+nav .nav-list li a:hover .icon .fa.fa-cogs:last-child {
+    content: url(../icons/paparLaporanFilled.png);
+}
+
+nav .nav-list li a:hover .icon .fa.fa-picture-o:last-child {
+    content: url(../icons/importFilled.png);
+}
+
+nav .nav-list li a:hover .icon .fa.fa-users:last-child {
+    content: url(../icons/logKeluarFilled.png);
+}
+
+nav .nav-list li a:hover .icon .fa {
+    transform: translateY(-110%);
+}
+
+nav .nav-list li a .name {
+    position: relative;
+    height: 20px;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+}
+
+nav .nav-list li a .name span {
+    display: block;
+    position: relative;
+    color: #000;
+    font-size: 18px;
+    line-height: 20px;
+    transition: 0.5s;
+}
+
+nav .nav-list li a .name span:before {
+    content: attr(data-text);
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: #006eff;
+}
+
+nav .nav-list li a:hover .name span {
+    transform: translateY(20px); /*Same size with .name height*/
+}
+
+.nav-dropdown {
+    position: absolute; 
+    /* Absolute and relative positioning remove items from the normal flow of the document.*/
+    /* So it will be placed relative to a position: relative element. You can think of the absolute element being nested within the relative element.*/
+    z-index: 1;
+    /* z-index: 1 guarantees that the dropdown will display on top of any content.*/
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+    padding: 0;
+    background: #fff;
+    border-radius: 0 0 5px 5px;
+    margin-top: 20px;
     display: none;
 }
 
-@media (max-width:991px) {
-    header {
-        padding: 0 20px;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-
-    header nav {
-        position: absolute;
-        width: 100%;
-        height: calc(100vh - 50px);
-        background: #333;
-        top: 50px;
-        left: -100%;
-        transition: 0.5s;
-    }
-
-    header nav.active {
-        left: 0;
-    }
-
-    header nav ul {
-        display: block;
-        text-align: center;
-    }
-
-    header nav ul li a {
-        border-bottom: 1px solid rgba(0, 0, 0, .2);
-    }
-
-    header nav ul li.active ul {
-        position: relative;
-        background: #003e6f;
-    }
-
-    header nav ul li ul li {
-        width: 100%;
-    }
+nav .nav-list li .nav-dropdown li {
+    min-width: 242px;
+    list-style: none;
 }
+
+nav .nav-list li .nav-dropdown li a {
+    padding: 15px;
+    line-height: 20px;
+    text-decoration: none;
+    color: #000;
+    margin: 5px;
+    border-right: none;
+}
+
+nav .nav-list li .nav-dropdown li a:hover {
+    background: lightskyblue;
+    border-radius: 5px;
+}
+

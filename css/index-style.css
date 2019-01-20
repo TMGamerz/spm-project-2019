@@ -10,112 +10,16 @@ body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-
 }
 
-.box {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50%;
-    padding: 40px;
-    background: rgba(0, 0, 0, .10);
-    box-sizing: border-box;
-    box-shadow: 0 15px 25px rgba(0, 0, 0, .5);
-    border-radius: 10px;
-}
-
-.box h1 {
-    margin: 0 0 30px;
-    padding: 0;
-    color: #fff;
-    text-align: center;
-    text-shadow: 2px 2px #0f0f0f;
-}
-
-.box h2 {
-    margin: 0 0 30px;
-    padding: 0;
-    color: #fff;
-    text-align: center;
-    font-family: Roboto;
-}
-
-.box .inputBox {
-    position: relative;
-}
-
-.box .inputBox input {
+iframe {
     width: 100%;
-    padding: 10px 10px;
-    font-size: 16px;
-    color: #fff;
-    letter-spacing: 1px;
-    margin-bottom: 30px;
-    border: 1px solid #fff;
-    border-radius: 5px;
-    outline: none;
-    background: transparent;
-}
-
-.box .inputBox input:hover {
-    border-color: #00ea71;
-}
-
-.box .inputBox label {
+    height: 100%;
     position: absolute;
-    top: 0;
-    left:0;
-    letter-spacing: 1px;
-    padding: 10px 10px;
-    font-size: 16px;
-    color: #fff;
-    pointer-events: none;
-    transition: .5s;
-}
-
-.box .inputBox input:focus ~ label,
-.box .inputBox input:valid ~ label{
-    top: -28px;
-    left: 0;
-    color: #41f4d0;
-    font-size: 12px;
-}
-
-.box input[type = "submit"] {
-    background: transparent;
-    width: 105px;
-    height: 35px;
-    border: none;
-    outline: none;
-    color: #fff;
-    background: #33e095;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.box input[type = "submit"]:hover {
-    background: #23cb8a;
-}
-
-.box p {
-    color: #000;
-}
-
-.box p a {
-    text-decoration: none;
-    color: #fff;
-}
-
-.box p a:hover {
-    text-decoration: none;
-    text-shadow: 1px 1px #0f0f0f;
 }
 
 @media screen and (max-width: 599px) {
-    .box {
+    iframe {
         width: 100%;
     }
 }

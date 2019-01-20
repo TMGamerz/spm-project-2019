@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
         exit();
     } else {
         // Check if the user exists in the database
-        $sql = "SELECT * from pengguna WHERE NamaPengguna = '$username'";
+        $sql = "SELECT * FROM pengguna WHERE NamaPengguna = '$username'";
         $result = mysqli_query($conn, $sql);
         $resultCheck = mysqli_num_rows($result);
 
@@ -29,8 +29,8 @@ if (isset($_POST['submit'])) {
                     header("Location: ../index.php?login=error");
                     exit();
                 } elseif ($hashedPwdCheck == true) {
-                    // Log in the user here
-                    header("Location: ../index.php?login=success");
+                    // Log in the user here 
+                    header("Location: ../menu.php");
                     exit();
                 }
             }
