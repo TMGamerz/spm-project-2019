@@ -2,6 +2,10 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     width: 100%;
     height: auto;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 h1 {
@@ -10,8 +14,9 @@ h1 {
 }
 
 .container {
-    width: 100%;
+    max-width: 100%;
     height: auto;
+    margin: 0 15%;
     padding: 20px 6px 20px 6px;
 }
 

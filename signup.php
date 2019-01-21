@@ -14,17 +14,17 @@
 
         <form action = "includes/signup.inc.php" method = "POST">
             <div class = "inputBox">
-                <input type = "text" name = "nama_pengguna" required = "">
+                <input type = "text" name = "nama_pengguna" required>
                 <label>Nama Pengguna</label>
             </div>
 
             <div class = "inputBox">
-                <input type = "password" name = "kata_laluan" required = "">
+                <input type = "password" name = "kata_laluan" required>
                 <label>Kata Laluan</label>
             </div>
 
             <div class = "inputBox">
-                <input type = "password" name = "kata_laluan_semula" require = "">
+                <input type = "password" name = "kata_laluan_semula" required>
                 <label></label>
             </div>
 

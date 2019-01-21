@@ -20,7 +20,7 @@
                 </td>
 
                 <td class = "col-75">
-                    <input type = "text" id = "kod_jualan" name = "kodjualan">
+                    <input type = "text" id = "kod_jualan" name = "kodjualan" required>
                 </td>
             </tr>
 
@@ -30,7 +30,7 @@
                 </td>
 
                 <td class = "col-75">
-                    <input type = "date" id = "tarikh_jualan" name = "tarikhjualan">
+                    <input type = "date" id = "tarikh_jualan" name = "tarikhjualan" required>
                 </td>
             </tr>
 
@@ -40,7 +40,7 @@
                 </td>
 
                 <td class = "col-75">
-                    <select id = "nama_item" name = "namaitem">
+                    <select id = "nama_item" name = "namaitem" required>
                         <option value=""></option>
                         <option value="Item 1">Item 1</option>
                         <option value="Item 1">Item 2</option>
@@ -55,7 +55,7 @@
                 </td>
 
                 <td class = "col-75">
-                    <input type = "number" id = "quantiti_item_dijual" name = "quantiti" value = "1" min = "1">
+                    <input type = "number" id = "quantiti_item_dijual" name = "quantiti" value = "1" min = "1" required>
                 </td>
             </tr>
 
@@ -65,7 +65,7 @@
                 </td>
 
                 <td class = "col-75">
-                    <input type = "number" id = "harga_jualan" name = "hargajualan" min="0.00" step="0.01" value = "0.00">
+                    <input type = "number" id = "harga_jualan" name = "hargajualan" min="0.00" step="0.01" value = "0.00" required>
                 </td>
             </tr>
 
@@ -79,7 +79,6 @@
         </table>
     </form>
 </div> 
-</body>
 
 <?php
     require "footer.php";
