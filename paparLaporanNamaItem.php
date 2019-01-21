@@ -14,7 +14,7 @@
         <table align = "center">
             <tr class = "row">
                 <td class = "col-70">
-                    <select name="select-item" id="select-item">
+                    <select name="select-item" id="select-item" required>
                         <option disabled hidden selected>Pilih item</option>
                         <option value="Item 1">Item 1</option>
                         <option value="Item 2">Item 2</option>
