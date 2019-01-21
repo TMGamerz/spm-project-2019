@@ -7,7 +7,9 @@
     <title>Menu Utama</title>
 </head>
 
-<p>Menu Utama<br>SELAMAT DATANG KE<br>SISTEM PENGURUSAN<br>KOPERASI SEKOLAH</p>
+<h1><b>Menu Utama</b></h1>
+<br>
+<p><b>SELAMAT DATANG KE<br>SISTEM PENGURUSAN<br>KOPERASI SEKOLAH</b></p>
 
 <?php
     require 'footer.php';

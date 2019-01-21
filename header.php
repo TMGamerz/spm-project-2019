@@ -74,7 +74,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href = "#logkeluar">
+                        <a href = "logKeluar.php">
                             <div class = "icon">
                                 <i class = "fa fa-users" aria-hidden = "true"></i>
                                 <i class = "fa fa-users" aria-hidden = "true"></i>

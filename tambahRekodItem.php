@@ -11,7 +11,7 @@
 <div class = "container">  
     <h1>Tambah Rekod Item</h1>
 
-    <form action = "includes/tambahRekod.inc.php" method = "POST">
+    <form action = "includes/kemaskiniRekod.inc.php" method = "POST">
         <table align = "center">
             <tr class = "row">
                 <td class = "col-25">
@@ -50,7 +50,7 @@
 
                 <td class = "col-75">
                     <select id = "nama_pembekal" name = "namapembekal" required>
-                        <option value=""></option>
+                        <option disabled hidden selected></option>
                         <option value="Item 1">Pembekal 1</option>
                         <option value="Item 1">Pembekal 2</option>
                         <option value="Item 1">Pembekal 3</option>

@@ -4,7 +4,6 @@
 
 <head>
     <link rel = "stylesheet" type = "text/css" href = "css/tambahRekod-style.css">
-    <meta nama = "viewport" content = "width=device-width, initial-scale=1.0">
     <title>Tambah Rekod</title>
 </head>
 
@@ -41,7 +40,7 @@
 
                 <td class = "col-75">
                     <select id = "nama_item" name = "namaitem" required>
-                        <option value=""></option>
+                        <option disabled hidden selected></option>
                         <option value="Item 1">Item 1</option>
                         <option value="Item 1">Item 2</option>
                         <option value="Item 1">Item 3</option>
