@@ -25,7 +25,7 @@
 
             <div class = "inputBox">
                 <input type = "password" name = "kata_laluan_semula" required>
-                <label></label>
+                <label>Masukkan Kata Laluan Semula</label>
             </div>
 
             <input type = "submit" name = "submit" value = "Daftar">
