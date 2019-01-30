@@ -10,9 +10,8 @@
 
 <body>
     <section class = "navbar">
-        <div class = "nav-container">
             <div class = "logo">
-                <a href="menu.php"><b>SISTEM PENGURUSAN JUALAN KOPERASI SEKOLAH</b></a>
+                <h2 class = "menu-title"><a href="menu.php">SISTEM PENGURUSAN JUALAN KOPERASI SEKOLAH</a></h2>
             </div>
             <nav>
                 <div class = "nav-responsive">
@@ -84,7 +83,6 @@
                     </li>
                 </ul>
             </nav>
-        </div>
     </section>
 
     <script src = "libraries/jquery-3.3.1.min.js"></script>

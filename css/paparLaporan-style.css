@@ -24,7 +24,7 @@ h1 {
 .container {
     max-width: 100%;
     height: auto;
-    margin: 5% 15%;
+    margin: 5% 10%;
     padding: 20px 6px 20px 6px;
     background-color: #fff;
     box-shadow: 0 15px 25px rgba(0, 0, 0, .5);
@@ -58,7 +58,7 @@ p {
 /*style the input type date*/
 input[type=date] {
     margin: 0 20px;
-    width: 400px;
+    width: 300px;
     padding: 20px;
     font-size: 20px;
     border-width: 3px;

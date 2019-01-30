@@ -15,7 +15,7 @@
         <table align = "center">
             <tr class = "row">
                 <td class = "col-25">
-                    <label for = "kod_jualan">Kod Jualan</label>
+                    <label for = "kod_jualan">Kod Jualan: </label>
                 </td>
 
                 <td class = "col-75">
@@ -42,8 +42,8 @@
                     <select id = "nama_item" name = "namaitem" required>
                         <option disabled hidden selected></option>
                         <option value="Item 1">Item 1</option>
-                        <option value="Item 1">Item 2</option>
-                        <option value="Item 1">Item 3</option>
+                        <option value="Item 2">Item 2</option>
+                        <option value="Item 3">Item 3</option>
                     </select>
                 </td>
             </tr>
