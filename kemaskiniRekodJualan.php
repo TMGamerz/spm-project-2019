@@ -3,7 +3,7 @@
 ?>
 
 <head>
-    <link rel = "stylesheet" type = "text/css" href = "css/tambahRekod-style.css">
+    <link rel = "stylesheet" type = "text/css" href = "css/kemaskiniRekod-style.css">
     <title>Kemaskini Rekod</title>
 </head>
 
@@ -69,9 +69,7 @@
             </tr>
 
             <tr class = "row">
-                <td></td>
-                
-                <td>
+                <td colspan = "2">
                     <input type="submit" value = "Kemaskini">
                 </td>
             </tr>

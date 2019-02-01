@@ -69,9 +69,7 @@
             </tr>
 
             <tr class = "row">
-                <td></td>
-                
-                <td>
+                <td colspan = "2">
                     <input type="submit" value = "Tambah">
                 </td>
             </tr>

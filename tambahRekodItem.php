@@ -51,17 +51,15 @@
                 <td class = "col-75">
                     <select id = "nama_pembekal" name = "namapembekal" required>
                         <option disabled hidden selected></option>
-                        <option value="Item 1">Pembekal 1</option>
-                        <option value="Item 1">Pembekal 2</option>
-                        <option value="Item 1">Pembekal 3</option>
+                        <option value="Pembekal 1">Pembekal 1</option>
+                        <option value="Pembekal 1">Pembekal 2</option>
+                        <option value="Pembekal 1">Pembekal 3</option>
                     </select>
                 </td>
             </tr>
 
             <tr class = "row">
-                <td></td>
-                
-                <td>
+                <td colspan = "2">
                     <input type="submit" value = "Tambah">
                 </td>
             </tr>

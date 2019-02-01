@@ -10,7 +10,7 @@
 <div class = "container">  
     <h1>Papar Laporan Ikut Nama Item</h1>
 
-    <form action = "includes/import.inc.php" method = "POST">
+    <form action = "includes/" method = "POST">
         <table align = "center">
             <tr class = "row">
                 <td class = "col-70">
@@ -24,10 +24,7 @@
             </tr>
 
             <tr class = "row">
-                <td></td>
-                <td></td>
-
-                <td class = "col-submit">
+                <td colspan = "3" class = "col-submit">
                     <input type="submit" value = "Papar">
                 </td>
             </tr>
