@@ -11,7 +11,7 @@
 <div class = "container">  
     <h1>Kemaskini Rekod Pembekal</h1>
 
-    <form action = "includes/kemaskiniRekod.inc.php" method = "POST">
+    <form action = "includes/kemaskiniRekodItem.inc.php" method = "POST">
         <table align = "center">
             <tr class = "row">
                 <td class = "col-25">

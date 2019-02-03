@@ -19,7 +19,7 @@
                 </td>
 
                 <td class = "col-75">
-                    <input type = "text" id = "kod_item" name = "koditem" required>
+                    <input type = "text" id = "kod_item" name = "koditem" value="" required>
                 </td>
             </tr>
 
