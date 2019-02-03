@@ -13,7 +13,7 @@
     <form action = "includes/" method = "POST">
         <table align = "center">
             <tr class = "row">
-                <td class = "col-70">
+                <td>
                     <select name="select-item" id="select-item" required>
                         <option disabled hidden selected>Pilih item</option>
                         <option value="Item 1">Item 1</option>

@@ -84,9 +84,11 @@ table {
     color: #aaa;
     padding: 10px;
     font-size: 20px;
-    width: 650px;
+    width: 100%;
     display: block;
-    word-wrap:break-word;
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /*Style the submit button*/
@@ -112,7 +114,11 @@ input[type=submit]:hover {
     color: #fff;
 }
 
-/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-    
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+    .col-15, .col-70, .col-submit {
+        display: block;
+        width: 100%;
+        margin-top: 0;
+    }
 }
