@@ -44,9 +44,9 @@
                         </a>
 
                         <ul class = "nav-dropdown">
-                                <li><a href = "kemaskiniRekodJualan.php">Jualan</a></li>
-                                <li><a href = "kemaskiniRekodPembekal.php">Pembekal</a></li>
-                                <li><a href = "kemaskiniRekodItem.php">Item</a></li>
+                                <li><a href = "viewRekodJualan.php">Jualan</a></li>
+                                <li><a href = "viewRekodPembekal.php">Pembekal</a></li>
+                                <li><a href = "viewRekodItem.php">Item</a></li>
                         </ul>
                     </li>
                     <li>
