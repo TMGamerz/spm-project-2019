@@ -51,7 +51,7 @@ require "header.php";
 
             echo '<td><a href="kemaskiniRekodItem.php?id=' . $row['KodItem'] . '"><img src="icons/edit.png" alt = "editIcon" class = "editIcon"></a></td>';
 
-            echo '<td><a href="includes/delete.inc.php?id=' . $row['KodItem'] . '"><img src="icons/delete.png" alt = "deleteIcon" class = "deleteIcon"></a></td>';
+            echo '<td><a href="includes/padamRekod.inc.php?id=' . $row['KodItem'] . '"><img src="icons/delete.png" alt = "deleteIcon" class = "deleteIcon"></a></td>';
 
             echo "</tr>";
 
