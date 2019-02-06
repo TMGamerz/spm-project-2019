@@ -73,7 +73,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href = "logKeluar.php">
+                        <a href = "includes/logout.inc.php">
                             <div class = "icon">
                                 <i class = "fa fa-users" aria-hidden = "true"></i>
                                 <i class = "fa fa-users" aria-hidden = "true"></i>

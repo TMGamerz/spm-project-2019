@@ -47,9 +47,9 @@ require "header.php";
 
             echo '<td>' . $row['TelefonPembekal'] . '</td>';
 
-            echo '<td><a href="kemaskiniRekodItem.php?id=' . $row['KodPembekal'] . '"><img src="icons/edit.png" alt = "editIcon" class = "editIcon"></a></td>';
+            echo '<td><a href="kemaskiniRekodPembekal.php?id=' . $row['KodPembekal'] . '"><img src="icons/edit.png" alt = "editIcon" class = "editIcon"></a></td>';
 
-            echo '<td><a href="includes/delete.inc.php?id=' . $row['KodPembekal'] . '"><img src="icons/delete.png" alt = "deleteIcon" class = "deleteIcon"></a></td>';
+            echo '<td><a href="includes/padamRekodPembekal.inc.php?id=' . $row['KodPembekal'] . '"><img src="icons/delete.png" alt = "deleteIcon" class = "deleteIcon"></a></td>';
 
             echo "</tr>";
 
