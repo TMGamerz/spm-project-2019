@@ -9,7 +9,7 @@
 
 <h1><b>Menu Utama</b></h1>
 <br>
-<p><b>SELAMAT DATANG KE<br>SISTEM PENGURUSAN<br>KOPERASI SEKOLAH</b></p>
+<p><b>SELAMAT DATANG KE<br>SISTEM PENGURUSAN JUALAN <br> KOPERASI SEKOLAH</b></p>
 
 <?php
     require 'footer.php';
