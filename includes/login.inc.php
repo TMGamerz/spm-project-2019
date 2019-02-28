@@ -1,5 +1,7 @@
 <?php
 
+/*session_start();*/
+
 if (isset($_POST['submit'])) {
 
     require_once 'dbh.inc.php';
@@ -15,7 +17,7 @@ if (isset($_POST['submit'])) {
 
     if ($semakHasil < 1) {
         echo "<script>
-            alert('Maklumat yang anda masuk tidak sah! Sila cuba sekali lagi');
+            alert('Maklumat yang anda masuk tidak sah!\\nSila cuba sekali lagi');
             window.location.href = '../login.php';
           </script>";
         exit();
@@ -25,12 +27,14 @@ if (isset($_POST['submit'])) {
             $hashedKataLaluanSemak = password_verify($KataLaluan, $row['KataLaluan']);
             if ($hashedKataLaluanSemak == false) {
                 echo "<script>
-                        alert('Maklumat yang anda masuk tidak sah! Sila cuba sekali lagi');
+                        alert('Maklumat yang anda masuk tidak sah!\\nSila cuba sekali lagi');
                         window.location.href = '../login.php';
                       </script>";
                 exit();
             } elseif ($hashedKataLaluanSemak == true) {
-                // Log in the user here
+                // Log in the user
+                $_SESSION['NamaPengguna']= $row['NamaPengguna'];
+                $_SESSION['KataLaluan']= $row['KataLaluan'];
                 echo "<script>
                         alert('Anda sudah berjaya log masuk!');
                         window.location.href = '../menu.php';
@@ -41,30 +45,8 @@ if (isset($_POST['submit'])) {
     }
 } else {
     echo "<script>
-            alert('Maklumat yang anda masuk tidak sah! Sila cuba sekali lagi');
+            alert('Maklumat yang anda masuk tidak sah!\\nSila cuba sekali lagi');
             window.location.href = '../login.php';
           </script>";
     exit();
 }
-
-/*require_once 'dbh.inc.php';
-
-$NamaPengguna = $_POST['nama_pengguna'];
-$KataLaluan = $_POST['kata_laluan'];
-
-$sql = "SELECT * FROM `pengguna` WHERE `NamaPengguna` = '$NamaPengguna' AND `KataLaluan` = '$KataLaluan';";
-$hasil = mysqli_query($conn, $sql);
-$semakHasil = mysqli_num_rows($hasil);
-
-if ($semakHasil < 1) {
-    echo "<script>
-            alert('Maklumat yang anda masuk tidak sah! Sila cuba sekali lagi');
-            window.location.href = '../index.php';
-          </script>";
-    exit();
-} else {
-    echo "<script>
-            alert('Anda sudah berjaya log masuk!');
-            window.location.href = '../menu.php';
-          </script>";
-}*/

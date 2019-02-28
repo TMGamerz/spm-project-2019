@@ -1,6 +1,8 @@
 <?php
 // Tips: If the whole php file is a pure php file, we no need put the php closing tag
 
+session_start();
+
 /* So that people cant access this page by insert the address (for more secure), Want to check if the user have click
 the submit button, then going to run the script */
 if (isset($_POST['submit'])) { //
@@ -23,7 +25,7 @@ if (isset($_POST['submit'])) { //
     if (empty($NamaPengguna) || empty($KataLaluan)) {
         // We add signup=empty at the end of the address, that shows the error message
         echo "<script>
-                alert('Maklumat yang anda masuk tidak sah! Sila cuba sekali lagi');
+                alert('Maklumat yang anda masuk tidak sah!\\nSila cuba sekali lagi');
                 window.location.href = '../signup.php';
               </script>";
         exit();
@@ -31,7 +33,7 @@ if (isset($_POST['submit'])) { //
         // Comfirm Password
         if($KataLaluan != $KataLaluanSemula){
             echo "<script>
-                    alert('Maklumat yang anda masuk tidak sah! Sila cuba sekali lagi');
+                    alert('Maklumat yang anda masuk tidak sah!\\nSila cuba sekali lagi');
                     window.location.href = '../signup.php';
                   </script>";
             exit();
@@ -47,7 +49,7 @@ if (isset($_POST['submit'])) { //
 
             if ($semakHasil > 0) {
                 echo "<script>
-                        alert('Maklumat yang anda masuk tidak sah! Sila cuba sekali lagi');
+                        alert('Maklumat yang anda masuk tidak sah!\\nSila cuba sekali lagi');
                         window.location.href = '../signup.php';
                       </script>";
                 exit();
