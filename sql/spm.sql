@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 30, 2019 at 05:26 PM
+-- Generation Time: Mar 02, 2019 at 02:36 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -61,7 +61,7 @@ CREATE TABLE `jualan` (
   `KodItem` varchar(11) NOT NULL,
   `KuantitiItemDijual` int(255) NOT NULL,
   `HargaJualan` decimal(8,2) NOT NULL,
-  `IDPengguna` varchar(11) NOT NULL
+  `IDPengguna` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -69,10 +69,10 @@ CREATE TABLE `jualan` (
 --
 
 INSERT INTO `jualan` (`KodJualan`, `TarikhJualan`, `KodItem`, `KuantitiItemDijual`, `HargaJualan`, `IDPengguna`) VALUES
-('R001', '0001-09-18', 'I00035', 5, '15.00', 'A001'),
-('R002', '0001-09-18', 'I00065', 20, '40.00', 'A002'),
-('R003', '0007-09-18', 'I00005', 15, '600.00', 'A001'),
-('R004', '2011-09-18', 'I00075', 3, '19.50', 'A001');
+('R001', '2018-09-01', 'I00035', 5, '15.00', 1),
+('R002', '2018-09-01', 'I00065', 20, '40.00', 1),
+('R003', '2018-09-07', 'I00005', 15, '600.00', 2),
+('R004', '2018-09-11', 'I00075', 3, '19.50', 1);
 
 -- --------------------------------------------------------
 
@@ -103,7 +103,7 @@ INSERT INTO `pembekal` (`KodPembekal`, `NamaPembekal`, `TelefonPembekal`) VALUES
 
 DROP TABLE IF EXISTS `pengguna`;
 CREATE TABLE `pengguna` (
-  `IDPengguna` varchar(11) NOT NULL,
+  `IDPengguna` int(11) NOT NULL,
   `NamaPengguna` varchar(256) NOT NULL,
   `KataLaluan` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -113,8 +113,8 @@ CREATE TABLE `pengguna` (
 --
 
 INSERT INTO `pengguna` (`IDPengguna`, `NamaPengguna`, `KataLaluan`) VALUES
-('A001', 'Wong Wei Li', 'A001WWL'),
-('A002', 'Ong Xia Jun', 'A002OXJ');
+(1, 'Wong Wei Li', 'A001WWL'),
+(2, 'Ong Xia Jun', 'A002OXJ');
 
 --
 -- Indexes for dumped tables
@@ -148,6 +148,16 @@ ALTER TABLE `pengguna`
   ADD PRIMARY KEY (`IDPengguna`);
 
 --
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `pengguna`
+--
+ALTER TABLE `pengguna`
+  MODIFY `IDPengguna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -155,7 +165,7 @@ ALTER TABLE `pengguna`
 -- Constraints for table `item`
 --
 ALTER TABLE `item`
-  ADD CONSTRAINT `item_ibfk_1` FOREIGN KEY (`KodPembekal`) REFERENCES `pembekal` (`KodPembekal`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `item_ibfk_1` FOREIGN KEY (`KodPembekal`) REFERENCES `pembekal` (`KodPembekal`);
 
 --
 -- Constraints for table `jualan`

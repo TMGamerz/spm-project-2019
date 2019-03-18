@@ -3,7 +3,7 @@
 
     $KodJualan = $_GET['id'];
 
-    $sql = "DELETE FROM jualan WHERE KodJualan = '$KodJualan'";
+    $sql = "DELETE FROM `jualan` WHERE `KodJualan` = '$KodJualan'";
 
     if ($conn->query($sql)===true) {
     echo "<script>

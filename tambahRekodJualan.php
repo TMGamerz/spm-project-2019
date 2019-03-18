@@ -2,9 +2,18 @@
     require "header.php";
 ?>
 
+<?php
+// select option value from database
+include 'includes/dbh.inc.php';
+
+$query = "SELECT * FROM `item`";
+$result = mysqli_query($conn, $query);
+
+?>
+
 <head>
     <link rel = "stylesheet" type = "text/css" href = "css/tambahRekod-style.css">
-    <title>Tambah Rekod</title>
+    <title>Tambah Rekod Jualan</title>
 </head>
 
 <body>
@@ -41,9 +50,11 @@
                 <td class = "col-75">
                     <select id = "nama_item" name = "namaItem" required>
                         <option disabled hidden selected></option>
-                        <option value="Item 1">Item 1</option>
-                        <option value="Item 2">Item 2</option>
-                        <option value="Item 3">Item 3</option>
+                        <?php
+                        while($row = mysqli_fetch_array($result)) {
+                            echo '<option value='.$row['KodItem'].'>'.$row['NamaItem'].'</option>';
+                        }
+                        ?>
                     </select>
                 </td>
             </tr>
@@ -70,7 +81,7 @@
 
             <tr class = "row">
                 <td colspan = "2">
-                    <input type="submit" value = "Tambah">
+                    <input type="submit" value = "Tambah" name = "tambah">
                 </td>
             </tr>
         </table>

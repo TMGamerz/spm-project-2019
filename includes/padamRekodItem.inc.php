@@ -3,7 +3,7 @@
 
     $KodItem = $_GET['id'];
 
-    $sql = "DELETE FROM item WHERE KodItem = '$KodItem'";
+    $sql = "DELETE FROM `item` WHERE `KodItem` = '$KodItem'";
 
     if ($conn->query($sql)===true) {
         echo "<script>

@@ -2,9 +2,18 @@
     require "header.php";
 ?>
 
+<?php
+// select option value from database
+include 'includes/dbh.inc.php';
+
+$query = "SELECT * FROM `pembekal`";
+$result = mysqli_query($conn, $query);
+
+?>
+
 <head>
     <link rel = "stylesheet" type = "text/css" href = "css/tambahRekod-style.css">
-    <title>Tambah Rekod</title>
+    <title>Tambah Rekod Item</title>
 </head>
 
 <body>
@@ -51,9 +60,12 @@
                 <td class = "col-75">
                     <select id = "nama_pembekal" name = "namaPembekal" required>
                         <option disabled hidden selected></option>
-                        <option value="Pembekal 1">Pembekal 1</option>
-                        <option value="Pembekal 1">Pembekal 2</option>
-                        <option value="Pembekal 1">Pembekal 3</option>
+                        <?php
+                            while($row = mysqli_fetch_array($result)) {
+                                echo '<option value='.$row['KodPembekal'].'>'.$row['NamaPembekal'].'</option>';
+                            }
+                        ?>
+                        </select>
                     </select>
                 </td>
             </tr>

@@ -1,5 +1,5 @@
 <?php
-if (isset($_POST['kodPembekal'])) {
+if (isset($_POST['tambah'])) {
     include 'dbh.inc.php';
 
     $kodPembekal = mysqli_real_escape_string($conn, $_POST['kodPembekal']);
@@ -8,7 +8,7 @@ if (isset($_POST['kodPembekal'])) {
 
     # Error handlers
     // Check if the user exists in the database
-    $sql = "SELECT KodPembekal FROM pembekal WHERE KodPembekal = '$kodPembekal'";
+    $sql = "SELECT `KodPembekal` FROM `pembekal` WHERE `KodPembekal` = '$kodPembekal'";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
@@ -18,11 +18,11 @@ if (isset($_POST['kodPembekal'])) {
               </script>";
         exit();
     } else {
-        $query = mysqli_query($conn, "INSERT INTO pembekal(KodPembekal, NamaPembekal, TelefonPembekal) VALUES('$kodPembekal', '$namaPembekal', '$telefonPembekal')");
+        $query = mysqli_query($conn, "INSERT INTO `pembekal`(`KodPembekal`, `NamaPembekal`, `TelefonPembekal`) VALUES('$kodPembekal', '$namaPembekal', '$telefonPembekal')");
 
         if ($query) {
             echo "<script>alert('Berjaya tambah $namaPembekal');
-                  window.location.href = '../menu.php?tambahPembekal=berjaya';
+                  window.location.href = '../tambahRekodPembekal.php?tambahPembekal=berjaya';
                   </script>";
             return;
         } else {

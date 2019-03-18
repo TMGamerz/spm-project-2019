@@ -4,7 +4,7 @@
 
 <head>
     <link rel = "stylesheet" type = "text/css" href = "css/tambahRekod-style.css">
-    <title>Tambah Rekod</title>
+    <title>Tambah Rekod Pembekal</title>
 </head>
 
 <body>
@@ -45,7 +45,7 @@
 
             <tr class = "row">
                 <td colspan = "2">
-                    <input type="submit" value = "Tambah">
+                    <input type="submit" value = "Tambah" name = "tambah">
                 </td>
             </tr>
         </table>
