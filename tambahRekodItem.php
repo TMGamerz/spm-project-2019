@@ -65,7 +65,6 @@ $result = mysqli_query($conn, $query);
                                 echo '<option value='.$row['KodPembekal'].'>'.$row['NamaPembekal'].'</option>';
                             }
                         ?>
-                        </select>
                     </select>
                 </td>
             </tr>

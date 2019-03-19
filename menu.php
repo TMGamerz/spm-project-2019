@@ -1,5 +1,10 @@
 <?php
-    require "header.php";
+require "header.php";
+require_once 'includes/dbh.inc.php';
+session_start();
+if (!isset($_SESSION['IDPengguna'])) {
+    echo "<script>window.location='error.php';</script>";
+}
 ?>
 
 <head>
