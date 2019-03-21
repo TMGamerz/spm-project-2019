@@ -37,23 +37,27 @@ require "header.php";
 
         // loop through results of database query, displaying them in the table
         while($row = mysqli_fetch_array( $result )) {
-
+            $kodJualan = $row['KodJualan'];
+            $tarikhJualan = $row['TarikhJualan'];
+            $namaItem = $row['NamaItem'];
+            $kuantitiItemDijual = $row['KuantitiItemDijual'];
+            $hargaJualan = $row['HargaJualan'];
             // echo out the contents of each row into a table
             echo "<tr>";
 
-            echo '<td>' . $row['KodJualan'] . '</td>';
+            echo '<td>' . $kodJualan . '</td>';
 
-            echo '<td>' . $row['TarikhJualan'] . '</td>';
+            echo '<td>' . $tarikhJualan . '</td>';
 
-            echo '<td>' . $row['NamaItem'] . '</td>';
+            echo '<td>' . $namaItem . '</td>';
 
-            echo '<td>' . $row['KuantitiItemDijual'] . '</td>';
+            echo '<td>' . $kuantitiItemDijual . '</td>';
 
-            echo '<td>' . $row['HargaJualan'] . '</td>';
+            echo '<td>' . $hargaJualan . '</td>';
 
-            echo '<td><a href="kemaskiniRekodItem.php?id=' . $row['KodJualan'] . '"><img src="icons/edit.png" alt = "editIcon" class = "editIcon"></a></td>';
+            echo '<td><a href="kemaskiniRekodItem.php?kodJualan=' . $kodJualan . '"><img src="icons/edit.png" alt = "editIcon" class = "editIcon"></a></td>';
 
-            echo '<td><a href="includes/padamRekodJualan.inc.php?id=' . $row['KodJualan'] . '"><img src="icons/delete.png" alt = "deleteIcon" class = "deleteIcon"></a></td>';
+            echo '<td><a href="includes/padamRekodJualan.inc.php?kodJualan=' . $kodJualan . '"><img src="icons/delete.png" alt = "deleteIcon" class = "deleteIcon"></a></td>';
 
             echo "</tr>";
 

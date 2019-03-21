@@ -1,13 +1,14 @@
 <?php
-if (isset($_POST['tambah'])) {
-    include 'dbh.inc.php';
+session_start();
+include 'dbh.inc.php';
 
+if (isset($_POST['tambah'])) {
     $kodJualan = mysqli_real_escape_string($conn, $_POST['kodJualan']);
     $tarikhJualan = mysqli_real_escape_string($conn, $_POST['tarikhJualan']);
-    $kodItem = mysqli_real_escape_string($conn, $_POST['kodItem']);
+    $kodItem = mysqli_real_escape_string($conn, $_POST['namaItem']);
     $kuantitiItemDijual = mysqli_real_escape_string($conn, $_POST['kuantiti']);
     $hargaJualan = mysqli_real_escape_string($conn, $_POST['hargaJualan']);
-    $IDPengguna = mysqli_fetch_array(mysqli_query($conn, "SELECT `IDPengguna` FROM pengguna"));
+    $IDPengguna = $_SESSION['IDPengguna'];
 
     # Error handlers
     // Check if the inputs are empty
@@ -28,11 +29,12 @@ if (isset($_POST['tambah'])) {
                   </script>";
             exit();
         } else {
-            $query = mysqli_query($conn, "INSERT INTO `jualan`(`KodJualan`, `TarikhJualan`, `KodItem`, `KuantitiItemDijual`, `HargaJualan`, `IDPengguna`) VALUES('$kodjualan', '$tarikhJualan', '$kodItem', '$hargaJualan', `$IDPengguna`");
+            $sql2 = "INSERT INTO `jualan`(`KodJualan`, `TarikhJualan`, `KodItem`, `KuantitiItemDijual`, `HargaJualan`, `IDPengguna`) VALUES('$kodJualan', '$tarikhJualan', '$kodItem', '$kuantitiItemDijual', '$hargaJualan', '$IDPengguna')";
+            $query = mysqli_query($conn,$sql2);
 
             if ($query) {
                 echo "<script>alert('Anda sudah berjaya menambah rekod jualan!');
-                      window.location.href = '../tambahRekodJualan.php?tambahJualan=berjaya';
+                      window.location = '../tambahRekodJualan.php?tambahJualan=berjaya';
                       </script>";
                 return;
             } else {
@@ -42,7 +44,7 @@ if (isset($_POST['tambah'])) {
     }
 } else {
     echo "<script>alert('Maklumat yang anda masuk tidak sah! Sila masuk semula.');
-                  window.location = '../tambahRekodJualan.php?tamabh=error';
+                  window.location = '../tambahRekodJualan.php?tambah=error';
                   </script>";
     exit();
 }

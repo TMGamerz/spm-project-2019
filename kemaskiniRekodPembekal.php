@@ -1,10 +1,17 @@
 <?php
     require "header.php";
+    include 'includes/dbh.inc.php';
+    $oldKodPembekal = $_GET['kodPembekal'];
+    $sql = "SELECT * FROM `pembekal` WHERE `KodPembekal` = '$oldKodPembekal'";
+    $hasil = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_array($hasil);
+    $namaPembekal = $row['NamaPembekal'];
+    $telefonPembekal = $row['TelefonPembekal'];
 ?>
 
 <head>
     <link rel = "stylesheet" type = "text/css" href = "css/kemaskiniRekod-style.css">
-    <title>Kemaskini Rekod</title>
+    <title>Kemaskini Rekod Pembekal</title>
 </head>
 
 <body>
@@ -19,7 +26,7 @@
                 </td>
 
                 <td class = "col-75">
-                    <input type = "text" id = "kod_pembekal" name = "kodPembekal" required>
+                    <input type = "text" id = "kod_pembekal" name = "kodPembekal" value = "<?php echo $oldKodPembekal;?>">
                 </td>
             </tr>
 
@@ -29,7 +36,7 @@
                 </td>
 
                 <td class = "col-75">
-                    <input type = "text" id = "nama_pembekal" name = "namaPembekal" required>
+                    <input type = "text" id = "nama_pembekal" name = "namaPembekal" value = "<?php echo $namaPembekal;?>">
                 </td>
             </tr>
 
@@ -39,13 +46,13 @@
                 </td>
 
                 <td class = "col-75">
-                    <input type = "text" id = "telefon_pembekal" name = "telefonPembekal" required>
+                    <input type = "text" id = "telefon_pembekal" name = "telefonPembekal" value = "<?php echo $telefonPembekal;?>">
                 </td>
             </tr>
 
             <tr class = "row">
                 <td colspan = "2">
-                    <input type="submit" value = "Kemaskini">
+                    <input type="submit" value = "Kemaskini" name = "kemaskini">
                 </td>
             </tr>
         </table>

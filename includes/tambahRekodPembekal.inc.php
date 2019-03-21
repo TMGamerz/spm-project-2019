@@ -13,7 +13,7 @@ if (isset($_POST['tambah'])) {
     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
     if (mysqli_num_rows($result)) {
-        echo "<script>alert('Data exists');
+        echo "<script>alert('Maklumat yang anda masuk tidak sah! Sila masuk semula.');
               window.location = '../tambahRekodPembekal.php?data=exists';
               </script>";
         exit();
@@ -21,7 +21,7 @@ if (isset($_POST['tambah'])) {
         $query = mysqli_query($conn, "INSERT INTO `pembekal`(`KodPembekal`, `NamaPembekal`, `TelefonPembekal`) VALUES('$kodPembekal', '$namaPembekal', '$telefonPembekal')");
 
         if ($query) {
-            echo "<script>alert('Berjaya tambah $namaPembekal');
+            echo "<script>alert('Anda sudah berjaya menambah rekod pembekal!');
                   window.location.href = '../tambahRekodPembekal.php?tambahPembekal=berjaya';
                   </script>";
             return;
