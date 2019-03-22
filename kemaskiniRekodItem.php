@@ -1,5 +1,20 @@
 <?php
     require "header.php";
+    include 'includes/dbh.inc.php';
+
+    // show available option for pembekal
+    $sql = "SELECT * FROM `pembekal`";
+    $hasil = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_array($hasil);
+    $kodPembekal = $row['KodPembekal'];
+    $namaPembekal = $row['NamaPembekal'];
+
+    $oldKodItem = $_GET['kodItem'];
+    $sql2 = "SELECT * FROM `item` WHERE `KodItem` = '$oldKodItem'";
+    $hasil2 = mysqli_query($conn, $sql2);
+    $row2 = mysqli_fetch_array($hasil2);
+    $namaItem = $row2['NamaItem'];
+    $hargaPerItem = $row2['HargaPerItem'];
 ?>
 
 <head>
@@ -19,7 +34,7 @@
                 </td>
 
                 <td class = "col-75">
-                    <input type = "text" id = "kod_item" name = "koditem" value="" required>
+                    <input type = "text" id = "kod_item" name = "kodItem" value="<?php echo $oldKodItem;?>" required>
                 </td>
             </tr>
 
@@ -29,7 +44,7 @@
                 </td>
 
                 <td class = "col-75">
-                    <input type = "text" id = "nama_item" name = "namaitem" required>
+                    <input type = "text" id = "nama_item" name = "namaItem" value = "<?php echo $namaItem;?>" required>
                 </td>
             </tr>
 
@@ -39,7 +54,7 @@
                 </td>
 
                 <td class = "col-75">
-                    <input type = "number" id = "harga_per_item" name = "hargaperitem" min="0.00" step="0.01" value = "0.00" required>
+                    <input type = "number" id = "harga_per_item" name = "hargaPerItem" min="0.00" step="0.01" value = "<?php echo $hargaPerItem;?>" required>
                 </td>
             </tr>
 
@@ -49,18 +64,20 @@
                 </td>
 
                 <td class = "col-75">
-                    <select id = "nama_pembekal" name = "namapembekal" required>
-                        <option disabled hidden selected></option>
-                        <option value="Pembekal 1">Pembekal 1</option>
-                        <option value="Pembekal 1">Pembekal 2</option>
-                        <option value="Pembekal 1">Pembekal 3</option>
+                    <select id = "nama_pembekal" name = "namaPembekal" required >
+                        <option selected value='$KodPembekal'><?php echo $namaPembekal?></option>
+                        <?php
+                        while($row = mysqli_fetch_array($hasil)) {
+                            echo '<option value='.$row['KodPembekal'].'>'.$row['NamaPembekal'].'</option>';
+                        }
+                        ?>
                     </select>
                 </td>
             </tr>
 
             <tr class = "row">
                 <td colspan = "2">
-                    <input type="submit" value = "Kemaskini">
+                    <input type="submit" value = "Kemaskini" name = "kemaskini">
                 </td>
             </tr>
         </table>

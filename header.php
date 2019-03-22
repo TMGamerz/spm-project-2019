@@ -10,7 +10,11 @@
 <body>
     <section class = "navbar">
             <div class = "logo">
-                <h2 class = "menu-title"><a href="menu.php">SISTEM PENGURUSAN JUALAN KOPERASI SEKOLAH</a></h2>
+                <h2 class = "menu-title">
+                    <a href="menu.php">
+                        SISTEM PENGURUSAN JUALAN KOPERASI SEKOLAH
+                    </a>
+                </h2>
             </div>
             <nav>
                 <div class = "nav-responsive">
@@ -19,7 +23,7 @@
 
                 <ul class = "nav-list">
                     <li>
-                        <a href = "#tambah">
+                        <a>
                             <div class = "icon">
                                 <i class = "fa fa-home" aria-hidden = "true"></i>
                                 <i class = "fa fa-home" aria-hidden = "true"></i>
@@ -34,7 +38,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href = "#kemaskini">
+                        <a>
                             <div class = "icon">
                                 <i class = "fa fa-file-text-o" aria-hidden = "true"></i>
                                 <i class = "fa fa-file-text-o" aria-hidden = "true"></i>
@@ -49,7 +53,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href = "#papar">
+                        <a>
                             <div class = "icon">
                                 <i class = "fa fa-cogs" aria-hidden = "true"></i>
                                 <i class = "fa fa-cogs" aria-hidden = "true"></i>

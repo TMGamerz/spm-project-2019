@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
     if ($semakHasil < 1) {
         echo "<script>
             alert('Maklumat yang anda masuk tidak sah!\\nSila cuba sekali lagi');
-            window.location.href = '../login.php';
+            window.location.href = '../login.php?failed=noRekod';
           </script>";
         exit();
     } else {
@@ -28,17 +28,20 @@ if (isset($_POST['submit'])) {
             if ($hashedKataLaluanSemak == false) {
                 echo "<script>
                         alert('Maklumat yang anda masuk tidak sah!\\nSila cuba sekali lagi');
-                        window.location.href = '../login.php';
+                        window.location.href = '../login.php?failed=pwdTidakSama';
                       </script>";
                 exit();
             } elseif ($hashedKataLaluanSemak == true) {
                 // Log in the user
+                $_SESSION['token'] = md5(rand(0, 10000));
                 $_SESSION['IDPengguna']= $row['IDPengguna'];
                 $_SESSION['NamaPengguna']= $row['NamaPengguna'];
                 $_SESSION['KataLaluan']= $row['KataLaluan'];
+                $token = $_SESSION['token'];
+
                 echo "<script>
                         alert('Anda sudah berjaya log masuk!');
-                        window.location.href = '../menu.php';
+                        window.location.href = '../menu.php?token=$token';
                       </script>";
                 exit();
             }
@@ -47,7 +50,7 @@ if (isset($_POST['submit'])) {
 } else {
     echo "<script>
             alert('Maklumat yang anda masuk tidak sah!\\nSila cuba sekali lagi');
-            window.location.href = '../login.php';
+            window.location.href = '../login.php?login=failed';
           </script>";
     exit();
 }
