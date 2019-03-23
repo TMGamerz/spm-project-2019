@@ -5,7 +5,7 @@ if (isset($_POST['kemaskini'])) {
     $result1 = mysqli_query($conn, $sql1);
     $row = mysqli_fetch_array($result1);
 
-    $oldKodPembekal = $row['KodPembekal'];
+    $oldKodPembekal = $_GET['kodPembekal'];
     $kodPembekal = mysqli_real_escape_string($conn, $_POST['kodPembekal']);
     $namaPembekal = mysqli_real_escape_string($conn, $_POST['namaPembekal']);
     $telefonPembekal = mysqli_real_escape_string($conn, $_POST['telefonPembekal']);
