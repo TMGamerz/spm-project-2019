@@ -9,7 +9,7 @@ if (isset($_POST['kemaskini'])) {
     $kodItem = mysqli_real_escape_string($conn, $_POST['kodItem']);
     $namaItem = mysqli_real_escape_string($conn, $_POST['namaItem']);
     $kodPembekal = mysqli_real_escape_string($conn, $_POST['namaPembekal']);
-    $hargaPerItem = mysqli_real_escape_string($conn, $_POST['harga']);
+    $hargaPerItem = mysqli_real_escape_string($conn, $_POST['hargaPerItem']);
 
     $sql2 = "UPDATE `item` SET `KodItem` = '$kodItem', `NamaItem` = '$namaItem', `KodPembekal` = '$kodPembekal', `HargaPerItem` = '$hargaPerItem' WHERE `KodItem` = '$oldKodItem'";
     $result2 = mysqli_query($conn, $sql2) or die(mysqli_error($conn));

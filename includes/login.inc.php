@@ -37,11 +37,10 @@ if (isset($_POST['submit'])) {
                 $_SESSION['IDPengguna']= $row['IDPengguna'];
                 $_SESSION['NamaPengguna']= $row['NamaPengguna'];
                 $_SESSION['KataLaluan']= $row['KataLaluan'];
-                $token = $_SESSION['token'];
 
                 echo "<script>
                         alert('Anda sudah berjaya log masuk!');
-                        window.location.href = '../menu.php?token=$token';
+                        window.location.href = '../menu.php';
                       </script>";
                 exit();
             }
