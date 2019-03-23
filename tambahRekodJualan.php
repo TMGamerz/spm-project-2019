@@ -36,7 +36,7 @@ $result = mysqli_query($conn, $query);
                 </td>
 
                 <td class = "col-75">
-                    <input type = "date" id = "tarikh_jualan" name = "tarikhJualan" required>
+                    <input type = "date" id = "tarikh_jualan" name = "tarikhJualan">
                 </td>
             </tr>
 
