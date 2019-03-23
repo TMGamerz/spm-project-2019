@@ -1,20 +1,20 @@
 <?php
     require_once('dbh.inc.php');
 
-    $KodJualan = $_GET['id'];
+    $kodJualan = $_GET['kodJualan'];
 
-    $sql = "DELETE FROM `jualan` WHERE `KodJualan` = '$KodJualan'";
+    $sql = "DELETE FROM `jualan` WHERE `KodJualan` = '$kodJualan'";
 
     if ($conn->query($sql)===true) {
     echo "<script>
-        alert('Item berjaya dipadamkan');
-        window.location.href = '../viewRekodJualan.php';
+        alert('Anda sudah berjaya memadam rekod jualan!');
+        window.location.href = '../viewRekodJualan.php?padam=berjaya';
     </script>
     ";
     } else {
     echo "<script>
-        alert('Harap Maaf');
-        window.location.href = '../viewRekodJualan.php';
+        alert('Anda gagal memadam rekod jualan! Sila cuba sekali lagi.');
+        window.location.href = '../viewRekodJualan.php?padam=failed';
     </script>
     ";
     }
