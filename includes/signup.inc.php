@@ -73,7 +73,7 @@ if (isset($_POST['submit'])) { //
                 // Back to the login page once done signed up
                 echo "<script>
                         alert('Anda sudah berjaya mendaftar!');
-                          window.location.href = '../login.php';
+                          window.location.href = '../index.php';
                       </script>";
                 exit();
             }

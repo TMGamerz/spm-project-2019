@@ -1,21 +1,21 @@
 <?php
-    require "header.php";
-    include 'includes/dbh.inc.php';
-    $oldKodPembekal = $_GET['kodPembekal'];
-    $sql = "SELECT * FROM `pembekal` WHERE `KodPembekal` = '$oldKodPembekal'";
-    $hasil = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_array($hasil);
-    $namaPembekal = $row['NamaPembekal'];
-    $telefonPembekal = $row['TelefonPembekal'];
+require "header.php";
+include 'includes/dbh.inc.php';
+$oldKodPembekal = $_GET['kodPembekal'];
+$sql = "SELECT * FROM `pembekal` WHERE `KodPembekal` = '$oldKodPembekal'";
+$hasil = mysqli_query($conn, $sql);
+$row = mysqli_fetch_array($hasil);
+$namaPembekal = $row['NamaPembekal'];
+$telefonPembekal = $row['TelefonPembekal'];
 ?>
 
-<head>
-    <link rel = "stylesheet" type = "text/css" href = "css/kemaskiniRekod-style.css">
-    <title>Kemaskini Rekod Pembekal</title>
-</head>
+    <head>
+        <link rel = "stylesheet" type = "text/css" href = "css/kemaskiniRekod-style.css">
+        <title>Kemaskini Rekod Pembekal</title>
+    </head>
 
-<body>
-<div class = "container">  
+    <body>
+<div class = "container">
     <h1>Kemaskini Rekod Pembekal</h1>
 
     <form action = "includes/kemaskiniRekodPembekal.inc.php" method = "POST">
@@ -60,5 +60,5 @@
 </div>
 
 <?php
-    require 'footer.php';
+require 'footer.php';
 ?>

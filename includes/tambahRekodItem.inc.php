@@ -20,7 +20,7 @@
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
-        if (mysqli_fetch_array($result)) {
+        if (mysqli_num_rows($result) > 0) {
             echo "<script>alert('Maklumat yang anda masuk tidak sah! Sila masuk semula.');
                   window.location = '../tambahRekodItem.php?data=exists';
                   </script>";

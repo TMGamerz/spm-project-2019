@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 02, 2019 at 02:36 PM
+-- Generation Time: Mar 23, 2019 at 04:43 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -34,7 +34,7 @@ DROP TABLE IF EXISTS `item`;
 CREATE TABLE `item` (
   `KodItem` varchar(11) NOT NULL,
   `NamaItem` varchar(256) NOT NULL,
-  `KodPembekal` varchar(11) NOT NULL,
+  `KodPembekal` varchar(11) DEFAULT NULL,
   `HargaPerItem` decimal(8,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -58,10 +58,10 @@ DROP TABLE IF EXISTS `jualan`;
 CREATE TABLE `jualan` (
   `KodJualan` varchar(11) NOT NULL,
   `TarikhJualan` date NOT NULL,
-  `KodItem` varchar(11) NOT NULL,
+  `KodItem` varchar(11) DEFAULT NULL,
   `KuantitiItemDijual` int(255) NOT NULL,
   `HargaJualan` decimal(8,2) NOT NULL,
-  `IDPengguna` int(11) NOT NULL
+  `IDPengguna` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -70,9 +70,10 @@ CREATE TABLE `jualan` (
 
 INSERT INTO `jualan` (`KodJualan`, `TarikhJualan`, `KodItem`, `KuantitiItemDijual`, `HargaJualan`, `IDPengguna`) VALUES
 ('R001', '2018-09-01', 'I00035', 5, '15.00', 1),
-('R002', '2018-09-01', 'I00065', 20, '40.00', 1),
-('R003', '2018-09-07', 'I00005', 15, '600.00', 2),
-('R004', '2018-09-11', 'I00075', 3, '19.50', 1);
+('R002', '2018-09-01', 'I00065', 20, '40.00', 2),
+('R003', '2018-07-09', 'I00005', 15, '600.00', 1),
+('R004', '2018-09-11', 'I00075', 3, '19.50', 1),
+('R005', '2019-03-23', NULL, 10, '1000.00', 3);
 
 -- --------------------------------------------------------
 
@@ -114,7 +115,8 @@ CREATE TABLE `pengguna` (
 
 INSERT INTO `pengguna` (`IDPengguna`, `NamaPengguna`, `KataLaluan`) VALUES
 (1, 'Wong Wei Li', 'A001WWL'),
-(2, 'Ong Xia Jun', 'A002OXJ');
+(2, 'Ong Xia Jun', 'A002OXJ'),
+(3, '1', '$2y$10$VjLjombJOeKl2TVYpZA.nufRzw22Kwc4KJVT30HpBgy7saPmxOxEG');
 
 --
 -- Indexes for dumped tables
@@ -155,7 +157,7 @@ ALTER TABLE `pengguna`
 -- AUTO_INCREMENT for table `pengguna`
 --
 ALTER TABLE `pengguna`
-  MODIFY `IDPengguna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `IDPengguna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -165,14 +167,14 @@ ALTER TABLE `pengguna`
 -- Constraints for table `item`
 --
 ALTER TABLE `item`
-  ADD CONSTRAINT `item_ibfk_1` FOREIGN KEY (`KodPembekal`) REFERENCES `pembekal` (`KodPembekal`);
+  ADD CONSTRAINT `item_ibfk_1` FOREIGN KEY (`KodPembekal`) REFERENCES `pembekal` (`KodPembekal`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Constraints for table `jualan`
 --
 ALTER TABLE `jualan`
-  ADD CONSTRAINT `jualan_ibfk_1` FOREIGN KEY (`KodItem`) REFERENCES `item` (`KodItem`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `jualan_ibfk_2` FOREIGN KEY (`IDPengguna`) REFERENCES `pengguna` (`IDPengguna`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `jualan_ibfk_1` FOREIGN KEY (`KodItem`) REFERENCES `item` (`KodItem`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `jualan_ibfk_2` FOREIGN KEY (`IDPengguna`) REFERENCES `pengguna` (`IDPengguna`) ON DELETE SET NULL ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

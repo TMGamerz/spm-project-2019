@@ -110,7 +110,7 @@ img {
     }
 
     td:nth-of-type(3):before {
-        content: "HargaPerItem";
+        content: "Harga Per Item";
     }
 
     td:nth-of-type(4):before {

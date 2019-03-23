@@ -12,7 +12,7 @@ if (isset($_POST['tambah'])) {
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
-    if (mysqli_num_rows($result)) {
+    if (mysqli_num_rows($result) > 0) {
         echo "<script>alert('Maklumat yang anda masuk tidak sah! Sila masuk semula.');
               window.location = '../tambahRekodPembekal.php?data=exists';
               </script>";

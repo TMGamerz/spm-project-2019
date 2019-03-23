@@ -5,6 +5,9 @@ include 'dbh.inc.php';
 if (isset($_POST['tambah'])) {
     $kodJualan = mysqli_real_escape_string($conn, $_POST['kodJualan']);
     $tarikhJualan = mysqli_real_escape_string($conn, $_POST['tarikhJualan']);
+    if (empty($tarikhJualan)) {
+        $tarikhJualan = date("Y-m-d");
+    }
     $kodItem = mysqli_real_escape_string($conn, $_POST['namaItem']);
     $kuantitiItemDijual = mysqli_real_escape_string($conn, $_POST['kuantiti']);
     $hargaJualan = mysqli_real_escape_string($conn, $_POST['hargaJualan']);
@@ -12,7 +15,7 @@ if (isset($_POST['tambah'])) {
 
     # Error handlers
     // Check if the inputs are empty
-    if (empty($kodJualan) || empty($tarikhJualan) || empty($kodItem) || empty($kuantitiItemDijual) || empty($hargaJualan)) {
+    if (empty($kodJualan) || empty($kodItem) || empty($kuantitiItemDijual) || empty($hargaJualan)) {
         echo "<script>alert('Maklumat yang anda masuk tidak sah! Sila masuk semula.');
                   window.location = '../tambahRekodJualan.php?input=empty';
                   </script>";
@@ -21,16 +24,14 @@ if (isset($_POST['tambah'])) {
         // Check if the user exists in the database
         $sql = "SELECT `KodJualan` FROM `jualan` WHERE `KodJualan` = '$kodJualan'";
         $result = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-
-        if (mysqli_fetch_array($result)) {
+        if (mysqli_num_rows($result) > 0) {
             echo "<script>alert('Maklumat yang anda masuk tidak sah! Sila masuk semula.');
                   window.location = '../tambahRekodJualan.php?data=exists';
                   </script>";
             exit();
         } else {
             $sql2 = "INSERT INTO `jualan`(`KodJualan`, `TarikhJualan`, `KodItem`, `KuantitiItemDijual`, `HargaJualan`, `IDPengguna`) VALUES('$kodJualan', '$tarikhJualan', '$kodItem', '$kuantitiItemDijual', '$hargaJualan', '$IDPengguna')";
-            $query = mysqli_query($conn,$sql2);
+            $query = mysqli_query($conn, $sql2);
 
             if ($query) {
                 echo "<script>alert('Anda sudah berjaya menambah rekod jualan!');

@@ -1,5 +1,5 @@
 <?php
-    require 'header.php';
+require 'header.php';
 ?>
 
 <?php
@@ -9,13 +9,13 @@ $query = "SELECT * FROM `item`";
 $result = mysqli_query($conn, $query);
 ?>
 
-<head>
-    <link rel = "stylesheet" type = "text/css" href = "css/tambahRekod-style.css">
-    <title>Tambah Rekod Jualan</title>
-</head>
+    <head>
+        <link rel = "stylesheet" type = "text/css" href = "css/tambahRekod-style.css">
+        <title>Tambah Rekod Jualan</title>
+    </head>
 
-<body>
-<div class = "container">  
+    <body>
+<div class = "container">
     <h1>Tambah Rekod Jualan</h1>
 
     <form action = "includes/tambahRekodJualan.inc.php" method = "POST">
@@ -36,7 +36,7 @@ $result = mysqli_query($conn, $query);
                 </td>
 
                 <td class = "col-75">
-                    <input type = "date" id = "tarikh_jualan" name = "tarikhJualan" required>
+                    <input type = "date" id = "tarikh_jualan" name = "tarikhJualan">
                 </td>
             </tr>
 
@@ -84,8 +84,8 @@ $result = mysqli_query($conn, $query);
             </tr>
         </table>
     </form>
-</div> 
+</div>
 
 <?php
-    require "footer.php";
+require "footer.php";
 ?>
