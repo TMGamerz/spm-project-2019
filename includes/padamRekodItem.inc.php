@@ -1,7 +1,7 @@
 <?php
     require_once('dbh.inc.php');
 
-    $KodItem = $_GET['kodItem'];
+    $KodItem = $_GET['id'];
 
     $sql = "DELETE FROM `item` WHERE `KodItem` = '$KodItem'";
 

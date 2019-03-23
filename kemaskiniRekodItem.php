@@ -1,25 +1,14 @@
 <?php
-require "header.php";
-include 'includes/dbh.inc.php';
-
-// show all data from selected row of item
-$oldKodItem = $_GET['kodItem'];
-$sql2 = "SELECT * FROM `item` LEFT JOIN pembekal ON item.KodPembekal=pembekal.KodPembekal WHERE `KodItem` = '$oldKodItem';";
-$hasil2 = mysqli_query($conn, $sql2);
-$row2 = mysqli_fetch_array($hasil2);
-$namaItem = $row2['NamaItem'];
-$hargaPerItem = $row2['HargaPerItem'];
-$oldKodPembekal = $row2['KodPembekal'];
-$oldNamaPembekal = $row2['NamaPembekal'];
+    require "header.php";
 ?>
 
-    <head>
-        <link rel = "stylesheet" type = "text/css" href = "css/kemaskiniRekod-style.css">
-        <title>Kemaskini Rekod</title>
-    </head>
+<head>
+    <link rel = "stylesheet" type = "text/css" href = "css/kemaskiniRekod-style.css">
+    <title>Kemaskini Rekod</title>
+</head>
 
-    <body>
-<div class = "container">
+<body>
+<div class = "container">  
     <h1>Kemaskini Rekod Item</h1>
 
     <form action = "includes/kemaskiniRekodItem.inc.php" method = "POST">
@@ -30,7 +19,7 @@ $oldNamaPembekal = $row2['NamaPembekal'];
                 </td>
 
                 <td class = "col-75">
-                    <input type = "text" id = "kod_item" name = "kodItem" value="<?php echo $oldKodItem;?>" required>
+                    <input type = "text" id = "kod_item" name = "koditem" value="" required>
                 </td>
             </tr>
 
@@ -40,7 +29,7 @@ $oldNamaPembekal = $row2['NamaPembekal'];
                 </td>
 
                 <td class = "col-75">
-                    <input type = "text" id = "nama_item" name = "namaItem" value = "<?php echo $namaItem;?>" required>
+                    <input type = "text" id = "nama_item" name = "namaitem" required>
                 </td>
             </tr>
 
@@ -50,7 +39,7 @@ $oldNamaPembekal = $row2['NamaPembekal'];
                 </td>
 
                 <td class = "col-75">
-                    <input type = "number" id = "harga_per_item" name = "hargaPerItem" min="0.00" step="0.01" value = "<?php echo $hargaPerItem;?>" required>
+                    <input type = "number" id = "harga_per_item" name = "hargaperitem" min="0.00" step="0.01" value = "0.00" required>
                 </td>
             </tr>
 
@@ -60,31 +49,25 @@ $oldNamaPembekal = $row2['NamaPembekal'];
                 </td>
 
                 <td class = "col-75">
-
-                    <select id = "nama_pembekal" name = "namaPembekal" required >
-                        <option selected value='$oldKodPembekal'><?php echo $oldNamaPembekal?></option>
-                        <?php
-                        // show available option for all pembekal
-                        $sql = "SELECT * FROM `pembekal`";
-                        $hasil = mysqli_query($conn, $sql);
-                        while($row = mysqli_fetch_array($hasil)) {
-                            echo '<option value='.$row['KodPembekal'].'>'.$row['NamaPembekal'].'</option>';
-                        }
-                        ?>
+                    <select id = "nama_pembekal" name = "namapembekal" required>
+                        <option disabled hidden selected></option>
+                        <option value="Pembekal 1">Pembekal 1</option>
+                        <option value="Pembekal 1">Pembekal 2</option>
+                        <option value="Pembekal 1">Pembekal 3</option>
                     </select>
                 </td>
             </tr>
 
             <tr class = "row">
                 <td colspan = "2">
-                    <input type="submit" value = "Kemaskini" name = "kemaskini">
+                    <input type="submit" value = "Kemaskini">
                 </td>
             </tr>
         </table>
     </form>
 
-</div>
+</div> 
 
 <?php
-require 'footer.php';
+    require 'footer.php';
 ?>

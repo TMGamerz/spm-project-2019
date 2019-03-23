@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
     if ($semakHasil < 1) {
         echo "<script>
             alert('Maklumat yang anda masuk tidak sah!\\nSila cuba sekali lagi');
-            window.location.href = '../index.php';
+            window.location.href = '../login.php';
           </script>";
         exit();
     } else {
@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
             if ($hashedKataLaluanSemak == false) {
                 echo "<script>
                         alert('Maklumat yang anda masuk tidak sah!\\nSila cuba sekali lagi');
-                        window.location.href = '../index.php';
+                        window.location.href = '../login.php';
                       </script>";
                 exit();
             } elseif ($hashedKataLaluanSemak == true) {
@@ -47,7 +47,7 @@ if (isset($_POST['submit'])) {
 } else {
     echo "<script>
             alert('Maklumat yang anda masuk tidak sah!\\nSila cuba sekali lagi');
-            window.location.href = '../index.php';
+            window.location.href = '../login.php';
           </script>";
     exit();
 }

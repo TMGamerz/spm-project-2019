@@ -3,7 +3,7 @@ require "header.php";
 ?>
 
     <head>
-        <link rel = "stylesheet" type = "text/css" href = "css/viewRekodJualan-style.css">
+        <link rel = "stylesheet" type = "text/css" href = "css/viewRekod-style.css">
         <title>Rekod Jualan</title>
     </head>
 
@@ -11,7 +11,7 @@ require "header.php";
 <div class = "container">
     <h1>Kemaskini Rekod Jualan</h1>
 
-    <form action = "" method = "POST">
+    <form action = "includes/viewRekod.inc.php" method = "POST">
         <?php
         /*Displays all data from 'item' table*/
 
