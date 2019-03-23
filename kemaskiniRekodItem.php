@@ -22,7 +22,7 @@ $oldNamaPembekal = $row2['NamaPembekal'];
 <div class = "container">
     <h1>Kemaskini Rekod Item</h1>
 
-    <form action = "kemaskiniRekodItem.php" method = "POST">
+    <form action = "includes/kemaskiniRekodItem.inc.php" method = "POST">
         <table align = "center">
             <tr class = "row">
                 <td class = "col-25">
