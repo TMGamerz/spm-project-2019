@@ -2,19 +2,15 @@
     require "header.php";
     include 'includes/dbh.inc.php';
 
-    // show available option for pembekal
-    $sql = "SELECT * FROM `pembekal`";
-    $hasil = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_array($hasil);
-    $kodPembekal = $row['KodPembekal'];
-    $namaPembekal = $row['NamaPembekal'];
-
+    // show all data from selected row of item
     $oldKodItem = $_GET['kodItem'];
-    $sql2 = "SELECT * FROM `item` WHERE `KodItem` = '$oldKodItem'";
+    $sql2 = "SELECT * FROM `item` LEFT JOIN pembekal ON item.KodPembekal=pembekal.KodPembekal WHERE `KodItem` = '$oldKodItem';";
     $hasil2 = mysqli_query($conn, $sql2);
     $row2 = mysqli_fetch_array($hasil2);
     $namaItem = $row2['NamaItem'];
     $hargaPerItem = $row2['HargaPerItem'];
+    $oldKodPembekal = $row2['KodPembekal'];
+    $oldNamaPembekal = $row2['NamaPembekal'];
 ?>
 
 <head>
@@ -64,9 +60,13 @@
                 </td>
 
                 <td class = "col-75">
+
                     <select id = "nama_pembekal" name = "namaPembekal" required >
-                        <option selected value='$KodPembekal'><?php echo $namaPembekal?></option>
+                        <option selected value='$oldKodPembekal'><?php echo $oldNamaPembekal?></option>
                         <?php
+                        // show available option for all pembekal
+                        $sql = "SELECT * FROM `pembekal`";
+                        $hasil = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_array($hasil)) {
                             echo '<option value='.$row['KodPembekal'].'>'.$row['NamaPembekal'].'</option>';
                         }

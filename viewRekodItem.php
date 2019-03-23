@@ -18,9 +18,6 @@ require "header.php";
         // connect to the database
         include('includes/dbh.inc.php');
 
-        // number of results to show per page
-        $per_page = 2;
-
         // get results from database
         // Joining tables is a fundamental principle of relational databases.
         // In your case, A and B are related with the id column, which means that you can use a syntax similar to this one:
@@ -28,7 +25,7 @@ require "header.php";
         // If you want all the rows in A and matching records in B, you could change INNER JOIN to LEFT JOIN.
         // Conversely, if you want all the records from B and only the matching ones from A, use RIGHT JOIN.
         // Finally, if you need everything from both tables, matching or not, you can use FULL JOIN.
-        $result = mysqli_query($conn ,"SELECT item.KodItem, item.NamaItem, item.HargaPerItem, pembekal.NamaPembekal FROM item INNER JOIN pembekal ON item.KodPembekal=pembekal.KodPembekal;")
+        $result = mysqli_query($conn ,"SELECT item.KodItem, item.NamaItem, item.HargaPerItem, pembekal.NamaPembekal FROM item LEFT JOIN pembekal ON item.KodPembekal=pembekal.KodPembekal;")
         or die(mysqli_error($conn));
 
         echo "<table align = 'center' border='1' cellpadding='10'>";
@@ -36,7 +33,7 @@ require "header.php";
         echo "<tr> <th>Kod Item</th> <th>Nama Item</th> <th>Harga Per Item</th> <th>Nama Pembekal</th> <th>Kemaskini</th> <th>Padam</th></tr>";
 
         // loop through results of database query, displaying them in the table
-        while($row = mysqli_fetch_array( $result )) {
+        while($row = mysqli_fetch_array($result)) {
 
             $kodItem = $row['KodItem'];
             $namaItem = $row['NamaItem'];
