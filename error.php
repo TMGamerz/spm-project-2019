@@ -28,8 +28,8 @@
                 </b>
             </div>
 
-            <button id="btn" onclick="window.location.href='index.php'">Menu Utama</button>
-            <button id="btn" onclick="window.location.href='login.php'">Log Masuk</button>
+            <button id="btn" onclick="window.location.href='menu.php'">Menu Utama</button>
+            <button id="btn" onclick="window.location.href='index.php'">Log Masuk</button>
             <button id="btn" onclick="window.location.href='signup.php'">Daftar</button>
         </div>
     </body>
