@@ -18,9 +18,6 @@ require "header.php";
         // connect to the database
         include('includes/dbh.inc.php');
 
-        // number of results to show per page
-        $per_page = 2;
-
         // get results from database
         // Joining tables is a fundamental principle of relational databases.
         // In your case, A and B are related with the id column, which means that you can use a syntax similar to this one:
@@ -55,7 +52,7 @@ require "header.php";
 
             echo '<td>' . $hargaJualan . '</td>';
 
-            echo '<td><a href="kemaskiniRekodItem.php?kodJualan=' . $kodJualan . '"><img src="icons/edit.png" alt = "editIcon" class = "editIcon"></a></td>';
+            echo '<td><a href="kemaskiniRekodJualan.php?kodJualan=' . $kodJualan . '"><img src="icons/edit.png" alt = "editIcon" class = "editIcon"></a></td>';
 
             echo '<td><a href="includes/padamRekodJualan.inc.php?kodJualan=' . $kodJualan . '"><img src="icons/delete.png" alt = "deleteIcon" class = "deleteIcon"></a></td>';
 

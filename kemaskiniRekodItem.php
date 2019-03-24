@@ -4,18 +4,18 @@ include 'includes/dbh.inc.php';
 
 // show all data from selected row of item
 $oldKodItem = $_GET['kodItem'];
-$sql2 = "SELECT * FROM `item` LEFT JOIN pembekal ON item.KodPembekal=pembekal.KodPembekal WHERE `KodItem` = '$oldKodItem';";
-$hasil2 = mysqli_query($conn, $sql2);
-$row2 = mysqli_fetch_array($hasil2);
-$namaItem = $row2['NamaItem'];
-$hargaPerItem = $row2['HargaPerItem'];
-$oldKodPembekal = $row2['KodPembekal'];
-$oldNamaPembekal = $row2['NamaPembekal'];
+$sql = "SELECT * FROM `item` LEFT JOIN pembekal ON item.KodPembekal=pembekal.KodPembekal WHERE `KodItem` = '$oldKodItem';";
+$hasil = mysqli_query($conn, $sql);
+$row = mysqli_fetch_array($hasil);
+$oldNamaItem = $row['NamaItem'];
+$oldHargaPerItem = $row['HargaPerItem'];
+$oldKodPembekal = $row['KodPembekal'];
+$oldNamaPembekal = $row['NamaPembekal'];
 ?>
 
     <head>
         <link rel = "stylesheet" type = "text/css" href = "css/kemaskiniRekod-style.css">
-        <title>Kemaskini Rekod</title>
+        <title>Kemaskini Rekod Item</title>
     </head>
 
     <body>
@@ -40,7 +40,7 @@ $oldNamaPembekal = $row2['NamaPembekal'];
                 </td>
 
                 <td class = "col-75">
-                    <input type = "text" id = "nama_item" name = "namaItem" value = "<?php echo $namaItem;?>" required>
+                    <input type = "text" id = "nama_item" name = "namaItem" value = "<?php echo $oldNamaItem;?>" required>
                 </td>
             </tr>
 
@@ -50,7 +50,7 @@ $oldNamaPembekal = $row2['NamaPembekal'];
                 </td>
 
                 <td class = "col-75">
-                    <input type = "number" id = "harga_per_item" name = "hargaPerItem" min="0.00" step="0.01" value = "<?php echo $hargaPerItem;?>" required>
+                    <input type = "number" id = "harga_per_item" name = "hargaPerItem" min="0.00" step="0.01" value = "<?php echo $oldHargaPerItem;?>" required>
                 </td>
             </tr>
 
@@ -63,13 +63,13 @@ $oldNamaPembekal = $row2['NamaPembekal'];
                     <select id = "nama_pembekal" name = "namaPembekal" required >
                         <?php
                         // show available option for all pembekal
-                        $sql = "SELECT * FROM `pembekal`";
-                        $hasil = mysqli_query($conn, $sql);
-                        while($row = mysqli_fetch_array($hasil)) {
-                            if ($row['KodPembekal'] === $oldKodPembekal) {
-                                echo "<option selected value='.$oldKodPembekal.'>".$oldNamaPembekal."</option>";
+                        $sql2 = "SELECT * FROM `pembekal`";
+                        $hasil2 = mysqli_query($conn, $sql2);
+                        while($row2 = mysqli_fetch_array($hasil2)) {
+                            if ($row2['KodPembekal'] === $oldKodPembekal) {
+                                echo '<option selected value='.$oldKodPembekal.'>'.$oldNamaPembekal.'</option>';
                             } else {
-                                echo '<option value='.$row['KodPembekal'].'>'.$row['NamaPembekal'].'</option>';
+                                echo '<option value='.$row2['KodPembekal'].'>'.$row2['NamaPembekal'].'</option>';
                             }
                         }
                         ?>

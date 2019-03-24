@@ -3,9 +3,9 @@ include 'dbh.inc.php';
 if (isset($_POST['kemaskini'])) {
     $sql1 = "SELECT * from `item`";
     $result1 = mysqli_query($conn, $sql1);
-    $row = mysqli_fetch_array($result1);
+    $row1 = mysqli_fetch_array($result1);
 
-    $oldKodItem = $row['KodItem'];
+    $oldKodItem = $row1['KodItem'];
     $kodItem = mysqli_real_escape_string($conn, $_POST['kodItem']);
     $namaItem = mysqli_real_escape_string($conn, $_POST['namaItem']);
     $kodPembekal = mysqli_real_escape_string($conn, $_POST['namaPembekal']);

@@ -1,25 +1,29 @@
 <?php
+session_start();
 include 'dbh.inc.php';
 if (isset($_POST['kemaskini'])) {
-    $sql1 = "SELECT * from `pembekal`";
+    $sql1 = "SELECT * from `jualan`";
     $result1 = mysqli_query($conn, $sql1);
-    $row = mysqli_fetch_array($result1);
+    $row1 = mysqli_fetch_array($result1);
 
-    $oldKodPembekal = $_GET['kodPembekal'];
-    $kodPembekal = mysqli_real_escape_string($conn, $_POST['kodPembekal']);
-    $namaPembekal = mysqli_real_escape_string($conn, $_POST['namaPembekal']);
-    $telefonPembekal = mysqli_real_escape_string($conn, $_POST['telefonPembekal']);
+    $oldKodJualan = $row1['KodJualan'];
+    $kodJualan = mysqli_real_escape_string($conn, $_POST['kodJualan']);
+    $tarikhJualan = mysqli_real_escape_string($conn, $_POST['tarikhJualan']);
+    $kodItem = mysqli_real_escape_string($conn, $_POST['namaItem']);
+    $kuantitiItemDijual = mysqli_real_escape_string($conn, $_POST['kuantiti']);
+    $hargaJualan = mysqli_real_escape_string($conn, $_POST['hargaJualan']);
+    $IDPengguna = $_SESSION['IDPengguna'];
 
-    $sql2 = "UPDATE `pembekal` SET `KodPembekal` = '$kodPembekal', `NamaPembekal` = '$namaPembekal', `TelefonPembekal` = '$telefonPembekal' WHERE `KodPembekal` = '$oldKodPembekal'";
+    $sql2 = "UPDATE `jualan` SET `KodJualan` = '$kodJualan', `TarikhJualan` = '$tarikhJualan', `KodItem` = '$kodItem', `KuantitiItemDijual` = '$kuantitiItemDijual', `HargaJualan` = '$hargaJualan', `IDPengguna` = '$IDPengguna' WHERE `KodJualan` = '$oldKodJualan'";
     $result2 = mysqli_query($conn, $sql2) or die(mysqli_error($conn));
     if ($result2) {
-        echo "<script>alert('Anda sudah berjaya kemaskini rekod pembekal!');
-          window.location.href = '../viewRekodPembekal.php?kemaskiniPembekal=berjaya';
+        echo "<script>alert('Anda sudah berjaya kemaskini rekod jualan!');
+          window.location.href = '../viewRekodJualan.php?kemaskiniJualan=berjaya';
           </script>";
         return;
     } else {
         echo "<script>alert('Maklumat yang anda masuk tidak sah! Sila masuk semula.');
-              window.location.href = '../viewRekodPembekal.php?kemaskiniPembekal=gagal';
+              window.location.href = '../viewRekodJualan.php?kemaskiniJualan=gagal';
               </script>";
         die(mysqli_error($conn));
     }

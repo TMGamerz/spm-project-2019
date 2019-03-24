@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2019 at 04:43 PM
+-- Generation Time: Mar 24, 2019 at 09:05 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -71,9 +71,8 @@ CREATE TABLE `jualan` (
 INSERT INTO `jualan` (`KodJualan`, `TarikhJualan`, `KodItem`, `KuantitiItemDijual`, `HargaJualan`, `IDPengguna`) VALUES
 ('R001', '2018-09-01', 'I00035', 5, '15.00', 1),
 ('R002', '2018-09-01', 'I00065', 20, '40.00', 2),
-('R003', '2018-07-09', 'I00005', 15, '600.00', 1),
-('R004', '2018-09-11', 'I00075', 3, '19.50', 1),
-('R005', '2019-03-23', NULL, 10, '1000.00', 3);
+('R003', '2018-09-07', 'I00005', 15, '600.00', 1),
+('R004', '2018-09-11', 'I00035', 3, '19.50', 1);
 
 -- --------------------------------------------------------
 
@@ -114,9 +113,8 @@ CREATE TABLE `pengguna` (
 --
 
 INSERT INTO `pengguna` (`IDPengguna`, `NamaPengguna`, `KataLaluan`) VALUES
-(1, 'Wong Wei Li', 'A001WWL'),
-(2, 'Ong Xia Jun', 'A002OXJ'),
-(3, '1', '$2y$10$VjLjombJOeKl2TVYpZA.nufRzw22Kwc4KJVT30HpBgy7saPmxOxEG');
+(1, 'Wong Wei Li', '$2y$10$ewuOB9aPIGGBE5doPgU5jeZcbuwo9wj.eULPAcrpIKxBT7k66kHLC'),
+(2, 'Ong Xia Jun', '$2y$10$/SDJw/v7JMasCFcpWvBBi.oe4nsMSNV18wv.eSO9rzzbvwQ9v27bW');
 
 --
 -- Indexes for dumped tables
@@ -157,7 +155,7 @@ ALTER TABLE `pengguna`
 -- AUTO_INCREMENT for table `pengguna`
 --
 ALTER TABLE `pengguna`
-  MODIFY `IDPengguna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `IDPengguna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

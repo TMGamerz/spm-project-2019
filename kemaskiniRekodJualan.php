@@ -1,10 +1,25 @@
 <?php
     require "header.php";
+    include 'includes/dbh.inc.php';
+
+    // show all data from selected row of jualan
+    $oldKodJualan = $_GET['kodJualan'];
+    $sql = "SELECT * FROM `jualan` LEFT JOIN `item` ON jualan.KodItem = item.KodItem WHERE `KodJualan` = '$oldKodJualan'";
+    $hasil = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_array($hasil);
+
+    $oldTarikhJualan = $row['TarikhJualan'];
+    $oldKodItem = $row['KodItem'];
+    $oldKuantitiItemDijual = $row['KuantitiItemDijual'];
+    $oldHargaJualan = $row['HargaJualan'];
+    $oldIDPengguna = $row['IDPengguna'];
+
+    $oldNamaItem = $row['NamaItem'];
 ?>
 
 <head>
     <link rel = "stylesheet" type = "text/css" href = "css/kemaskiniRekod-style.css">
-    <title>Kemaskini Rekod</title>
+    <title>Kemaskini Rekod Jualan</title>
 </head>
 
 <body>
@@ -19,7 +34,7 @@
                 </td>
 
                 <td class = "col-75">
-                    <input type = "text" id = "kod_jualan" name = "kodJualan" required>
+                    <input type = "text" id = "kod_jualan" name = "kodJualan" value = "<?php echo $oldKodJualan; ?>" required>
                 </td>
             </tr>
 
@@ -29,7 +44,7 @@
                 </td>
 
                 <td class = "col-75">
-                    <input type = "date" id = "tarikh_jualan" name = "tarikhJualan" required>
+                    <input type = "date" id = "tarikh_jualan" name = "tarikhJualan" value = "<?php echo $oldTarikhJualan; ?>" required>
                 </td>
             </tr>
 
@@ -40,10 +55,18 @@
 
                 <td class = "col-75">
                     <select id = "nama_item" name = "namaItem" required>
-                        <option disabled hidden selected></option>
-                        <option value="Item 1">Item 1</option>
-                        <option value="Item 1">Item 2</option>
-                        <option value="Item 1">Item 3</option>
+                        <?php
+                        // show available option for all item
+                        $sql2 = "SELECT * FROM `item`";
+                        $hasil2 = mysqli_query($conn, $sql2);
+                        while($row2 = mysqli_fetch_array($hasil2)) {
+                            if ($row2['KodItem'] === $oldKodItem) {
+                                echo '<option selected value='.$oldKodItem.'>'.$oldNamaItem.'</option>';
+                            } else {
+                                echo '<option value='.$row2['KodItem'].'>'.$row2['NamaItem'].'</option>';
+                            }
+                        }
+                        ?>
                     </select>
                 </td>
             </tr>
@@ -54,7 +77,7 @@
                 </td>
 
                 <td class = "col-75">
-                    <input type = "number" id = "kuantiti_item_dijual" name = "kuantiti" value = "1" min = "1" required>
+                    <input type = "number" id = "kuantiti_item_dijual" name = "kuantiti" min = "1" value = "<?php echo $oldKuantitiItemDijual; ?>" required>
                 </td>
             </tr>
 
@@ -64,13 +87,13 @@
                 </td>
 
                 <td class = "col-75">
-                    <input type = "number" id = "harga_jualan" name = "hargaJualan" min="0.00" step="0.01" value = "0.00" required>
+                    <input type = "number" id = "harga_jualan" name = "hargaJualan" min="0.00" step="0.01" value = "<?php echo $oldHargaJualan; ?>" required>
                 </td>
             </tr>
 
             <tr class = "row">
                 <td colspan = "2">
-                    <input type="submit" value = "Kemaskini">
+                    <input type="submit" value = "Kemaskini" name = "kemaskini">
                 </td>
             </tr>
         </table>
