@@ -60,16 +60,14 @@ $oldNamaPembekal = $row2['NamaPembekal'];
                 </td>
 
                 <td class = "col-75">
-
                     <select id = "nama_pembekal" name = "namaPembekal" required >
-                        <option selected value='<?php echo $oldKodPembekal; ?>'><?php echo $oldNamaPembekal; ?></option>
                         <?php
                         // show available option for all pembekal
                         $sql = "SELECT * FROM `pembekal`";
                         $hasil = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_array($hasil)) {
                             if ($row['KodPembekal'] === $oldKodPembekal) {
-
+                                echo "<option selected value='.$oldKodPembekal.'>".$oldNamaPembekal."</option>";
                             } else {
                                 echo '<option value='.$row['KodPembekal'].'>'.$row['NamaPembekal'].'</option>';
                             }
