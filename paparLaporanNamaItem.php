@@ -10,22 +10,28 @@
 <div class = "container">  
     <h1>Papar Laporan Ikut Nama Item</h1>
 
-    <form action = "includes/" method = "POST">
+    <form action = "includes/paparLaporanNamaItem.inc.php" method = "POST">
         <table align = "center">
             <tr class = "row">
                 <td>
-                    <select name="select-item" id="select-item" required>
+                    <select id="select-item" name="select-item" required>
                         <option disabled hidden selected>Pilih item</option>
-                        <option value="Item 1">Item 1</option>
-                        <option value="Item 2">Item 2</option>
-                        <option value="Item 3">Item 3</option>
+                        <?php
+                            include 'includes/dbh.inc.php';
+                            // show available option for all item
+                            $sql = "SELECT * FROM `item`";
+                            $hasil = mysqli_query($conn, $sql);
+                            while($row = mysqli_fetch_array($hasil)) {
+                                echo '<option value='.$row['KodItem'].'>'.$row['NamaItem'].'</option>';
+                            }
+                        ?>
                     </select>
                 </td>
             </tr>
 
             <tr class = "row">
                 <td colspan = "3" class = "col-submit">
-                    <input type="submit" value = "Papar">
+                    <input type="submit" value = "Papar" name = "papar">
                 </td>
             </tr>
         </table>
