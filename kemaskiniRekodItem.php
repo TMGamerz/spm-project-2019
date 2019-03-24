@@ -68,7 +68,11 @@ $oldNamaPembekal = $row2['NamaPembekal'];
                         $sql = "SELECT * FROM `pembekal`";
                         $hasil = mysqli_query($conn, $sql);
                         while($row = mysqli_fetch_array($hasil)) {
-                            echo '<option value='.$row['KodPembekal'].'>'.$row['NamaPembekal'].'</option>';
+                            if ($row['KodPembekal'] === $oldKodPembekal) {
+
+                            } else {
+                                echo '<option value='.$row['KodPembekal'].'>'.$row['NamaPembekal'].'</option>';
+                            }
                         }
                         ?>
                     </select>
