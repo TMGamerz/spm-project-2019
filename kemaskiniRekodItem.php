@@ -62,7 +62,7 @@ $oldNamaPembekal = $row2['NamaPembekal'];
                 <td class = "col-75">
 
                     <select id = "nama_pembekal" name = "namaPembekal" required >
-                        <option selected value='$oldKodPembekal'><?php echo $oldNamaPembekal?></option>
+                        <option selected value='<?php echo $oldKodPembekal; ?>'><?php echo $oldNamaPembekal; ?></option>
                         <?php
                         // show available option for all pembekal
                         $sql = "SELECT * FROM `pembekal`";
