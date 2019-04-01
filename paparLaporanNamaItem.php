@@ -10,7 +10,7 @@
 <div class = "container">  
     <h1>Papar Laporan Ikut Nama Item</h1>
 
-    <form action = "includes/paparLaporanNamaItem.inc.php" method = "POST">
+    <form action = "viewLaporanItem.php" method = "GET">
         <table align = "center">
             <tr class = "row">
                 <td>

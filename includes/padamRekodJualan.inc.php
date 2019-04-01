@@ -1,9 +1,9 @@
 <?php
     require_once('dbh.inc.php');
 
-    $KodJualan = $_GET['kodJualan'];
+    $kodJualan = $_GET['kodJualan'];
 
-    $sql = "DELETE FROM `jualan` WHERE `KodJualan` = '$KodJualan'";
+    $sql = "DELETE FROM `jualan` WHERE `KodJualan` = '$kodJualan'";
 
     if ($conn->query($sql)===true) {
     echo "<script>

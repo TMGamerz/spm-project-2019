@@ -1,9 +1,9 @@
 <?php
     require_once('dbh.inc.php');
 
-    $KodPembekal = $_GET['kodPembekal'];
+    $kodPembekal = $_GET['kodPembekal'];
 
-    $sql = "DELETE FROM `pembekal` WHERE `KodPembekal` = '$KodPembekal'";
+    $sql = "DELETE FROM `pembekal` WHERE `KodPembekal` = '$kodPembekal'";
 
     if ($conn->query($sql)===true) {
     echo "<script>
