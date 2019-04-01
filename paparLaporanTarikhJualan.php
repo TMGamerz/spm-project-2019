@@ -4,18 +4,18 @@
 
 <head>
     <link rel = "stylesheet" type = "text/css" href = "css/paparLaporan-style.css">
-    <title>Papar Laporan</title>
+    <title>Papar Laporan Ikut Tarikh Jualan</title>
 </head>
 
 <body>
 <div class = "container">  
     <h1>Papar Laporan Ikut Tarikh Jualan</h1>
 
-    <form action = "includes/" method = "POST">
+    <form action = "viewLaporanIkutTarikh.php" method = "POST">
         <table align = "center">
             <tr class = "row">
                 <td class = "col-40">
-                    <input type = "date" id = "tarikh_jualan1" name = "tarikhjualan1" required>
+                    <input type = "date" id = "tarikh_jualan1" name = "tarikhJualanMula" required>
                 </td>
 
                 <td class = "col-20">
@@ -23,7 +23,7 @@
                 </td>
 
                 <td class = "col-40">
-                    <input type = "date" id = "tarikh_jualan1" name = "tarikhjualan1" required>
+                    <input type = "date" id = "tarikh_jualan1" name = "tarikhJualanAkhir" required>
                 </td>
             </tr>
 

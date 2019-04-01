@@ -3,14 +3,14 @@
 ?>
 <head>
     <link rel = "stylesheet" type = "text/css" href = "css/paparLaporan-style.css">
-    <title>Papar Laporan</title>
+    <title>Papar Laporan Ikut Nama Item</title>
 </head>
 
 <body>
 <div class = "container">  
     <h1>Papar Laporan Ikut Nama Item</h1>
 
-    <form action = "viewLaporanItem.php" method = "GET">
+    <form action = "viewLaporanIkutItem.php" method = "GET">
         <table align = "center">
             <tr class = "row">
                 <td>

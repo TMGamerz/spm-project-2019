@@ -13,12 +13,12 @@
 ?>
     <head>
         <link rel = "stylesheet" type = "text/css" href = "css/paparLaporan-style.css">
-        <title>Papar Laporan</title>
+        <title>Papar Laporan Ikut Nama Item</title>
     </head>
 
     <body>
     <div class = "container">
-        <h1>Papar Laporan Ikut Nama Item <?php echo $namaItemSelected; ?></h1>
+        <h1>Laporan Ikut Nama Item <?php echo $namaItemSelected; ?></h1>
         <?php
             /*Displays all data from 'jualan' table by item selected*/
             $sql2 = "SELECT * FROM `jualan` WHERE `KodItem` = '$kodItem'";
@@ -50,13 +50,31 @@
                     echo '<td>' . $hargaJualan . '</td>';
 
                     echo "</tr>";
+
+
                 }
             } else {
-                echo "Tiada rekod";
+                echo "<script>
+                        alert('Data tidak berjaya dipaparkan. Sila papar semula.');
+                      </script>";
+                echo "Tidak terdapat rekod dalam pangkalan data.<br>";
             }
 
-            // close table
             echo "</table>";
+
+            $sql3 = "SELECT SUM(KuantitiItemDijual) FROM `jualan` WHERE KodItem = '$kodItem'";
+            $hasil3 = mysqli_query($conn, $sql3);
+            $row4 = mysqli_fetch_assoc($hasil3);
+            $sum = $row4['SUM(KuantitiItemDijual)'];
+
+            echo "<br>Jumlah Kuantiti Item yang dijual: " .$sum;
+
+            $sql4 = "SELECT SUM(HargaJualan) FROM `jualan` WHERE KodItem = '$kodItem'";
+            $hasil4 = mysqli_query($conn, $sql4);
+            $row5 = mysqli_fetch_assoc($hasil4);
+            $sum2 = $row5['SUM(HargaJualan)'];
+
+            echo "<br>Jumlah Jualan: RM" .$sum2;
         ?>
         <table align = "center">
             <tr class = "row">
