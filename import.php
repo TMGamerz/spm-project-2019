@@ -11,7 +11,7 @@
 <div class = "container">  
     <h1>Import Data</h1>
 
-    <form action = "includes/import.inc.php" method = "POST">
+    <form action = "includes/import.inc.php" method = "POST" enctype = "multipart/form-data">
         <table align = "center">
             <tr class = "row">
                 <td class = "col-70">
@@ -24,7 +24,7 @@
                 </td>
 
                 <td class = "col-submit">
-                    <input type="submit" value = "Import">
+                    <input type="submit" name = "import" value = "Import">
                 </td>
             </tr>
         </table>

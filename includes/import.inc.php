@@ -1,35 +1,39 @@
 <?php
-require 'dbh.inc.php';
-if(isset($_POST["submit"])){
+    require 'dbh.inc.php';
 
-    $filename=$_FILES["file"]["tmp_name"];
+    if (isset($_POST["import"])) {
+        $FileName = $_FILES["importFile"]["tmp_name"];
+        $NoFile = $_FILES["importFile"]["size"];
 
-    if($_FILES["file"]["size"] > 0)
-    {
-        $handle = fopen($_FILES['file']['tmp_name'], "r");
-        while (($data =fgetcsv($handle, 1000, ",")) !== FALSE) {
-            $item1 = mysqli_real_escape_string($conn,$data[0]);
-            $item2 = mysqli_real_escape_string($conn,$data[1]);
-            $item3 = mysqli_real_escape_string($conn,$data[2]);
-            $sql = "INSERT INTO pembekal(KodPembekal, NamaPembekal, TelefonPembekal) VALUES('$item1', '$item2', '$item3')";
-            $hasil = mysqli_query($conn, $sql);
-
-            if ($hasil)
-            {
-                echo "<script>
-                  alert('Fail berjaya diimport.');
-                  window.location.href='../viewRekodPembekal.php';
+        if ($NoFile < 0) {
+            echo "<script>
+                      alert('Format fail tidak sah.\\nSila pilihkan fail yang betul.');
+                      window.location.href='../import.php';
                   </script>";
+        } else {
+            $run = fopen($FileName, "r");
+            while (($data = fgetcsv($run, 1000, ",")) == TRUE) {
+                $KodPembekal = mysqli_real_escape_string($conn,$data[0]);
+                $NamaPembekal = mysqli_real_escape_string($conn,$data[1]);
+                $TelefonPembekal = mysqli_real_escape_string($conn,$data[2]);
+
+                $sql = "INSERT INTO `pembekal`(`KodPembekal`, `NamaPembekal`, `TelefonPembekal`) VALUES('$KodPembekal', '$NamaPembekal', '$TelefonPembekal')";
+                $hasil = mysqli_query($conn, $sql);
+
+                if ($hasil == 0) {
+                    echo "<script>
+                            alert('Format fail tidak sah.\\nSila pilihkan fail yang betul.');
+                            window.location.href='../import.php';
+                          </script>";
+                } else {
+                    echo "<script>
+                            alert('Fail berjaya diimport.');
+                            window.location.href='../viewRekodPembekal.php';
+                          </script>";
+                }
             }
-            else
-            {
-                echo "<script>
-                  alert('Format fail tidak sah.\\nSila pilihkan fail yang betul.');
-                  window.location.href='../import.php';
-                  </script>";
-            }
+            fclose($run);
+            mysqli_close($conn);
         }
-        mysqli_close($conn);
     }
-}
 ?>
