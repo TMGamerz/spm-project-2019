@@ -110,4 +110,18 @@
             });
         });
         </script>
+    <div id = "zoomingButton" style = "float: right;">
+        <button onclick="resizeText(-1)">Smaller</button>
+        <button onclick="resizeText(1)">Bigger</button>
+    </div>
+
+    <script type="text/javascript">
+        function resizeText(multiplier){
+            if(document.body.style.fontSize === ""){
+                document.body.style.fontSize = "1.0em";
+            }
+            document.body.style.fontSize = parseFloat
+            (document.body.style.fontSize) + (multiplier * 0.2) + "em";
+        }
+    </script>
 </body>
