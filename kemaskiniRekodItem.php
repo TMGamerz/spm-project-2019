@@ -60,7 +60,7 @@ $oldNamaPembekal = $row['NamaPembekal'];
                 </td>
 
                 <td class = "col-75">
-                    <select id = "nama_pembekal" name = "namaPembekal" required >
+                    <select class = "kemaskini-select" id = "nama_pembekal" name = "namaPembekal" required >
                         <?php
                         // show available option for all pembekal
                         $sql2 = "SELECT * FROM `pembekal`";
