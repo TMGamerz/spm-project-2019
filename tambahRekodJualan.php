@@ -10,7 +10,6 @@ $result = mysqli_query($conn, $query);
 
 // calculate total sales
 $jumlahJualanCalc = false;
-$kodJualan = "";
 $tarikhJualan = "";
 $kuantiti = 1;
 $itemTerpilih = "";
@@ -18,7 +17,6 @@ $jumlahJualan = 0;
 
 if (isset($_POST['kuantiti']) && isset($_POST['namaItem'])) {
     $jumlahJualanCalc = true;
-    $kodJualan = $_POST['kodJualan'];
     $tarikhJualan = $_POST['tarikhJualan'];
     $kuantiti = $_POST['kuantiti'];
     $itemTerpilih = $_POST['namaItem'];
@@ -39,16 +37,6 @@ if (isset($_POST['kuantiti']) && isset($_POST['namaItem'])) {
 
     <form name = "tambahJualanForm" action = "includes/tambahRekodJualan.inc.php" method = "POST">
         <table align = "center">
-            <tr class = "row">
-                <td class = "col-25">
-                    <label for = "kod_jualan">Kod Jualan: </label>
-                </td>
-
-                <td class = "col-75">
-                    <input type = "text" id = "kod_jualan" name = "kodJualan" value = "<?php echo $kodJualan ?>" required>
-                </td>
-            </tr>
-
             <tr class = "row">
                 <td class = "col-25">
                     <label for = "tarikh_jualan">Tarikh Jualan: </label>

@@ -25,7 +25,7 @@ require "header.php";
         // If you want all the rows in A and matching records in B, you could change INNER JOIN to LEFT JOIN.
         // Conversely, if you want all the records from B and only the matching ones from A, use RIGHT JOIN.
         // Finally, if you need everything from both tables, matching or not, you can use FULL JOIN.
-        $result = mysqli_query($conn ,"SELECT jualan.KodJualan, jualan.TarikhJualan, jualan.KuantitiItemDijual, jualan.HargaJualan, item.NamaItem FROM jualan INNER JOIN item ON jualan.KodItem=item.KodItem;")
+        $result = mysqli_query($conn ,"SELECT jualan.KodJualan, jualan.TarikhJualan, jualan.KuantitiItemDijual, jualan.HargaJualan, item.NamaItem FROM jualan INNER JOIN item ON jualan.KodItem=item.KodItem ORDER BY KodJualan ASC;")
         or die(mysqli_error($conn));
 
         echo "<table align = 'center' border='1' cellpadding='10'>";
