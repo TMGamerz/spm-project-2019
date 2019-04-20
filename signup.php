@@ -40,8 +40,8 @@ session_start();
 
     <div class = "footer">
         <div id = "zoomingButton">
-            <button onclick="resizeText(-1)">Smaller</button>
-            <button onclick="resizeText(1)">Bigger</button>
+            <button class = "btn1" onclick="resizeText(-1)">Smaller</button>
+            <button class = "btn2" onclick="resizeText(1)">Bigger</button>
         </div>
     </div>
 
