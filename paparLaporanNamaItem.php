@@ -14,7 +14,7 @@
         <table align = "center">
             <tr class = "row">
                 <td>
-                    <select id="select-item" name="select-item" required>
+                    <select class = "papar-select" id="select-item" name="select-item" required>
                         <option disabled hidden selected>Pilih item</option>
                         <?php
                             include 'includes/dbh.inc.php';

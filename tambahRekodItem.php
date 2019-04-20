@@ -58,7 +58,7 @@ $result = mysqli_query($conn, $query);
                 </td>
 
                 <td class = "col-75">
-                    <select id = "nama_pembekal" name = "namaPembekal" required>
+                    <select class = "tambah-select" id = "nama_pembekal" name = "namaPembekal" required>
                         <option disabled hidden selected></option>
                         <?php
                             while($row = mysqli_fetch_array($result)) {

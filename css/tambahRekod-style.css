@@ -41,7 +41,7 @@ td {
 }
 
 /*To make all input box equal size*/
-input, select {
+input, .tambah-select {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -62,7 +62,7 @@ input:hover, input:focus {
     border-color: #006eff;
 }
 
-select {
+.tambah-select {
     cursor: pointer;
     padding: 20px;
     border-radius: 4px;
@@ -74,7 +74,7 @@ select {
     outline: none;
 }
 
-select:hover, select:focus {
+.tambah-select:hover, .tambah-select:focus {
     border-color: #006eff;
 }
   

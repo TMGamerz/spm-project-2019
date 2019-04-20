@@ -53,7 +53,7 @@ if (isset($_POST['kuantiti']) && isset($_POST['namaItem'])) {
                 </td>
 
                 <td class = "col-75">
-                    <select id = "nama_item" name = "namaItem" onChange="reSubmit();" required>
+                    <select class = "tambah-select" id = "nama_item" name = "namaItem" onChange="reSubmit();" required>
                         <option disabled hidden selected></option>
                         <?php
                         $sql3 = "SELECT KodItem, NamaItem FROM item";

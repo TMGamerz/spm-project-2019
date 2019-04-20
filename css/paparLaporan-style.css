@@ -103,7 +103,7 @@ input[type=submit]:hover {
 }
 
 /*Style select in papar laporan ikut nama item page*/
-select {
+.papar-select {
     cursor: pointer;
     padding: 20px;
     border-radius: 4px;
@@ -118,7 +118,7 @@ select {
     outline: none;
 }
 
-select:hover, select:focus {
+.papar-select:hover, .papar-select:focus {
     border-color: #006eff;
 }
 
