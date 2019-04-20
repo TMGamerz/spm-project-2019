@@ -7,6 +7,25 @@ require 'header.php';
 include 'includes/dbh.inc.php';
 $query = "SELECT * FROM `item`";
 $result = mysqli_query($conn, $query);
+
+// calculate total sales
+$jumlahJualanCalc = false;
+$kodJualan = "";
+$tarikhJualan = "";
+$kuantiti = 1;
+$itemTerpilih = "";
+$jumlahJualan = 0;
+
+if (isset($_POST['kuantiti']) && isset($_POST['namaItem'])) {
+    $jumlahJualanCalc = true;
+    $kodJualan = $_POST['kodJualan'];
+    $tarikhJualan = $_POST['tarikhJualan'];
+    $kuantiti = $_POST['kuantiti'];
+    $itemTerpilih = $_POST['namaItem'];
+    $sql2 = "SELECT `HargaPerItem` FROM `item` WHERE `KodItem` = '$itemTerpilih'";
+    $result2 = mysqli_query($conn, $sql2);
+    $jumlahJualan = mysqli_fetch_assoc($result2)['HargaPerItem'] * $kuantiti;
+}
 ?>
 
     <head>
@@ -18,7 +37,7 @@ $result = mysqli_query($conn, $query);
 <div class = "container">
     <h1>Tambah Rekod Jualan</h1>
 
-    <form action = "includes/tambahRekodJualan.inc.php" method = "POST">
+    <form name = "tambahJualanForm" action = "includes/tambahRekodJualan.inc.php" method = "POST">
         <table align = "center">
             <tr class = "row">
                 <td class = "col-25">
@@ -26,7 +45,7 @@ $result = mysqli_query($conn, $query);
                 </td>
 
                 <td class = "col-75">
-                    <input type = "text" id = "kod_jualan" name = "kodJualan" required>
+                    <input type = "text" id = "kod_jualan" name = "kodJualan" value = "<?php echo $kodJualan ?>" required>
                 </td>
             </tr>
 
@@ -36,7 +55,7 @@ $result = mysqli_query($conn, $query);
                 </td>
 
                 <td class = "col-75">
-                    <input type = "date" id = "tarikh_jualan" name = "tarikhJualan">
+                    <input type = "date" id = "tarikh_jualan" name = "tarikhJualan" value = "<?php echo $tarikhJualan ?>">
                 </td>
             </tr>
 
@@ -46,11 +65,19 @@ $result = mysqli_query($conn, $query);
                 </td>
 
                 <td class = "col-75">
-                    <select id = "nama_item" name = "namaItem" required>
+                    <select id = "nama_item" name = "namaItem" onChange="reSubmit();" required>
                         <option disabled hidden selected></option>
                         <?php
-                        while($row = mysqli_fetch_array($result)) {
-                            echo '<option value='.$row['KodItem'].'>'.$row['NamaItem'].'</option>';
+                        $sql3 = "SELECT KodItem, NamaItem FROM item";
+                        $result3 = mysqli_query($conn, $sql3);
+                        while ($row = mysqli_fetch_assoc($result3)){
+                            $kodItem = $row['KodItem'];
+                            $namaItem = $row["NamaItem"];
+                            if ($kodItem != $itemTerpilih){
+                                echo "<option value=\"" . $kodItem . "\">" . $namaItem . "</option>";
+                            } else {
+                                echo "<option selected value=\"" . $kodItem . "\">" . $namaItem . "</option>";
+                            }
                         }
                         ?>
                     </select>
@@ -63,7 +90,7 @@ $result = mysqli_query($conn, $query);
                 </td>
 
                 <td class = "col-75">
-                    <input type = "number" id = "kuantiti_item_dijual" name = "kuantiti" value = "1" min = "1" required>
+                    <input type = "number" id = "kuantiti_item_dijual" name = "kuantiti" onChange="reSubmit()" value = "<?php echo $kuantiti; ?>" min = "1" required>
                 </td>
             </tr>
 
@@ -73,7 +100,7 @@ $result = mysqli_query($conn, $query);
                 </td>
 
                 <td class = "col-75">
-                    <input type = "number" id = "harga_jualan" name = "hargaJualan" min="0.00" step="0.01" value = "0.00" required>
+                    <input type = "number" id = "harga_jualan" name = "hargaJualan" min="0.00" step="0.01" value = "<?php echo $jumlahJualan; ?>" required readonly>
                 </td>
             </tr>
 
@@ -85,6 +112,13 @@ $result = mysqli_query($conn, $query);
         </table>
     </form>
 </div>
+
+<script>
+    function reSubmit() {
+        document.getElementsByName("tambahJualanForm")[0].action = "<?php echo $_SERVER["PHP_SELF"]; ?>";
+        document.tambahJualanForm.submit();
+    }
+</script>
 
 <?php
 require "footer.php";

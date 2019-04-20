@@ -21,7 +21,9 @@
 
 <h1><b>Menu Utama</b></h1>
 <br>
-<p><b>SELAMAT DATANG KE<br>SISTEM PENGURUSAN JUALAN <br> KOPERASI SEKOLAH</b></p>
+<div class = "container">
+    <p><b>SELAMAT DATANG KE<br>SISTEM PENGURUSAN JUALAN <br> KOPERASI SEKOLAH</b></p>
+</div>
 
 <?php
     require 'footer.php';

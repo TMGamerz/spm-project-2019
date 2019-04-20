@@ -1,0 +1,20 @@
+.footer {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    padding: 3px;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.footer #copyright{
+    padding: 0;
+    color: grey;
+}
+
+.footer #zoomingButton {
+    top: 0;
+    bottom: 0;
+    padding: 0;
+}

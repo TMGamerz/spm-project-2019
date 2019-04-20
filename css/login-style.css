@@ -113,6 +113,14 @@ body {
     text-shadow: 1px 1px #0f0f0f;
 }
 
+.footer {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    padding: 5px;
+}
+
 @media screen and (max-width: 599px) {
     .box {
         width: 100%;
