@@ -56,12 +56,12 @@ if (isset($_POST['kuantiti']) && isset($_POST['namaItem'])) {
                     <select class = "tambah-select" id = "nama_item" name = "namaItem" onChange="reSubmit();" required>
                         <option disabled hidden selected></option>
                         <?php
-                        $sql3 = "SELECT KodItem, NamaItem FROM item";
+                        $sql3 = "SELECT KodItem, NamaItem FROM `item`";
                         $result3 = mysqli_query($conn, $sql3);
-                        while ($row = mysqli_fetch_assoc($result3)){
-                            $kodItem = $row['KodItem'];
-                            $namaItem = $row["NamaItem"];
-                            if ($kodItem != $itemTerpilih){
+                        while ($row3 = mysqli_fetch_assoc($result3)) {
+                            $kodItem = $row3['KodItem'];
+                            $namaItem = $row3["NamaItem"];
+                            if ($kodItem != $itemTerpilih) {
                                 echo "<option value=\"" . $kodItem . "\">" . $namaItem . "</option>";
                             } else {
                                 echo "<option selected value=\"" . $kodItem . "\">" . $namaItem . "</option>";

@@ -26,7 +26,7 @@
 <div class = "container">  
     <h1>Kemaskini Rekod Jualan</h1>
 
-    <form action = "includes/kemaskiniRekodJualan.inc.php" method = "POST">
+    <form name = "kemaskiniJualanForm" action = "includes/kemaskiniRekodJualan.inc.php" method = "POST">
         <table align = "center">
             <tr class = "row">
                 <td class = "col-25">
@@ -34,7 +34,7 @@
                 </td>
 
                 <td class = "col-75">
-                    <input type = "text" id = "kod_jualan" name = "kodJualan" value = "<?php echo $oldKodJualan; ?>" required>
+                    <input type = "text" id = "kod_jualan" name = "kodJualan" value = "<?php echo $oldKodJualan; ?>" required readonly>
                 </td>
             </tr>
 
@@ -54,7 +54,7 @@
                 </td>
 
                 <td class = "col-75">
-                    <select id = "nama_item" name = "namaItem" required>
+                    <select class = "kemaskini-select" id = "nama_item" name = "namaItem" required>
                         <?php
                         // show available option for all item
                         $sql2 = "SELECT * FROM `item`";
@@ -87,7 +87,7 @@
                 </td>
 
                 <td class = "col-75">
-                    <input type = "number" id = "harga_jualan" name = "hargaJualan" min="0.00" step="0.01" value = "<?php echo $oldHargaJualan; ?>" required>
+                    <input type = "number" id = "harga_jualan" name = "hargaJualan" min="0.00" step="0.01" value = "<?php echo $oldHargaJualan; ?>" required readonly>
                 </td>
             </tr>
 
@@ -99,6 +99,16 @@
         </table>
     </form>
 </div>
+
+<script>
+    function reSubmit() {
+        document.getElementsByName("kemaskiniJualanForm")[0].action = "<?php echo $_SERVER["PHP_SELF"]; ?>";
+        document.getElementById("tarikh_jualan").value = "<?php echo $tarikhJualan ?>";
+        document.getElementById("kuantiti_item_dijual").value = "<?php echo $kuantiti ?>";
+        document.getElementById("harga_jualan").value = "<?php echo $jumlahJualan ?>";
+        document.kemaskiniJualanForm.submit();
+    }
+</script>
 
 <?php
     require "footer.php";

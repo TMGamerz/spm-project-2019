@@ -62,7 +62,7 @@ input:hover, input:focus {
     border-color: #006eff;
 }
 
-select {
+.kemaskini-select {
     cursor: pointer;
     padding: 20px;
     border-radius: 4px;
@@ -75,7 +75,7 @@ select {
     outline: none;
 }
 
-select:hover, select:focus {
+.kemaskini-select:hover, .kemaskini-select:focus {
     border-color: #006eff;
 }
   
