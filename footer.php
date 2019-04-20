@@ -1,8 +1,8 @@
 <link rel = "stylesheet" type = "text/css" href = "css/footer-style.css">
 <div class = "footer">
     <div id = "zoomingButton">
-        <button onclick="resizeText(-1)">Smaller</button>
-        <button onclick="resizeText(1)">Bigger</button>
+        <button class = "btn1" onclick="resizeText(-1)">Smaller</button>
+        <button class = "btn2" onclick="resizeText(1)">Bigger</button>
     </div>
     <p id = "copyright">Copyright &copy; 2019 Ch'ng Sin Yi</p>
 </div>
