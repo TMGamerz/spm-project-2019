@@ -188,19 +188,63 @@ nav .nav-list li .nav-dropdown li a:hover {
     border-radius: 5px;
 }
 
+#nav-toggle {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    background: #AAAAAA;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    display: none;
+}
+
+#nav-toggle:hover {
+    background: #CCCCCC;
+}
+
 @media screen and (max-width: 1135px) {
+    #nav-toggle {
+        display: block;
+    }
+
     .logo {
         width: 100%;
+        text-align: center;
+        padding: 0;
+        position: relative;
     }
 
     .logo .menu-title {
         text-align: center;
         margin: 0;
-        padding: 0;
-        width: 100%;        
+        width: 100%;
     }
 
     nav .nav-list {
+        position: absolute;
         display: none;
+        margin: 10% 0;
+        padding: 0;
+        float: left;
+        width: 100%;
+        z-index: 1;
+    }
+
+    nav .nav-list li {
+        width: 100%;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    nav .nav-list li a {
+        margin-bottom: 1%;
+        margin-top: 1%;
+    }
+
+    nav .nav-list li .nav-dropdown {
+        width: 100%;
+        margin: 0;
+        position: relative;
     }
 }

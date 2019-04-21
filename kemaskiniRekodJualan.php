@@ -2,19 +2,38 @@
     require "header.php";
     include 'includes/dbh.inc.php';
 
-    // show all data from selected row of jualan
-    $oldKodJualan = $_GET['kodJualan'];
-    $sql = "SELECT * FROM `jualan` LEFT JOIN `item` ON jualan.KodItem = item.KodItem WHERE `KodJualan` = '$oldKodJualan'";
-    $hasil = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_array($hasil);
+    // default values
+    $jumlahJualanCalc = false;
+    $kodJualan = "-";
+    $tarikhJualan = "mm/dd/yyyy";
+    $itemTerpilih = "";
+    $kuantiti = 1;
+    $jumlahJualan = 0;
 
-    $oldTarikhJualan = $row['TarikhJualan'];
-    $oldKodItem = $row['KodItem'];
-    $oldKuantitiItemDijual = $row['KuantitiItemDijual'];
-    $oldHargaJualan = $row['HargaJualan'];
-    $oldIDPengguna = $row['IDPengguna'];
+    // if KodJualan is given, then get data from database and show all data from selected row of jualan
+    if (isset($_GET['kodJualan'])) {
+        $oldKodJualan = $_GET['kodJualan'];
+        $sql = "SELECT * FROM `jualan` LEFT JOIN `item` ON jualan.KodItem = item.KodItem WHERE `KodJualan` = '$oldKodJualan'";
+        $hasil = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_array($hasil);
+        $oldTarikhJualan = $row['TarikhJualan'];
+        $oldKodItem = $row['KodItem'];
+        $oldKuantitiItemDijual = $row['KuantitiItemDijual'];
+        $oldHargaJualan = $row['HargaJualan'];
+        $oldNamaItem = $row['NamaItem'];
+    }
 
-    $oldNamaItem = $row['NamaItem'];
+    // Calculate the total sales ONLY WHEN both NamaItem and KuantitiItemDijual is given
+    // WARNING/NOTE: this will overwrite $kuantiti and $itemTerpilih
+    if (isset($_POST['kuantiti']) && isset($_POST['namaItem'])) {
+        $jumlahJualanCalc = true;
+        $itemTerpilih = $_POST['namaItem'];
+        $tarikhJualan = $_POST['tarikhJualan'];
+        $kuantiti = $_POST['kuantiti'];
+        $sql2 = "SELECT `HargaPerItem` FROM `item` WHERE `KodItem` = '$itemTerpilih'";
+        $result2 = mysqli_query($conn, $sql2);
+        $jumlahJualan = mysqli_fetch_assoc($result2)['HargaPerItem'] * $kuantiti;
+    }
 ?>
 
 <head>
@@ -54,7 +73,7 @@
                 </td>
 
                 <td class = "col-75">
-                    <select class = "kemaskini-select" id = "nama_item" name = "namaItem" required>
+                    <select class = "kemaskini-select" id = "nama_item" name = "namaItem" onchange = "reSubmit()" required>
                         <?php
                         // show available option for all item
                         $sql2 = "SELECT * FROM `item`";
@@ -77,7 +96,7 @@
                 </td>
 
                 <td class = "col-75">
-                    <input type = "number" id = "kuantiti_item_dijual" name = "kuantiti" min = "1" value = "<?php echo $oldKuantitiItemDijual; ?>" required>
+                    <input type = "number" id = "kuantiti_item_dijual" name = "kuantiti" min = "1" value = "<?php echo $oldKuantitiItemDijual; ?>" onchange = "reSubmit()" required>
                 </td>
             </tr>
 
@@ -102,10 +121,12 @@
 
 <script>
     function reSubmit() {
-        document.getElementsByName("kemaskiniJualanForm")[0].action = "<?php echo $_SERVER["PHP_SELF"]; ?>";
-        document.getElementById("tarikh_jualan").value = "<?php echo $tarikhJualan ?>";
-        document.getElementById("kuantiti_item_dijual").value = "<?php echo $kuantiti ?>";
-        document.getElementById("harga_jualan").value = "<?php echo $jumlahJualan ?>";
+        document.getElementsByName("kemaskiniJualanForm")[0].action = "<?php
+            echo $_SERVER['PHP_SELF'];
+            if(isset($_GET['kodJualan'])) {
+                echo '?kodJualan=' . $_GET['kodJualan'];
+            }
+            ?>";
         document.kemaskiniJualanForm.submit();
     }
 </script>

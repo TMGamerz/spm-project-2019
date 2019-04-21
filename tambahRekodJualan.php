@@ -8,13 +8,14 @@ include 'includes/dbh.inc.php';
 $query = "SELECT * FROM `item`";
 $result = mysqli_query($conn, $query);
 
-// calculate total sales
+// default values
 $jumlahJualanCalc = false;
-$tarikhJualan = "";
+$tarikhJualan = "mm/dd/yyyy";
 $kuantiti = 1;
 $itemTerpilih = "";
 $jumlahJualan = 0;
 
+// calculate total sales
 if (isset($_POST['kuantiti']) && isset($_POST['namaItem'])) {
     $jumlahJualanCalc = true;
     $tarikhJualan = $_POST['tarikhJualan'];

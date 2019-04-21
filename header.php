@@ -18,7 +18,7 @@
             </div>
             <nav>
                 <div class = "nav-responsive">
-                    <a id = "nav-toggle" href = "#"><span></span></a>
+                    <div id = "nav-toggle">Menu</div>
                 </div>
 
                 <ul class = "nav-list">
