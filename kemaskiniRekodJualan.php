@@ -1,39 +1,50 @@
 <?php
-    require "header.php";
-    include 'includes/dbh.inc.php';
+require 'header.php';
+require_once 'includes/dbh.inc.php';
 
-    // default values
-    $jumlahJualanCalc = false;
-    $kodJualan = "-";
-    $tarikhJualan = "mm/dd/yyyy";
-    $itemTerpilih = "";
-    $kuantiti = 1;
-    $jumlahJualan = 0;
+// default values
+$jumlahJualanCalc = false;
+$kodJualan = "-";
+$tarikhJualan = "mm/dd/yyyy";
+$itemTerpilih = "";
+$kuantiti = 1;
+$jumlahJualan = 0;
 
-    // if KodJualan is given, then get data from database and show all data from selected row of jualan
-    if (isset($_GET['kodJualan'])) {
-        $oldKodJualan = $_GET['kodJualan'];
-        $sql = "SELECT * FROM `jualan` LEFT JOIN `item` ON jualan.KodItem = item.KodItem WHERE `KodJualan` = '$oldKodJualan'";
-        $hasil = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_array($hasil);
-        $oldTarikhJualan = $row['TarikhJualan'];
-        $oldKodItem = $row['KodItem'];
-        $oldKuantitiItemDijual = $row['KuantitiItemDijual'];
-        $oldHargaJualan = $row['HargaJualan'];
-        $oldNamaItem = $row['NamaItem'];
+// if KodJualan is given, then get data from database and show all data from selected row of jualan
+if (isset($_GET['kodJualan'])) {
+    $oldKodJualan = $_GET['kodJualan'];
+    $sql = "SELECT * FROM `jualan` LEFT JOIN `item` ON jualan.KodItem = item.KodItem WHERE `KodJualan` = '$oldKodJualan'";
+    $hasil = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_array($hasil);
+    $oldTarikhJualan = $row['TarikhJualan'];
+    $oldKodItem = $row['KodItem'];
+    $oldKuantitiItemDijual = $row['KuantitiItemDijual'];
+    $oldHargaJualan = $row['HargaJualan'];
+    $oldNamaItem = $row['NamaItem'];
+}
+
+// Calculate the total sales ONLY WHEN both NamaItem and KuantitiItemDijual is given
+// WARNING/NOTE: this will overwrite $kuantiti and $itemTerpilih
+if (isset($_POST['kuantiti']) && isset($_POST['namaItem'])) {
+    $jumlahJualanCalc = true;
+
+    $itemTerpilih = $_POST['namaItem'];
+    $oldKodItem = $itemTerpilih;
+
+    $tarikhJualan = $_POST['tarikhJualan'];
+    $oldTarikhJualan = $_POST['tarikhJualan'];
+
+    $kuantiti = $_POST['kuantiti'];
+    $oldKuantitiItemDijual = $_POST['kuantiti'];
+
+    $sql2 = "SELECT `NamaItem`,`HargaPerItem` FROM `item` WHERE `KodItem` = '$itemTerpilih'";
+    $result2 = mysqli_query($conn, $sql2);
+    while ($row = mysqli_fetch_assoc($result2)) {
+        $jumlahJualan = $row['HargaPerItem'] * $kuantiti;
+        $oldHargaJualan = $jumlahJualan;
+        $oldNamaItem = $row["NamaItem"];
     }
-
-    // Calculate the total sales ONLY WHEN both NamaItem and KuantitiItemDijual is given
-    // WARNING/NOTE: this will overwrite $kuantiti and $itemTerpilih
-    if (isset($_POST['kuantiti']) && isset($_POST['namaItem'])) {
-        $jumlahJualanCalc = true;
-        $itemTerpilih = $_POST['namaItem'];
-        $tarikhJualan = $_POST['tarikhJualan'];
-        $kuantiti = $_POST['kuantiti'];
-        $sql2 = "SELECT `HargaPerItem` FROM `item` WHERE `KodItem` = '$itemTerpilih'";
-        $result2 = mysqli_query($conn, $sql2);
-        $jumlahJualan = mysqli_fetch_assoc($result2)['HargaPerItem'] * $kuantiti;
-    }
+}
 ?>
 
 <head>
@@ -42,7 +53,7 @@
 </head>
 
 <body>
-<div class = "container">  
+<div class = "container">
     <h1>Kemaskini Rekod Jualan</h1>
 
     <form name = "kemaskiniJualanForm" action = "includes/kemaskiniRekodJualan.inc.php" method = "POST">
@@ -78,11 +89,11 @@
                         // show available option for all item
                         $sql2 = "SELECT * FROM `item`";
                         $hasil2 = mysqli_query($conn, $sql2);
-                        while($row2 = mysqli_fetch_array($hasil2)) {
+                        while ($row2 = mysqli_fetch_array($hasil2)) {
                             if ($row2['KodItem'] === $oldKodItem) {
-                                echo '<option selected value='.$oldKodItem.'>'.$oldNamaItem.'</option>';
+                                echo '<option selected value=' . $row2['KodItem'] . '>' . $row2['NamaItem'] . '</option>';
                             } else {
-                                echo '<option value='.$row2['KodItem'].'>'.$row2['NamaItem'].'</option>';
+                                echo '<option value=' . $row2['KodItem'] . '>' . $row2['NamaItem'] . '</option>';
                             }
                         }
                         ?>
@@ -123,7 +134,7 @@
     function reSubmit() {
         document.getElementsByName("kemaskiniJualanForm")[0].action = "<?php
             echo $_SERVER['PHP_SELF'];
-            if(isset($_GET['kodJualan'])) {
+            if (isset($_GET['kodJualan'])) {
                 echo '?kodJualan=' . $_GET['kodJualan'];
             }
             ?>";
@@ -132,5 +143,5 @@
 </script>
 
 <?php
-    require "footer.php";
+    require 'footer.php';
 ?>

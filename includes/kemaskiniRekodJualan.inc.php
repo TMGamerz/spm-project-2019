@@ -6,15 +6,14 @@ if (isset($_POST['kemaskini'])) {
     $result1 = mysqli_query($conn, $sql1);
     $row1 = mysqli_fetch_array($result1);
 
-    $oldKodJualan = $row1['KodJualan'];
-    $kodJualan = mysqli_real_escape_string($conn, $_POST['kodJualan']);
+    $oldKodJualan = $_POST['kodJualan'];
     $tarikhJualan = mysqli_real_escape_string($conn, $_POST['tarikhJualan']);
     $kodItem = mysqli_real_escape_string($conn, $_POST['namaItem']);
     $kuantitiItemDijual = mysqli_real_escape_string($conn, $_POST['kuantiti']);
     $hargaJualan = mysqli_real_escape_string($conn, $_POST['hargaJualan']);
     $IDPengguna = $_SESSION['IDPengguna'];
 
-    $sql2 = "UPDATE `jualan` SET `KodJualan` = '$kodJualan', `TarikhJualan` = '$tarikhJualan', `KodItem` = '$kodItem', `KuantitiItemDijual` = '$kuantitiItemDijual', `HargaJualan` = '$hargaJualan', `IDPengguna` = '$IDPengguna' WHERE `KodJualan` = '$oldKodJualan'";
+    $sql2 = "UPDATE `jualan` SET `TarikhJualan` = '$tarikhJualan', `KodItem` = '$kodItem', `KuantitiItemDijual` = '$kuantitiItemDijual', `HargaJualan` = '$hargaJualan', `IDPengguna` = '$IDPengguna' WHERE `KodJualan` = '$oldKodJualan'";
     $result2 = mysqli_query($conn, $sql2) or die(mysqli_error($conn));
     if ($result2) {
         echo "<script>alert('Anda sudah berjaya kemaskini rekod jualan!');
