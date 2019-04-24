@@ -3,7 +3,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="UTF-8">
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <!--CSS for navigation bar-->
     <link rel = "stylesheet" type = "text/css" href = "css/header-style.css">
+    <!--CSS for footer-->
+    <link rel = "stylesheet" type = "text/css" href = "css/footer-style.css">
     <link rel = "stylesheet" href = "libraries/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 

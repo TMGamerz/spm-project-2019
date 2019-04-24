@@ -189,8 +189,8 @@ nav .nav-list li .nav-dropdown li a:hover {
 }
 
 #nav-toggle {
-    position: fixed;
-    top: 30px;
+    position: absolute;
+    top: 40px;
     right: 30px;
     background: #AAAAAA;
     padding: 10px;
@@ -223,9 +223,9 @@ nav .nav-list li .nav-dropdown li a:hover {
     }
 
     nav .nav-list {
-        position: absolute;
+        position: relative;
         display: none;
-        margin: 10% 0;
+        margin: 4% 0;
         padding: 0;
         float: left;
         width: 100%;

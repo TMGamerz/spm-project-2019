@@ -1,6 +1,7 @@
-<link rel = "stylesheet" type = "text/css" href = "css/footer-style.css">
 <div class = "footer">
+    <!--Showing translation -->
     <div id = "google_translate_element"></div>
+    <!--Showing resize text button-->
     <div id = "zoomingButton">
         <button class = "btn1" onclick="resizeText(-1)">Smaller</button>
         <button class = "btn2" onclick="resizeText(1)">Bigger</button>
@@ -9,6 +10,7 @@
 </div>
 
 <script type="text/javascript">
+    // resize text function
     function resizeText(multiplier){
         if(document.body.style.fontSize === ""){
             document.body.style.fontSize = "1.0em";
@@ -18,6 +20,7 @@
     }
 </script>
 
+<!--Google Language Translation-->
 <script type="text/javascript">
     function googleTranslateElementInit() {
         new google.translate.TranslateElement({pageLanguage: 'ms'}, 'google_translate_element');

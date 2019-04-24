@@ -5,25 +5,32 @@ require 'header.php';
 <?php
 // select option value from database
 include 'includes/dbh.inc.php';
-$query = "SELECT * FROM `item`";
-$result = mysqli_query($conn, $query);
+$sql = "SELECT * FROM `item`";
+$result = mysqli_query($conn, $sql);
 
 // default values
 $jumlahJualanCalc = false;
 $tarikhJualan = "mm/dd/yyyy";
+$hargaPerItem = 0;
 $kuantiti = 1;
 $itemTerpilih = "";
 $jumlahJualan = 0;
 
-// calculate total sales
-if (isset($_POST['kuantiti']) && isset($_POST['namaItem'])) {
-    $jumlahJualanCalc = true;
+// to show price per item
+if (isset($_POST['namaItem'])) {
     $tarikhJualan = $_POST['tarikhJualan'];
-    $kuantiti = $_POST['kuantiti'];
     $itemTerpilih = $_POST['namaItem'];
     $sql2 = "SELECT `HargaPerItem` FROM `item` WHERE `KodItem` = '$itemTerpilih'";
     $result2 = mysqli_query($conn, $sql2);
-    $jumlahJualan = mysqli_fetch_assoc($result2)['HargaPerItem'] * $kuantiti;
+    $hargaPerItem = mysqli_fetch_assoc($result2)['HargaPerItem'];
+}
+
+// calculate total sales
+if (isset($_POST['kuantiti'])) {
+    $jumlahJualanCalc = true;
+    $tarikhJualan = $_POST['tarikhJualan'];
+    $kuantiti = $_POST['kuantiti'];
+    $jumlahJualan = $hargaPerItem * $kuantiti;
 }
 ?>
 
@@ -70,6 +77,16 @@ if (isset($_POST['kuantiti']) && isset($_POST['namaItem'])) {
                         }
                         ?>
                     </select>
+                </td>
+            </tr>
+
+            <tr class = "row">
+                <td class = "col-25">
+                    <label for = "harga_per_item">Harga Per Item: </label>
+                </td>
+
+                <td class = "col-75">
+                    <input type = "number" id = "harga_per_item" name = "hargaPerItem" value = "<?php echo $hargaPerItem; ?>" min = "1" required readonly>
                 </td>
             </tr>
 

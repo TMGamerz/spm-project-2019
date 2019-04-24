@@ -29,7 +29,7 @@
             if ($row2 > 0) {
                 echo "<table align = 'center' border='1' cellpadding='10'>";
 
-                echo "<tr> <th>Kod Jualan</th> <th>Tarikh Jualan</th> <th>Kuantiti</th> <th>Harga Jualan</th> </tr>";
+                echo "<tr> <th>Kod Jualan</th> <th>Tarikh Jualan</th> <th>Kuantiti</th> <th>Harga Per Item</th> <th>Harga Jualan</th> </tr>";
 
                 // loop through results of database query, displaying them in the table
                 while($row3 = mysqli_fetch_array($hasil2)) {
@@ -37,6 +37,11 @@
                     $tarikhJualan = $row3['TarikhJualan'];
                     $kuantiti = $row3['KuantitiItemDijual'];
                     $hargaJualan = $row3['HargaJualan'];
+
+                    $sql4 = "SELECT HargaPerItem FROM `item` WHERE `KodItem` = '$kodItem'";
+                    $hasil4 = mysqli_query($conn, $sql4);
+                    $row5 = mysqli_fetch_array($hasil4);
+                    $hargaPerItem = $row5['HargaPerItem'];
 
                     // echo out the contents of each row into a table
                     echo "<tr>";
@@ -46,6 +51,8 @@
                     echo '<td>' . $tarikhJualan . '</td>';
 
                     echo '<td>' . $kuantiti . '</td>';
+
+                    echo '<td>' . $hargaPerItem . '</td>';
 
                     echo '<td>' . $hargaJualan . '</td>';
 

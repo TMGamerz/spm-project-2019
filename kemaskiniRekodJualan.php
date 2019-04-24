@@ -6,6 +6,7 @@ require_once 'includes/dbh.inc.php';
 $jumlahJualanCalc = false;
 $kodJualan = "-";
 $tarikhJualan = "mm/dd/yyyy";
+$hargaPerItem = 0;
 $itemTerpilih = "";
 $kuantiti = 1;
 $jumlahJualan = 0;
@@ -13,14 +14,18 @@ $jumlahJualan = 0;
 // if KodJualan is given, then get data from database and show all data from selected row of jualan
 if (isset($_GET['kodJualan'])) {
     $oldKodJualan = $_GET['kodJualan'];
-    $sql = "SELECT * FROM `jualan` LEFT JOIN `item` ON jualan.KodItem = item.KodItem WHERE `KodJualan` = '$oldKodJualan'";
+    $sql1 = "SELECT * FROM `jualan` LEFT JOIN `item` ON jualan.KodItem = item.KodItem WHERE `KodJualan` = '$oldKodJualan'";
+    $hasil1 = mysqli_query($conn, $sql1);
+    $row1 = mysqli_fetch_array($hasil1);
+    $oldTarikhJualan = $row1['TarikhJualan'];
+    $oldKodItem = $row1['KodItem'];
+    $oldKuantitiItemDijual = $row1['KuantitiItemDijual'];
+    $oldHargaJualan = $row1['HargaJualan'];
+    $oldNamaItem = $row1['NamaItem'];
+    $sql = "SELECT `HargaPerItem` FROM `item` WHERE KodItem = '$oldKodItem'";
     $hasil = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($hasil);
-    $oldTarikhJualan = $row['TarikhJualan'];
-    $oldKodItem = $row['KodItem'];
-    $oldKuantitiItemDijual = $row['KuantitiItemDijual'];
-    $oldHargaJualan = $row['HargaJualan'];
-    $oldNamaItem = $row['NamaItem'];
+    $oldHargaPerItem = $row['HargaPerItem'];
 }
 
 // Calculate the total sales ONLY WHEN both NamaItem and KuantitiItemDijual is given
@@ -37,12 +42,13 @@ if (isset($_POST['kuantiti']) && isset($_POST['namaItem'])) {
     $kuantiti = $_POST['kuantiti'];
     $oldKuantitiItemDijual = $_POST['kuantiti'];
 
-    $sql2 = "SELECT `NamaItem`,`HargaPerItem` FROM `item` WHERE `KodItem` = '$itemTerpilih'";
-    $result2 = mysqli_query($conn, $sql2);
-    while ($row = mysqli_fetch_assoc($result2)) {
-        $jumlahJualan = $row['HargaPerItem'] * $kuantiti;
+    $sql3 = "SELECT `NamaItem`,`HargaPerItem` FROM `item` WHERE `KodItem` = '$itemTerpilih'";
+    $result3 = mysqli_query($conn, $sql3);
+    while ($row3 = mysqli_fetch_assoc($result3)) {
+        $oldHargaPerItem = $row3['HargaPerItem'];
+        $jumlahJualan = $row3['HargaPerItem'] * $kuantiti;
         $oldHargaJualan = $jumlahJualan;
-        $oldNamaItem = $row["NamaItem"];
+        $oldNamaItem = $row3['NamaItem'];
     }
 }
 ?>
@@ -87,17 +93,27 @@ if (isset($_POST['kuantiti']) && isset($_POST['namaItem'])) {
                     <select class = "kemaskini-select" id = "nama_item" name = "namaItem" onchange = "reSubmit()" required>
                         <?php
                         // show available option for all item
-                        $sql2 = "SELECT * FROM `item`";
-                        $hasil2 = mysqli_query($conn, $sql2);
-                        while ($row2 = mysqli_fetch_array($hasil2)) {
-                            if ($row2['KodItem'] === $oldKodItem) {
-                                echo '<option selected value=' . $row2['KodItem'] . '>' . $row2['NamaItem'] . '</option>';
+                        $sql4 = "SELECT * FROM `item`";
+                        $hasil4 = mysqli_query($conn, $sql4);
+                        while ($row4 = mysqli_fetch_array($hasil4)) {
+                            if ($row4['KodItem'] === $oldKodItem) {
+                                echo '<option selected value=' . $row4['KodItem'] . '>' . $row4['NamaItem'] . '</option>';
                             } else {
-                                echo '<option value=' . $row2['KodItem'] . '>' . $row2['NamaItem'] . '</option>';
+                                echo '<option value=' . $row4['KodItem'] . '>' . $row4['NamaItem'] . '</option>';
                             }
                         }
                         ?>
                     </select>
+                </td>
+            </tr>
+
+            <tr class = "row">
+                <td class = "col-25">
+                    <label for = "harga_per_item">Harga Per Item: </label>
+                </td>
+
+                <td class = "col-75">
+                    <input type = "number" id = "harga_per_item" name = "hargaPerItem" value = "<?php echo $oldHargaPerItem; ?>" min = "1" required readonly>
                 </td>
             </tr>
 
