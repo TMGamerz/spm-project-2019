@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 30, 2019 at 04:52 PM
+-- Generation Time: Apr 30, 2019 at 05:56 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -32,9 +32,9 @@ USE `spm`;
 
 DROP TABLE IF EXISTS `item`;
 CREATE TABLE `item` (
-  `KodItem` varchar(11) NOT NULL,
-  `NamaItem` varchar(256) NOT NULL,
-  `KodPembekal` varchar(11) DEFAULT NULL,
+  `KodItem` varchar(6) NOT NULL,
+  `NamaItem` varchar(50) NOT NULL,
+  `KodPembekal` varchar(5) DEFAULT NULL,
   `HargaPerItem` decimal(8,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -56,12 +56,12 @@ INSERT INTO `item` (`KodItem`, `NamaItem`, `KodPembekal`, `HargaPerItem`) VALUES
 
 DROP TABLE IF EXISTS `jualan`;
 CREATE TABLE `jualan` (
-  `KodJualan` int(11) NOT NULL,
+  `KodJualan` int(4) NOT NULL,
   `TarikhJualan` date NOT NULL,
-  `KodItem` varchar(11) DEFAULT NULL,
-  `KuantitiItemDijual` int(255) NOT NULL,
+  `KodItem` varchar(6) DEFAULT NULL,
+  `KuantitiItemDijual` int(10) NOT NULL,
   `HargaJualan` decimal(8,2) NOT NULL,
-  `IDPengguna` int(11) DEFAULT NULL
+  `IDPengguna` int(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -82,9 +82,9 @@ INSERT INTO `jualan` (`KodJualan`, `TarikhJualan`, `KodItem`, `KuantitiItemDijua
 
 DROP TABLE IF EXISTS `pembekal`;
 CREATE TABLE `pembekal` (
-  `KodPembekal` varchar(11) NOT NULL,
-  `NamaPembekal` varchar(256) NOT NULL,
-  `TelefonPembekal` varchar(256) NOT NULL
+  `KodPembekal` varchar(5) NOT NULL,
+  `NamaPembekal` varchar(50) NOT NULL,
+  `TelefonPembekal` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -103,9 +103,9 @@ INSERT INTO `pembekal` (`KodPembekal`, `NamaPembekal`, `TelefonPembekal`) VALUES
 
 DROP TABLE IF EXISTS `pengguna`;
 CREATE TABLE `pengguna` (
-  `IDPengguna` int(11) NOT NULL,
-  `NamaPengguna` varchar(256) NOT NULL,
-  `KataLaluan` varchar(256) NOT NULL
+  `IDPengguna` int(6) NOT NULL,
+  `NamaPengguna` varchar(20) NOT NULL,
+  `KataLaluan` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -114,8 +114,7 @@ CREATE TABLE `pengguna` (
 
 INSERT INTO `pengguna` (`IDPengguna`, `NamaPengguna`, `KataLaluan`) VALUES
 (1, 'Wong Wei Li', 'A001WWL'),
-(2, 'Ong Xia Jun', 'A002OXJ'),
-(3, '1', '1');
+(2, 'Ong Xia Jun', 'A002OXJ');
 
 --
 -- Indexes for dumped tables
@@ -156,13 +155,13 @@ ALTER TABLE `pengguna`
 -- AUTO_INCREMENT for table `jualan`
 --
 ALTER TABLE `jualan`
-  MODIFY `KodJualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `KodJualan` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `pengguna`
 --
 ALTER TABLE `pengguna`
-  MODIFY `IDPengguna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `IDPengguna` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
