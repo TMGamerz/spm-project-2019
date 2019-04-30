@@ -14,7 +14,28 @@
     <link rel = "stylesheet" type = "text/css" href = "css/paparLaporan-style.css">
     <title>Papar Laporan Ikut Tarikh Jualan</title>
 </head>
+    <style>
+        @media print {
+            .navbar {
+                display: none;
+            }
 
+            .footer {
+                display: none;
+            }
+
+            .print-button {
+                display: none;
+            }
+
+            .container {
+                box-shadow: 0 0 rgba(0, 0, 0, .0);
+                padding: 0;
+                margin: 0;
+                overflow: hidden;
+            }
+        }
+    </style>
 <body>
 <div class = "container">
     <h1>Laporan Ikut Tarikh Jualan <?php echo $tarikhMula; ?> hingga <?php echo $tarikhAkhir; ?></h1>
@@ -59,14 +80,17 @@
                 echo '<td>' . $hargaJualan . '</td>';
 
                 echo "</tr>";
-
-
             }
+        } else if (!$row2) {
+            echo "<script>
+                    alert('Tidak terdapat rekod dalam pangkalan data.');
+                </script>";
+            echo "<b>Tidak terdapat rekod dalam pangkalan data.</b><br>";
         } else {
             echo "<script>
                     alert('Data tidak berjaya dipaparkan. Sila papar semula.');
-                </script>";
-            echo "Tidak terdapat rekod dalam pangkalan data.<br>";
+                    window.location.href='paparLaporanNamaItem.php';
+                  </script>";
         }
 
         echo "</table>";
@@ -91,7 +115,7 @@
             <td></td>
             <td></td>
             <td colspan = "2">
-                <input type = 'submit' value = 'Cetak' onclick = 'window.print()'>
+                <input type = 'submit' class = 'print-button' value = 'Cetak' onclick = 'window.print()'>
             </td>
         </tr>
     </table>
