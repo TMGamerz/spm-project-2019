@@ -37,7 +37,7 @@
 
                 <input type = "submit" name = "submit" value = "Daftar">
             </form>
-
+            
             <!-- Sambungan ke halaman log masuk-->
             <p>Sudah daftar?<a href="index.php"><b> Klik sini</b></a></p>
         </div>

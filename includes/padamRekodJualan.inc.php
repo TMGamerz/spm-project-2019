@@ -8,13 +8,13 @@
     if ($conn->query($sql) === TRUE) {
         // Mesej yang akan dipapar jika berjaya dipadamkan
         echo "<script>
-                alert('Item berjaya dipadamkan');
+                alert('Anda sudah berjaya memadam rekod jualan!');
                 window.location.href = '../viewRekodJualan.php';
               </script>";
     } else {
         // Mesej yang akan dipapar jika tidak berjaya dipadamkan
         echo "<script>
-                alert('Harap Maaf');
+                alert('Anda gagal memadam rekod jualan!\\nSila cuba sekali lagi.');
                 window.location.href = '../viewRekodJualan.php';
               </script>";
     }

@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<div class = "container">  
+<div class = "container">
     <h1>Tambah Rekod Pembekal</h1>
     <!-- Form untuk menambah rekod pembekal -->
     <form action = "includes/tambahRekodPembekal.inc.php" method = "POST">

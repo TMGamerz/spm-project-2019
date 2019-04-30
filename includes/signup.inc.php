@@ -32,7 +32,7 @@
                 if ($semakHasil > 0) {
                     // Mesej yang akan dipapar jika tidak berjaya didaftarkan
                     echo "<script>
-                            alert('Maklumat yang anda masuk tidak sah!\\nSila cuba sekali lagi');
+                            alert('Maklumat yang anda masuk tidak sah!\\nSila cuba sekali lagi.');
                             window.location.href = '../signup.php';
                           </script>";
                     exit();
@@ -41,7 +41,7 @@
                     mysqli_query($conn, $sql);
                     // Mesej yang akan dipapar jika berjaya didaftarkan dan balik ke halaman log masuk
                     echo "<script>
-                            alert('Anda sudah berjaya mendaftar!');
+                            alert('Anda sudah berjaya mendaftar!\\nSila log masuk.');
                             window.location.href = '../index.php';
                           </script>";
                     exit();
