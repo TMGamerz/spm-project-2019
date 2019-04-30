@@ -1,37 +1,37 @@
 <?php
-require 'header.php';
+    require 'header.php';
 ?>
 
 <?php
-// select option value from database
-include 'includes/dbh.inc.php';
-$sql = "SELECT * FROM `item`";
-$result = mysqli_query($conn, $sql);
+    // select option value from database
+    include 'includes/dbh.inc.php';
+    $sql = "SELECT * FROM `item`";
+    $result = mysqli_query($conn, $sql);
 
-// default values
-$jumlahJualanCalc = false;
-$tarikhJualan = "mm/dd/yyyy";
-$hargaPerItem = 0;
-$kuantiti = 1;
-$itemTerpilih = "";
-$jumlahJualan = 0;
+    // default values
+    $jumlahJualanCalc = false;
+    $tarikhJualan = "mm/dd/yyyy";
+    $hargaPerItem = 0;
+    $kuantiti = 1;
+    $itemTerpilih = "";
+    $jumlahJualan = 0;
 
-// to show price per item
-if (isset($_POST['namaItem'])) {
-    $tarikhJualan = $_POST['tarikhJualan'];
-    $itemTerpilih = $_POST['namaItem'];
-    $sql2 = "SELECT `HargaPerItem` FROM `item` WHERE `KodItem` = '$itemTerpilih'";
-    $result2 = mysqli_query($conn, $sql2);
-    $hargaPerItem = mysqli_fetch_assoc($result2)['HargaPerItem'];
-}
+    // to show price per item
+    if (isset($_POST['namaItem'])) {
+        $tarikhJualan = $_POST['tarikhJualan'];
+        $itemTerpilih = $_POST['namaItem'];
+        $sql2 = "SELECT `HargaPerItem` FROM `item` WHERE `KodItem` = '$itemTerpilih'";
+        $result2 = mysqli_query($conn, $sql2);
+        $hargaPerItem = mysqli_fetch_assoc($result2)['HargaPerItem'];
+    }
 
-// calculate total sales
-if (isset($_POST['kuantiti'])) {
-    $jumlahJualanCalc = true;
-    $tarikhJualan = $_POST['tarikhJualan'];
-    $kuantiti = $_POST['kuantiti'];
-    $jumlahJualan = $hargaPerItem * $kuantiti;
-}
+    // calculate total sales
+    if (isset($_POST['kuantiti'])) {
+        $jumlahJualanCalc = true;
+        $tarikhJualan = $_POST['tarikhJualan'];
+        $kuantiti = $_POST['kuantiti'];
+        $jumlahJualan = $hargaPerItem * $kuantiti;
+    }
 ?>
 
     <head>

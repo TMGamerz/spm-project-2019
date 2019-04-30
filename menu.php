@@ -1,17 +1,6 @@
 <?php
     require 'header.php';
     require 'includes/dbh.inc.php';
-    /*if(isset($_GET['token'])){
-        if($_GET['token'] == $_SESSION['token']){
-            $_SESSION['select'] = 1;
-            require 'header.php';
-        }else{
-            header('location:error.php');
-        }
-    }else{
-        header('location:error.php');
-    }*/
-
 ?>
 
 <head>

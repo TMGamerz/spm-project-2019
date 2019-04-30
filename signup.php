@@ -1,5 +1,7 @@
+<!--Page untuk daftar pengguna-->
+
 <?php
-session_start();
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -35,10 +37,12 @@ session_start();
             <input type = "submit" name = "submit" value = "Daftar">
         </form>
 
+        <!--Navigate to login page-->
         <p>Sudah daftar?<a href="index.php"><b> Klik sini</b></a></p>
     </div>
 
     <div class = "footer">
+        <!--Change font size to bigger or smaller-->
         <div id = "zoomingButton">
             <button class = "btn1" onclick="resizeText(-1)">Smaller</button>
             <button class = "btn2" onclick="resizeText(1)">Bigger</button>
@@ -46,6 +50,7 @@ session_start();
     </div>
 
     <script type="text/javascript">
+        // function for resize text
         function resizeText(multiplier){
             if(document.body.style.fontSize === ""){
                 document.body.style.fontSize = "1.0em";

@@ -1,5 +1,5 @@
 <?php
-    require "header.php";
+    require 'header.php';
 ?>
 <head>
     <link rel = "stylesheet" type = "text/css" href = "css/paparLaporan-style.css">

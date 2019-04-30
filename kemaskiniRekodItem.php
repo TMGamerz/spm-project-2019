@@ -1,5 +1,5 @@
 <?php
-require "header.php";
+require 'header.php';
 include 'includes/dbh.inc.php';
 
 // show all data from selected row of item

@@ -1,3 +1,5 @@
+<!--Footer with resize text and translation-->
+
 <div class = "footer">
     <!--Showing translation -->
     <div id = "google_translate_element"></div>

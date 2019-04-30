@@ -1,5 +1,5 @@
 <?php
-require "header.php";
+require 'header.php';
 include 'includes/dbh.inc.php';
 $oldKodPembekal = $_GET['kodPembekal'];
 $sql = "SELECT * FROM `pembekal` WHERE `KodPembekal` = '$oldKodPembekal'";

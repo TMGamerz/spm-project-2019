@@ -1,3 +1,5 @@
+<!--Header to show title and navigation bar-->
+
 <!DOCTYPE html>
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

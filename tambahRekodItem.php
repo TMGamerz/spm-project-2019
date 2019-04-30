@@ -1,13 +1,13 @@
 <?php
-    require "header.php";
+    require 'header.php';
 ?>
 
 <?php
 // select option value from database
-include 'includes/dbh.inc.php';
+    include 'includes/dbh.inc.php';
 
-$query = "SELECT * FROM `pembekal`";
-$result = mysqli_query($conn, $query);
+    $query = "SELECT * FROM `pembekal`";
+    $result = mysqli_query($conn, $query);
 
 ?>
 
