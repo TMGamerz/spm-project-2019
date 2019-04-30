@@ -30,7 +30,7 @@ $oldNamaPembekal = $row['NamaPembekal'];
                 </td>
 
                 <td class = "col-75">
-                    <input type = "text" id = "kod_item" name = "kodItem" value="<?php echo $oldKodItem;?>" required>
+                    <input type = "text" id = "kod_item" name = "kodItem" value="<?php echo $oldKodItem;?>" maxlength = "6" required>
                 </td>
             </tr>
 
@@ -40,7 +40,7 @@ $oldNamaPembekal = $row['NamaPembekal'];
                 </td>
 
                 <td class = "col-75">
-                    <input type = "text" id = "nama_item" name = "namaItem" value = "<?php echo $oldNamaItem;?>" required>
+                    <input type = "text" id = "nama_item" name = "namaItem" value = "<?php echo $oldNamaItem;?>" maxlength = "50" required>
                 </td>
             </tr>
 
@@ -50,7 +50,7 @@ $oldNamaPembekal = $row['NamaPembekal'];
                 </td>
 
                 <td class = "col-75">
-                    <input type = "number" id = "harga_per_item" name = "hargaPerItem" min="0.00" step="0.01" value = "<?php echo $oldHargaPerItem;?>" required>
+                    <input type = "number" id = "harga_per_item" name = "hargaPerItem" min="0.00" step="0.01" value = "<?php echo $oldHargaPerItem;?>" maxlength = "11" required>
                 </td>
             </tr>
 

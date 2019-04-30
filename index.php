@@ -8,6 +8,7 @@
         <title>Selamat datang!</title>
         <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
         <link rel = "stylesheet" type = "text/css" href = "css/login-style.css">
+        <link rel = "icon" href = "icons/pt.png">
     </head>
 
     <body>
@@ -19,12 +20,12 @@
 
         <form action = "includes/login.inc.php" method = "POST">
             <div class = "inputBox">
-                <input type="text" name="nama_pengguna" required>
+                <input type="text" name="nama_pengguna" maxlength = "20" required>
                 <label>Nama Pengguna</label>
             </div>
 
             <div class = "inputBox">
-                <input type="password" name="kata_laluan" required>
+                <input type="password" name="kata_laluan" maxlength = "30" required>
                 <label>Kata Laluan</label>
             </div>
 

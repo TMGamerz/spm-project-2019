@@ -28,7 +28,7 @@
                 </td>
 
                 <td class = "col-75">
-                    <input type = "text" id = "kod_item" name = "kodItem" required>
+                    <input type = "text" id = "kod_item" name = "kodItem" maxlength = "6" required>
                 </td>
             </tr>
 
@@ -38,7 +38,7 @@
                 </td>
 
                 <td class = "col-75">
-                    <input type = "text" id = "nama_item" name = "namaItem" required>
+                    <input type = "text" id = "nama_item" name = "namaItem" maxlength = "50" required>
                 </td>
             </tr>
 
@@ -48,7 +48,7 @@
                 </td>
 
                 <td class = "col-75">
-                    <input type = "number" id = "harga_per_item" name = "hargaPerItem" min="0.00" step="0.01" value = "0.00" required>
+                    <input type = "number" id = "harga_per_item" name = "hargaPerItem" min = "0.00" step = "0.01" value = "0.00" required>
                 </td>
             </tr>
 

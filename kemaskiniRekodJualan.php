@@ -70,7 +70,7 @@ if (isset($_POST['kuantiti']) && isset($_POST['namaItem'])) {
                 </td>
 
                 <td class = "col-75">
-                    <input type = "text" id = "kod_jualan" name = "kodJualan" value = "<?php echo $oldKodJualan; ?>" required readonly>
+                    <input type = "text" id = "kod_jualan" name = "kodJualan" value = "<?php echo $oldKodJualan; ?>" maxlength = "4" required readonly>
                 </td>
             </tr>
 

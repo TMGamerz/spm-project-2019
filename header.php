@@ -10,6 +10,7 @@
     <!--CSS for footer-->
     <link rel = "stylesheet" type = "text/css" href = "css/footer-style.css">
     <link rel = "stylesheet" href = "libraries/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel = "icon" href = "icons/pt.png">
 </head>
 
 <body>

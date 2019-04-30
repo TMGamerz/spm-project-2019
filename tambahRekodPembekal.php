@@ -19,7 +19,7 @@
                 </td>
 
                 <td class = "col-75">
-                    <input type = "text" id = "kod_pembekal" name = "kodPembekal" required>
+                    <input type = "text" id = "kod_pembekal" name = "kodPembekal" maxlength = "5" required>
                 </td>
             </tr>
 
@@ -29,7 +29,7 @@
                 </td>
 
                 <td class = "col-75">
-                    <input type = "text" id = "nama_pembekal" name = "namaPembekal" required>
+                    <input type = "text" id = "nama_pembekal" name = "namaPembekal" maxlength = "50" required>
                 </td>
             </tr>
 
@@ -39,7 +39,7 @@
                 </td>
 
                 <td class = "col-75">
-                    <input type = "text" id = "telefon_pembekal" name = "telefonPembekal" required>
+                    <input type = "text" id = "telefon_pembekal" name = "telefonPembekal" maxlength = "15" required>
                 </td>
             </tr>
 

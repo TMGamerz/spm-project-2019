@@ -26,7 +26,7 @@ $telefonPembekal = $row['TelefonPembekal'];
                 </td>
 
                 <td class = "col-75">
-                    <input type = "text" id = "kod_pembekal" name = "kodPembekal" value = "<?php echo $oldKodPembekal;?>">
+                    <input type = "text" id = "kod_pembekal" name = "kodPembekal" value = "<?php echo $oldKodPembekal;?>" maxlength = "5">
                 </td>
             </tr>
 
@@ -36,7 +36,7 @@ $telefonPembekal = $row['TelefonPembekal'];
                 </td>
 
                 <td class = "col-75">
-                    <input type = "text" id = "nama_pembekal" name = "namaPembekal" value = "<?php echo $namaPembekal;?>">
+                    <input type = "text" id = "nama_pembekal" name = "namaPembekal" value = "<?php echo $namaPembekal;?>" maxlength = "50">
                 </td>
             </tr>
 
@@ -46,7 +46,7 @@ $telefonPembekal = $row['TelefonPembekal'];
                 </td>
 
                 <td class = "col-75">
-                    <input type = "text" id = "telefon_pembekal" name = "telefonPembekal" value = "<?php echo $telefonPembekal;?>">
+                    <input type = "text" id = "telefon_pembekal" name = "telefonPembekal" value = "<?php echo $telefonPembekal;?>" maxlength = "15">
                 </td>
             </tr>
 

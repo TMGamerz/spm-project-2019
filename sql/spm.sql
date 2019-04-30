@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2019 at 06:32 AM
+-- Generation Time: Apr 30, 2019 at 04:52 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -69,7 +69,7 @@ CREATE TABLE `jualan` (
 --
 
 INSERT INTO `jualan` (`KodJualan`, `TarikhJualan`, `KodItem`, `KuantitiItemDijual`, `HargaJualan`, `IDPengguna`) VALUES
-(1, '2019-04-20', 'I00035', 5, '10.00', 1),
+(1, '2018-09-01', 'I00035', 5, '10.00', 1),
 (2, '2018-09-01', 'I00065', 20, '24.00', 2),
 (3, '2018-09-07', 'I00005', 15, '450.00', 1),
 (4, '2018-09-11', 'I00075', 3, '15.00', 1);
@@ -113,9 +113,9 @@ CREATE TABLE `pengguna` (
 --
 
 INSERT INTO `pengguna` (`IDPengguna`, `NamaPengguna`, `KataLaluan`) VALUES
-(1, 'Wong Wei Li', '$2y$10$ewuOB9aPIGGBE5doPgU5jeZcbuwo9wj.eULPAcrpIKxBT7k66kHLC'),
-(2, 'Ong Xia Jun', '$2y$10$/SDJw/v7JMasCFcpWvBBi.oe4nsMSNV18wv.eSO9rzzbvwQ9v27bW'),
-(3, '1', '$2y$10$0O8XHFgCGTALuIAUMln7XeGsTj4Z5xc4l0qpn93vv9qMwOuExYSOm');
+(1, 'Wong Wei Li', 'A001WWL'),
+(2, 'Ong Xia Jun', 'A002OXJ'),
+(3, '1', '1');
 
 --
 -- Indexes for dumped tables
