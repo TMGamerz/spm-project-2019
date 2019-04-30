@@ -1,9 +1,8 @@
-<!--Footer with resize text and translation-->
-
+<!-- Footer yang mempunyai button untuk membesarkan atau mengecilkan text dan menukar ke bahasa lain -->
 <div class = "footer">
-    <!--Showing translation -->
+    <!-- Google Language Translation untuk menukar ke bahasa lain -->
     <div id = "google_translate_element"></div>
-    <!--Showing resize text button-->
+    <!-- Button untuk membesarkan atau mengecilkan text -->
     <div id = "zoomingButton">
         <button class = "btn1" onclick="resizeText(-1)">Smaller</button>
         <button class = "btn2" onclick="resizeText(1)">Bigger</button>
@@ -12,9 +11,9 @@
 </div>
 
 <script type="text/javascript">
-    // resize text function
-    function resizeText(multiplier){
-        if(document.body.style.fontSize === ""){
+    // Function untuk membesarkan atau mengecilkan text
+    function resizeText(multiplier) {
+        if (document.body.style.fontSize === "") {
             document.body.style.fontSize = "1.0em";
         }
         document.body.style.fontSize = parseFloat
@@ -22,10 +21,10 @@
     }
 </script>
 
-<!--Google Language Translation-->
 <script type="text/javascript">
+    // Function untuk Google Language Translation
     function googleTranslateElementInit() {
-        new google.translate.TranslateElement({pageLanguage: 'ms'}, 'google_translate_element');
+        new google.translate.TranslateElement({pageLanguage: "ms"}, "google_translate_element");
     }
 </script>
 

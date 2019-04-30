@@ -1,12 +1,16 @@
+<!-- Halaman untuk mengemaskini rekod pembekal -->
 <?php
-require 'header.php';
-include 'includes/dbh.inc.php';
-$oldKodPembekal = $_GET['kodPembekal'];
-$sql = "SELECT * FROM `pembekal` WHERE `KodPembekal` = '$oldKodPembekal'";
-$hasil = mysqli_query($conn, $sql);
-$row = mysqli_fetch_array($hasil);
-$namaPembekal = $row['NamaPembekal'];
-$telefonPembekal = $row['TelefonPembekal'];
+    require 'header.php';
+    include 'includes/dbh.inc.php';
+
+    // Mendapat pembekal yang dipilih untuk pengguna
+    $oldKodPembekal = $_GET['kodPembekal'];
+    // sql untuk mencapai data daripada pangkalan data
+    $sql = "SELECT * FROM `pembekal` WHERE `KodPembekal` = '$oldKodPembekal'";
+    $hasil = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_array($hasil);
+    $namaPembekal = $row['NamaPembekal'];
+    $telefonPembekal = $row['TelefonPembekal'];
 ?>
 
     <head>
@@ -17,7 +21,7 @@ $telefonPembekal = $row['TelefonPembekal'];
     <body>
 <div class = "container">
     <h1>Kemaskini Rekod Pembekal</h1>
-
+    <!-- Form untuk mengemaskinikan rekod pembekal-->
     <form action = "includes/kemaskiniRekodPembekal.inc.php" method = "POST">
         <table align = "center">
             <tr class = "row">

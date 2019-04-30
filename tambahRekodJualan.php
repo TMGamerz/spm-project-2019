@@ -1,14 +1,12 @@
+<!-- Halaman untuk menambah rekod item -->
 <?php
     require 'header.php';
-?>
-
-<?php
-    // select option value from database
     include 'includes/dbh.inc.php';
+    // sql untuk mencapai data item dari pangkalan data
     $sql = "SELECT * FROM `item`";
-    $result = mysqli_query($conn, $sql);
+    $hasil = mysqli_query($conn, $sql);
 
-    // default values
+    // Mengistiharkan nilai asal
     $jumlahJualanCalc = false;
     $tarikhJualan = "mm/dd/yyyy";
     $hargaPerItem = 0;
@@ -16,16 +14,16 @@
     $itemTerpilih = "";
     $jumlahJualan = 0;
 
-    // to show price per item
+    // Memaparka harga per item
     if (isset($_POST['namaItem'])) {
         $tarikhJualan = $_POST['tarikhJualan'];
         $itemTerpilih = $_POST['namaItem'];
         $sql2 = "SELECT `HargaPerItem` FROM `item` WHERE `KodItem` = '$itemTerpilih'";
-        $result2 = mysqli_query($conn, $sql2);
-        $hargaPerItem = mysqli_fetch_assoc($result2)['HargaPerItem'];
+        $hasil2 = mysqli_query($conn, $sql2);
+        $hargaPerItem = mysqli_fetch_assoc($hasil2)['HargaPerItem'];
     }
 
-    // calculate total sales
+    // Mengira jumlah jualan
     if (isset($_POST['kuantiti'])) {
         $jumlahJualanCalc = true;
         $tarikhJualan = $_POST['tarikhJualan'];
@@ -42,9 +40,10 @@
     <body>
 <div class = "container">
     <h1>Tambah Rekod Jualan</h1>
-
+    <!-- Form untuk menambah rekod jualan -->
     <form name = "tambahJualanForm" action = "includes/tambahRekodJualan.inc.php" method = "POST">
         <table align = "center">
+            <!-- Input tarikh jualan -->
             <tr class = "row">
                 <td class = "col-25">
                     <label for = "tarikh_jualan">Tarikh Jualan: </label>
@@ -54,7 +53,7 @@
                     <input type = "date" id = "tarikh_jualan" name = "tarikhJualan" value = "<?php echo $tarikhJualan ?>">
                 </td>
             </tr>
-
+            <!-- Input nama item -->
             <tr class = "row">
                 <td class = "col-25">
                     <label for = "nama_item">Nama Item: </label>
@@ -65,10 +64,10 @@
                         <option disabled hidden selected></option>
                         <?php
                         $sql3 = "SELECT KodItem, NamaItem FROM `item`";
-                        $result3 = mysqli_query($conn, $sql3);
-                        while ($row3 = mysqli_fetch_assoc($result3)) {
+                        $hasil3 = mysqli_query($conn, $sql3);
+                        while ($row3 = mysqli_fetch_assoc($hasil3)) {
                             $kodItem = $row3['KodItem'];
-                            $namaItem = $row3["NamaItem"];
+                            $namaItem = $row3['NamaItem'];
                             if ($kodItem != $itemTerpilih) {
                                 echo "<option value=\"" . $kodItem . "\">" . $namaItem . "</option>";
                             } else {
@@ -89,7 +88,7 @@
                     <input type = "number" id = "harga_per_item" name = "hargaPerItem" value = "<?php echo $hargaPerItem; ?>" min = "1" required readonly>
                 </td>
             </tr>
-
+            <!-- Input kuantiti item dijual-->
             <tr class = "row">
                 <td class = "col-25">
                     <label for = "kuantiti_item_dijual">Kuantiti Item Dijual: </label>

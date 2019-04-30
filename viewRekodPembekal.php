@@ -1,63 +1,52 @@
+<!-- Halaman untuk memaparkan semua rekod pembekal dari pangkalan data -->
 <?php
     require 'header.php';
+    include 'includes/dbh.inc.php';
 ?>
-
     <head>
         <link rel = "stylesheet" type = "text/css" href = "css/viewRekodPembekal-style.css">
         <title>Rekod Pembekal</title>
     </head>
 
     <body>
-<div class = "container">
-    <h1>Kemaskini Rekod Pembekal</h1>
+    <div class = "container">
+        <h1>Kemaskini Rekod Pembekal</h1>
 
-    <form action = "" method = "POST">
-        <?php
-            /*Displays all data from 'item' table*/
+        <form action = "" method = "POST">
+            <?php
+                // Mencapai data pembekal dari pangkalan data dan memaparkan
+                $hasil = mysqli_query($conn ,"SELECT * FROM `pembekal` ORDER BY `KodPembekal` ASC;")
+                or die(mysqli_error($conn));
 
-            // connect to the database
-            include('includes/dbh.inc.php');
+                echo "<table align = 'center' border='1' cellpadding='10'>";
 
-            // number of results to show per page
-            $per_page = 2;
+                echo "<tr> <th>Kod Pembekal</th> <th>Nama Pembekal</th> <th>Telefon Pembekal</th> <th>Kemaskini</th> <th>Padam</th></tr>";
 
-            // get results from database
-            $result = mysqli_query($conn ,"SELECT * FROM `pembekal` ORDER BY `KodPembekal` ASC;")
-            or die(mysqli_error($conn));
+                while ($row = mysqli_fetch_array($hasil)) {
+                    $kodPembekal = $row['KodPembekal'];
+                    $namaPembekal = $row['NamaPembekal'];
+                    $telefonPembekal = $row['TelefonPembekal'];
 
-            echo "<table align = 'center' border='1' cellpadding='10'>";
+                    echo "<tr>";
 
-            echo "<tr> <th>Kod Pembekal</th> <th>Nama Pembekal</th> <th>Telefon Pembekal</th> <th>Kemaskini</th> <th>Padam</th></tr>";
+                    echo '<td>' . $kodPembekal . '</td>';
 
-            // loop through results of database query, displaying them in the table
-            while($row = mysqli_fetch_array($result)) {
-                $kodPembekal = $row['KodPembekal'];
-                $namaPembekal = $row['NamaPembekal'];
-                $telefonPembekal = $row['TelefonPembekal'];
+                    echo '<td>' . $namaPembekal . '</td>';
 
-                // echo out the contents of each row into a table
-                echo "<tr>";
+                    echo '<td>' . $telefonPembekal . '</td>';
 
-                echo '<td>' . $kodPembekal . '</td>';
+                    echo '<td><a href="kemaskiniRekodPembekal.php?kodPembekal=' . $kodPembekal . '"><img src="icons/edit.png" alt = "editIcon" class = "editIcon"></a></td>';
 
-                echo '<td>' . $namaPembekal . '</td>';
+                    echo '<td><a href="includes/padamRekodPembekal.inc.php?kodPembekal=' . $kodPembekal . '"><img src="icons/delete.png" alt = "deleteIcon" class = "deleteIcon"></a></td>';
 
-                echo '<td>' . $telefonPembekal . '</td>';
+                    echo "</tr>";
 
-                echo '<td><a href="kemaskiniRekodPembekal.php?kodPembekal=' . $kodPembekal . '"><img src="icons/edit.png" alt = "editIcon" class = "editIcon"></a></td>';
+                }
 
-                echo '<td><a href="includes/padamRekodPembekal.inc.php?kodPembekal=' . $kodPembekal . '"><img src="icons/delete.png" alt = "deleteIcon" class = "deleteIcon"></a></td>';
-
-                echo "</tr>";
-
-            }
-
-            // close table
-            echo "</table>";
-        ?>
-    </form>
-</div>
-
+                echo "</table>";
+            ?>
+        </form>
+    </div>
 <?php
     require 'footer.php';
 ?>

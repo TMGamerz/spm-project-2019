@@ -1,5 +1,6 @@
+<!-- Halaman untuk menambah rekod pembekal -->
 <?php
-    require "header.php";
+    require 'header.php';
 ?>
 
 <head>
@@ -10,9 +11,10 @@
 <body>
 <div class = "container">  
     <h1>Tambah Rekod Pembekal</h1>
-
+    <!-- Form untuk menambah rekod pembekal -->
     <form action = "includes/tambahRekodPembekal.inc.php" method = "POST">
         <table align = "center">
+            <!-- Input kod pembekal -->
             <tr class = "row">
                 <td class = "col-25">
                     <label for = "kod_pembekal">Kod Pembekal: </label>
@@ -22,7 +24,7 @@
                     <input type = "text" id = "kod_pembekal" name = "kodPembekal" maxlength = "5" required>
                 </td>
             </tr>
-
+            <!-- Input nama pembekal -->
             <tr class = "row">
                 <td class = "col-25">
                     <label for = "nama_pembekal">Nama Pembekal: </label>
@@ -32,7 +34,7 @@
                     <input type = "text" id = "nama_pembekal" name = "namaPembekal" maxlength = "50" required>
                 </td>
             </tr>
-
+            <!-- Input telefon pembekal -->
             <tr class = "row">
                 <td class = "col-25">
                     <label for = "telefon_pembekal">Telefon Pembekal: </label>

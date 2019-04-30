@@ -1,7 +1,8 @@
+<!-- Proses untuk mengimport data -->
 <?php
     require 'dbh.inc.php';
 
-    if (isset($_POST["import"])) {
+    if (isset($_POST['import'])) {
         $FileName = $_FILES["importFile"]["tmp_name"];
         $NoFile = $_FILES["importFile"]["size"];
 
@@ -21,11 +22,13 @@
                 $hasil = mysqli_query($conn, $sql);
 
                 if ($hasil == 0) {
+                    // Mesej yang akan dipapar jika tidak berjaya diimport
                     echo "<script>
                             alert('Format fail tidak sah.\\nSila pilihkan fail yang betul.');
                             window.location.href='../import.php';
                           </script>";
                 } else {
+                    // Mesej yang akan dipapar jika berjaya diimport
                     echo "<script>
                             alert('Fail berjaya diimport.');
                             window.location.href='../viewRekodPembekal.php';

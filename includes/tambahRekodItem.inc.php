@@ -1,46 +1,53 @@
+<!-- Proses untuk menambah rekod item -->
 <?php
-    if (isset($_POST['tambah'])) {
-        include 'dbh.inc.php';
+    include 'dbh.inc.php';
 
+    if (isset($_POST['tambah'])) {
         $kodItem = mysqli_real_escape_string($conn, $_POST['kodItem']);
         $namaItem = mysqli_real_escape_string($conn, $_POST['namaItem']);
         $hargaPerItem = mysqli_real_escape_string($conn, $_POST['hargaPerItem']);
         $kodPembekal = mysqli_real_escape_string($conn, $_POST['namaPembekal']);
 
-        # Error handlers
-        // Check if the inputs are empty
         if (empty($kodItem) || empty($namaItem) || empty($hargaPerItem) || empty($kodPembekal)) {
-            echo "<script>alert('Maklumat yang anda masuk tidak sah! Sila masuk semula.');
-                  window.location = '../tambahRekodItem.php?input=empty';
+            // Mesej yang akan dipapar jika tidak berjaya ditambahkan
+            echo "<script>
+                    alert('Maklumat yang anda masuk tidak sah! Sila masuk semula.');
+                    window.location = '../tambahRekodItem.php?input=empty';
                   </script>";
             exit();
         } else {
-        // Check if the user exists in the database
-        $sql = "SELECT `KodItem` FROM `item` WHERE `KodItem` = '$kodItem'";
-        $result = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+            $sql1 = "SELECT `KodItem` FROM `item` WHERE `KodItem` = '$kodItem'";
+            $hasil1 = mysqli_query($conn, $sql1);
 
-        if (mysqli_num_rows($result) > 0) {
-            echo "<script>alert('Maklumat yang anda masuk tidak sah! Sila masuk semula.');
-                  window.location = '../tambahRekodItem.php?data=exists';
-                  </script>";
-            exit();
-        } else {
-            $query = mysqli_query($conn, "INSERT INTO `item`(`KodItem`, `NamaItem`, `HargaPerItem`, `KodPembekal`) VALUES('$kodItem', '$namaItem', '$hargaPerItem', '$kodPembekal')");
-
-            if ($query) {
-                echo "<script>alert('Anda sudah berjaya menambah rekod item!');
-                      window.location.href = '../tambahRekodItem.php?tambahItem=berjaya';
+            if (mysqli_num_rows($hasil1) > 0) {
+                // Mesej yang akan dipapar jika tidak berjaya ditambahkan
+                echo "<script>
+                        alert('Maklumat yang anda masuk tidak sah! Sila masuk semula.');
+                        window.location = '../tambahRekodItem.php?data=exists';
                       </script>";
-                return;
+                exit();
             } else {
-                die(mysqli_error($conn));
+                $sql2 = "INSERT INTO `item`(`KodItem`, `NamaItem`, `HargaPerItem`, `KodPembekal`) VALUES('$kodItem', '$namaItem', '$hargaPerItem', '$kodPembekal')";
+                $hasil2 = mysqli_query($conn, $sql2);
+
+                if ($hasil2) {
+                    // Mesej yang akan dipapar jika berjaya ditambahkan
+                    echo "<script>
+                            alert('Anda sudah berjaya menambah rekod item!');
+                            window.location.href = '../tambahRekodItem.php?tambahItem=berjaya';
+                          </script>";
+                    return;
+                } else {
+                    die(mysqli_error($conn));
+                }
             }
         }
-    }
     } else {
-        echo "<script>alert('Maklumat yang anda masuk tidak sah! Sila masuk semula.');
-                  window.location = '../tambahRekodItem.php?tambah=error';
-                  </script>";
+        // Mesej yang akan dipapar jika tidak berjaya ditambahkan
+        echo "<script>
+                alert('Maklumat yang anda masuk tidak sah! Sila masuk semula.');
+                window.location = '../tambahRekodItem.php?tambah=error';
+              </script>";
         exit();
     }
+?>

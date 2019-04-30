@@ -1,56 +1,56 @@
+<!-- Halaman untuk mengemaskini rekod jualan -->
 <?php
-require 'header.php';
-require_once 'includes/dbh.inc.php';
+    require 'header.php';
+    require_once 'includes/dbh.inc.php';
 
-// default values
-$jumlahJualanCalc = false;
-$kodJualan = "-";
-$tarikhJualan = "mm/dd/yyyy";
-$hargaPerItem = 0;
-$itemTerpilih = "";
-$kuantiti = 1;
-$jumlahJualan = 0;
+    // Mengisytiharkan nilai asal
+    $jumlahJualanCalc = false;
+    $kodJualan = "-";
+    $tarikhJualan = "mm/dd/yyyy";
+    $hargaPerItem = 0;
+    $itemTerpilih = "";
+    $kuantiti = 1;
+    $jumlahJualan = 0;
 
-// if KodJualan is given, then get data from database and show all data from selected row of jualan
-if (isset($_GET['kodJualan'])) {
-    $oldKodJualan = $_GET['kodJualan'];
-    $sql1 = "SELECT * FROM `jualan` LEFT JOIN `item` ON jualan.KodItem = item.KodItem WHERE `KodJualan` = '$oldKodJualan'";
-    $hasil1 = mysqli_query($conn, $sql1);
-    $row1 = mysqli_fetch_array($hasil1);
-    $oldTarikhJualan = $row1['TarikhJualan'];
-    $oldKodItem = $row1['KodItem'];
-    $oldKuantitiItemDijual = $row1['KuantitiItemDijual'];
-    $oldHargaJualan = $row1['HargaJualan'];
-    $oldNamaItem = $row1['NamaItem'];
-    $sql = "SELECT `HargaPerItem` FROM `item` WHERE KodItem = '$oldKodItem'";
-    $hasil = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_array($hasil);
-    $oldHargaPerItem = $row['HargaPerItem'];
-}
-
-// Calculate the total sales ONLY WHEN both NamaItem and KuantitiItemDijual is given
-// WARNING/NOTE: this will overwrite $kuantiti and $itemTerpilih
-if (isset($_POST['kuantiti']) && isset($_POST['namaItem'])) {
-    $jumlahJualanCalc = true;
-
-    $itemTerpilih = $_POST['namaItem'];
-    $oldKodItem = $itemTerpilih;
-
-    $tarikhJualan = $_POST['tarikhJualan'];
-    $oldTarikhJualan = $_POST['tarikhJualan'];
-
-    $kuantiti = $_POST['kuantiti'];
-    $oldKuantitiItemDijual = $_POST['kuantiti'];
-
-    $sql3 = "SELECT `NamaItem`,`HargaPerItem` FROM `item` WHERE `KodItem` = '$itemTerpilih'";
-    $result3 = mysqli_query($conn, $sql3);
-    while ($row3 = mysqli_fetch_assoc($result3)) {
-        $oldHargaPerItem = $row3['HargaPerItem'];
-        $jumlahJualan = $row3['HargaPerItem'] * $kuantiti;
-        $oldHargaJualan = $jumlahJualan;
-        $oldNamaItem = $row3['NamaItem'];
+    // Jika terdapat KodJualan, lalu mencapai data dari pangkalan data
+    if (isset($_GET['kodJualan'])) {
+        $oldKodJualan = $_GET['kodJualan'];
+        $sql1 = "SELECT * FROM `jualan` LEFT JOIN `item` ON jualan.KodItem = item.KodItem WHERE `KodJualan` = '$oldKodJualan'";
+        $hasil1 = mysqli_query($conn, $sql1);
+        $row1 = mysqli_fetch_array($hasil1);
+        $oldTarikhJualan = $row1['TarikhJualan'];
+        $oldKodItem = $row1['KodItem'];
+        $oldKuantitiItemDijual = $row1['KuantitiItemDijual'];
+        $oldHargaJualan = $row1['HargaJualan'];
+        $oldNamaItem = $row1['NamaItem'];
+        $sql = "SELECT `HargaPerItem` FROM `item` WHERE `KodItem` = '$oldKodItem'";
+        $hasil = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_array($hasil);
+        $oldHargaPerItem = $row['HargaPerItem'];
     }
-}
+
+    // Mengira jumlah jualan apabila kedua-dua NamaItem and KuantitiItemDijual diberi
+    if (isset($_POST['kuantiti']) && isset($_POST['namaItem'])) {
+        $jumlahJualanCalc = true;
+
+        $itemTerpilih = $_POST['namaItem'];
+        $oldKodItem = $itemTerpilih;
+
+        $tarikhJualan = $_POST['tarikhJualan'];
+        $oldTarikhJualan = $_POST['tarikhJualan'];
+
+        $kuantiti = $_POST['kuantiti'];
+        $oldKuantitiItemDijual = $_POST['kuantiti'];
+
+        $sql3 = "SELECT `NamaItem`,`HargaPerItem` FROM `item` WHERE `KodItem` = '$itemTerpilih'";
+        $result3 = mysqli_query($conn, $sql3);
+        while ($row3 = mysqli_fetch_assoc($result3)) {
+            $oldHargaPerItem = $row3['HargaPerItem'];
+            $jumlahJualan = $row3['HargaPerItem'] * $kuantiti;
+            $oldHargaJualan = $jumlahJualan;
+            $oldNamaItem = $row3['NamaItem'];
+        }
+    }
 ?>
 
 <head>
@@ -61,7 +61,7 @@ if (isset($_POST['kuantiti']) && isset($_POST['namaItem'])) {
 <body>
 <div class = "container">
     <h1>Kemaskini Rekod Jualan</h1>
-
+    <!-- Form untuk mengemaskinikan rekod jualan-->
     <form name = "kemaskiniJualanForm" action = "includes/kemaskiniRekodJualan.inc.php" method = "POST">
         <table align = "center">
             <tr class = "row">
@@ -92,7 +92,7 @@ if (isset($_POST['kuantiti']) && isset($_POST['namaItem'])) {
                 <td class = "col-75">
                     <select class = "kemaskini-select" id = "nama_item" name = "namaItem" onchange = "reSubmit()" required>
                         <?php
-                        // show available option for all item
+                        // Menunjukkan pilihan semua item dari pangkalan data
                         $sql4 = "SELECT * FROM `item`";
                         $hasil4 = mysqli_query($conn, $sql4);
                         while ($row4 = mysqli_fetch_array($hasil4)) {

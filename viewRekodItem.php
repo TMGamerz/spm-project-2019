@@ -1,63 +1,56 @@
+<!-- Halaman untuk memaparkan semua rekod item dari pangkalan data -->
 <?php
     require 'header.php';
+    include 'includes/dbh.inc.php';
 ?>
-
     <head>
         <link rel = "stylesheet" type = "text/css" href = "css/viewRekodItem-style.css">
         <title>Rekod Item</title>
     </head>
 
     <body>
-<div class = "container">
-    <h1>Kemaskini Rekod Item</h1>
+    <div class = "container">
+        <h1>Kemaskini Rekod Item</h1>
 
-    <form action = "" method = "POST">
-        <?php
-        /*Displays all data from 'item' table*/
+        <form action = "" method = "POST">
+            <?php
+                // Mencapai data item dari pangkalan data dan memaparkan
+                $hasil = mysqli_query($conn ,"SELECT * FROM `item` LEFT JOIN `pembekal` ON `item`.`KodPembekal` = `pembekal`.`KodPembekal` ORDER BY `KodItem` ASC;")
+                or die(mysqli_error($conn));
 
-        // connect to the database
-        include('includes/dbh.inc.php');
+                echo "<table align = 'center' border='1' cellpadding='10'>";
 
-        // get results from database
-        $result = mysqli_query($conn ,"SELECT * FROM `item` LEFT JOIN `pembekal` ON `item`.`KodPembekal` = `pembekal`.`KodPembekal` ORDER BY `KodItem` ASC;")
-        or die(mysqli_error($conn));
+                echo "<tr> <th>Kod Item</th> <th>Nama Item</th> <th>Harga Per Item</th> <th>Nama Pembekal</th> <th>Kemaskini</th> <th>Padam</th></tr>";
 
-        echo "<table align = 'center' border='1' cellpadding='10'>";
+                while ($row = mysqli_fetch_array($hasil)) {
 
-        echo "<tr> <th>Kod Item</th> <th>Nama Item</th> <th>Harga Per Item</th> <th>Nama Pembekal</th> <th>Kemaskini</th> <th>Padam</th></tr>";
+                    $kodItem = $row['KodItem'];
+                    $namaItem = $row['NamaItem'];
+                    $hargaPerItem = $row['HargaPerItem'];
+                    $namaPembekal = $row['NamaPembekal'];
 
-        // loop through results of database query, displaying them in the table
-        while($row = mysqli_fetch_array($result)) {
+                    echo "<tr>";
 
-            $kodItem = $row['KodItem'];
-            $namaItem = $row['NamaItem'];
-            $hargaPerItem = $row['HargaPerItem'];
-            $namaPembekal = $row['NamaPembekal'];
-            // echo out the contents of each row into a table
-            echo "<tr>";
+                    echo '<td>' . $kodItem . '</td>';
 
-            echo '<td>' . $kodItem . '</td>';
+                    echo '<td>' . $namaItem . '</td>';
 
-            echo '<td>' . $namaItem . '</td>';
+                    echo '<td>' . $hargaPerItem . '</td>';
 
-            echo '<td>' . $hargaPerItem . '</td>';
+                    echo '<td>' . $namaPembekal . '</td>';
 
-            echo '<td>' . $namaPembekal . '</td>';
+                    echo '<td><a href="kemaskiniRekodItem.php?kodItem=' . $kodItem . '"><img src="icons/edit.png" alt = "editIcon" class = "editIcon"></a></td>';
 
-            echo '<td><a href="kemaskiniRekodItem.php?kodItem=' . $kodItem . '"><img src="icons/edit.png" alt = "editIcon" class = "editIcon"></a></td>';
+                    echo '<td><a href="includes/padamRekodItem.inc.php?kodItem=' . $kodItem . '"><img src="icons/delete.png" alt = "deleteIcon" class = "deleteIcon"></a></td>';
 
-            echo '<td><a href="includes/padamRekodItem.inc.php?kodItem=' . $kodItem . '"><img src="icons/delete.png" alt = "deleteIcon" class = "deleteIcon"></a></td>';
+                    echo "</tr>";
 
-            echo "</tr>";
+                }
 
-        }
-
-        // close table
-        echo "</table>";
-        ?>
-    </form>
-</div>
-
+                echo "</table>";
+            ?>
+        </form>
+    </div>
 <?php
     require 'footer.php';
 ?>

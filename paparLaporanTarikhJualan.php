@@ -1,3 +1,4 @@
+<!-- Halaman untuk memilih tarikh jualan bagi memaparkan laporan -->
 <?php
     require 'header.php';
 ?>
@@ -10,7 +11,7 @@
 <body>
 <div class = "container">  
     <h1>Papar Laporan Ikut Tarikh Jualan</h1>
-
+    <!-- Form untuk memilih tarikh jualan bagi memaparkan laporan-->
     <form action = "viewLaporanIkutTarikh.php" method = "POST">
         <table align = "center">
             <tr class = "row">
