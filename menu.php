@@ -1,10 +1,19 @@
+<!-- Halaman menu utama -->
 <?php
-    require "header.php";
+    require 'header.php';
+    require 'includes/dbh.inc.php';
 ?>
 
-<link rel = "stylesheet" type = "text/css" href = "css/menu-style.css">
+<head>
+    <link rel = "stylesheet" type = "text/css" href = "css/menu-style.css">
+    <title>Menu Utama</title>
+</head>
 
-<p>Menu Utama<br>SELAMAT DATANG KE<br>SISTEM PENGURUSAN<br>KOPERASI SEKOLAH</p>
+<h1><b>Menu Utama</b></h1>
+<br>
+<div class = "container">
+    <p><b>SELAMAT DATANG KE<br>SISTEM PENGURUSAN JUALAN <br> KOPERASI SEKOLAH</b></p>
+</div>
 
 <?php
     require 'footer.php';

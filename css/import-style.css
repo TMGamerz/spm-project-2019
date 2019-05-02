@@ -1,10 +1,124 @@
-body {
-    background-color: #111;
+html {
+    background: url(../img/bgp3.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
-p {
-    font-size: 50px;
-    color: #fff;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+h1 {
+    padding: 25px 0 0 0;
     text-align: center;
-    margin-top: 100px;
+}
+
+.container {
+    max-width: 100%;
+    height: auto;
+    margin: 5% 15%;
+    padding: 20px 6px 20px 6px;
+    background-color: #fff;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .5);
+    border-radius: 20px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.col-70 {
+    width: 70%;
+    padding: 5px;
+    border: 2px solid #111;
+}
+
+.col-70:hover {
+    border: 2px solid #006eff;
+}
+
+.col-15 {
+    width: 15%;
+    padding: 5px;
+    border: 2px solid #111;
+}
+
+.col-submit {
+    width: 15%;
+    padding: 5px;
+}
+
+/*Style the file input*/
+#custom-button {
+    color: #111;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    padding: 10px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#custom-button:hover {
+    background-color: #006eff;
+    color: #fff;
+}
+
+#custom-text {
+    font-family: sans-serif;
+    color: #aaa;
+    padding: 10px;
+    font-size: 20px;
+    width: 100%;
+    display: block;
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/*Style the submit button*/
+input[type=submit] {
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #e5e5e5;
+    border: none;
+    color: #111;
+    padding: 10px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+input[type=submit]:hover {
+    background-color: #006eff;
+    color: #fff;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+    .col-15, .col-70, .col-submit {
+        display: block;
+        width: 100%;
+        margin-top: 0;
+    }
 }

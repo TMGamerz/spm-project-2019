@@ -1,0 +1,137 @@
+html {
+    background: url(../img/bgp3.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+h1 {
+    padding: 25px 0 0 0;
+    text-align: center;
+}
+
+.container {
+    max-width: 100%;
+    height: auto;
+    margin: 5% 15%;
+    padding: 20px 6px 20px 6px;
+    background-color: #fff;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .5);
+    border-radius: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    border: none;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover:not(:first-child) {
+    background-color: #ddd;
+}
+
+td {
+    text-align: center;
+    border: none;
+}
+
+img {
+    width: 50px;
+    height: 50px;
+}
+
+.editIcon:hover {
+    content: url(../icons/editFilled.png);
+}
+
+.deleteIcon:hover {
+    content: url(../icons/deleteFilled.png);
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+    /*
+    Max width before this PARTICULAR table gets nasty
+    This query will take effect for any screen smaller than 760px
+    and also iPads specifically.
+    */
+    /* Force table to not be like tables anymore */
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    th {
+        display: none;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr {
+        border-bottom: 2px solid #ccc;
+    }
+
+    td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 2px solid #eee;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    /*
+    Label the data
+    */
+    td:nth-of-type(1):before {
+        content: "Kod Item";
+    }
+
+    td:nth-of-type(2):before {
+        content: "Nama Item";
+    }
+
+    td:nth-of-type(3):before {
+        content: "Harga Per Item";
+    }
+
+    td:nth-of-type(4):before {
+        content: "Nama Pembekal";
+    }
+
+    td:nth-of-type(5):before {
+        content: "Kemaskini";
+    }
+
+    td:nth-of-type(6):before {
+        content: "Padam";
+    }
+}

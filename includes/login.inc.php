@@ -1,42 +1,41 @@
+<!-- Proses untuk log masuk -->
 <?php
+    require_once 'dbh.inc.php';
+    session_start();
 
-if (isset($_POST['submit'])) {
+    if (isset($_POST['submit'])) {
+        $NamaPengguna = mysqli_real_escape_string($conn, $_POST['nama_pengguna']);
+        $KataLaluan = mysqli_real_escape_string($conn, $_POST['kata_laluan']);
 
-    include 'dbh.inc.php';
+        $sql = "SELECT * FROM `pengguna` WHERE `NamaPengguna` = '$NamaPengguna'";
+        $hasil = mysqli_query($conn, $sql);
+        $semakHasil = mysqli_num_rows($hasil);
 
-    $username = mysqli_real_escape_string($conn, $_POST['nama_pengguna']);
-    $pwd = mysqli_real_escape_string($conn, $_POST['kata_laluan']);
-
-    # Error handlers
-    // Check if the inputs are empty
-    if (empty($username) || empty($pwd)) {
-        header("Location: ../index.php?login=empty");
-        exit();
-    } else {
-        // Check if the user exists in the database
-        $sql = "SELECT * FROM pengguna WHERE NamaPengguna = '$username'";
-        $result = mysqli_query($conn, $sql);
-        $resultCheck = mysqli_num_rows($result);
-
-        if ($resultCheck < 1) {
-            header("Location: ../index.php?login=error");
+        if ($semakHasil < 1) {
+            // Mesej yang akan dipapar jika tidak berjaya log masuk
+            echo "<script>
+                alert('Maklumat yang anda masuk tidak sah!\\nSila cuba sekali lagi');
+                window.location.href = '../index.php';
+              </script>";
             exit();
         } else {
-            if ($row = mysqli_fetch_assoc($result)) {
-                // De-hashing th password
-                $hashedPwdCheck = password_verify($pwd, $row['KataLaluan']);
-                if ($hashedPwdCheck == false) {
-                    header("Location: ../index.php?login=error");
-                    exit();
-                } elseif ($hashedPwdCheck == true) {
-                    // Log in the user here 
-                    header("Location: ../menu.php");
-                    exit();
-                }
-            }
+            // Log masuk
+            $row = mysqli_fetch_assoc($hasil);
+            $_SESSION['IDPengguna']= $row['IDPengguna'];
+            $_SESSION['NamaPengguna']= $row['NamaPengguna'];
+            $_SESSION['KataLaluan']= $row['KataLaluan'];
+            // Mesej yang akan dipapar jika berjaya log masuk
+            echo "<script>
+                    alert('Anda sudah berjaya log masuk!');
+                    window.location.href = '../menu.php';
+                  </script>";
+            exit();
         }
+    } else {
+        // Mesej yang akan dipapar jika tidak berjaya log masuk
+        echo "<script>
+                alert('Maklumat yang anda masuk tidak sah!\\nSila cuba sekali lagi');
+                window.location.href = '../index.php';
+              </script>";
+        exit();
     }
-} else {
-    header("Location: ../index.php?login=error");
-    exit();
-}

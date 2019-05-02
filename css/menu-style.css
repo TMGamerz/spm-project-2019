@@ -1,10 +1,24 @@
-body {
-    background-color: #111;
+html {
+    background: url(../img/bgp2.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
-p {
-    font-size: 50px;
+h1 {
     color: #fff;
     text-align: center;
-    margin-top: 300px;
+    margin-top: 100px;
+    font-size: 50px;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.container p {
+    font-size: 40px;
+    color: #fff;
+    text-align: center;
+	padding: 0;
+    margin: 0;
+    text-shadow: 2px 2px 4px #000000;
 }
