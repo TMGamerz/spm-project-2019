@@ -7,7 +7,7 @@
         $NamaPengguna = mysqli_real_escape_string($conn, $_POST['nama_pengguna']);
         $KataLaluan = mysqli_real_escape_string($conn, $_POST['kata_laluan']);
 
-        $sql = "SELECT * FROM `pengguna` WHERE `NamaPengguna` = '$NamaPengguna'";
+        $sql = "SELECT * FROM `pengguna` WHERE `NamaPengguna` = '$NamaPengguna' && `KataLaluan` = '$KataLaluan'";
         $hasil = mysqli_query($conn, $sql);
         $semakHasil = mysqli_num_rows($hasil);
 
